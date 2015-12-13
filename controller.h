@@ -3,6 +3,7 @@
 
 // Forward declarations of general classes
 class Game;
+class Player;
 class View;
 class Text_View;
 
@@ -14,6 +15,7 @@ class Controller {
     private:
         Game * game;
         View * text_view;
+        Player * player_1, * player_2;
     public:
         Controller();
         ~Controller();
