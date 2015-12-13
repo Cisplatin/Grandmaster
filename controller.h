@@ -15,7 +15,6 @@ class Controller {
     private:
         Game * game;
         View * text_view;
-        Player * player_1, * player_2;
     public:
         Controller();
         ~Controller();

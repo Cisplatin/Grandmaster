@@ -5,16 +5,12 @@
 
 Controller::Controller() {
     // Construct a new game
-    this->player_1 = new Player(0);
-    this->player_2 = new Player(0);
-    this->game = new Game(this->player_1, this->player_2);
+    this->game = new Game(0, 0);
     this->text_view = new Text_View();
 }
 
 Controller::~Controller() {
     // Delete all heap-allocated memory
-    delete this->player_1;
-    delete this->player_2;
     delete this->game;
     delete this->text_view;
 }

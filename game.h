@@ -12,8 +12,7 @@ class Game {
         const Player * player_1;
         const Player * player_2;
     public:
-        Game(const Player * const, const Player * const); // Starts a new game
-                                                          // with given players
+        Game(const Player *, const Player *); // Starts a new game
         ~Game();
 };
 
