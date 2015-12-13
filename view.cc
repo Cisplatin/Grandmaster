@@ -28,3 +28,9 @@ void View::remove(const int i, const int j) {
     // Removes the piece from the given co-ordinates
     this->board[i][j] = 0;
 }
+
+void View::move(const int i, const int j, const int k, const int l) {
+    // Moves the piece at the given co-ordinates to the new ones
+    this->add(this->board[i][j], k, l);
+    this->remove(i, j);
+}

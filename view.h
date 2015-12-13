@@ -19,6 +19,7 @@ class View {
         // Adds/removes the appropriate piece
         void add(const char, const int, const int); 
         void remove(const int, const int);
+        void move(const int, const int, const int, const int);
 };
 
 #endif
