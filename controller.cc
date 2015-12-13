@@ -3,23 +3,34 @@
 #include "player.h"
 #include "text_view.h"
 
+#include <iostream>
+#include <string>
+#include <sstream>
+
+using namespace std;
+
 Controller::Controller() {
     // Construct a new game
-    this->game = new Game(0, 0);
-    this->text_view = new Text_View();
+    this->players = new map<string, Player *>();
 }
 
 Controller::~Controller() {
     // Delete all heap-allocated memory
     delete this->game;
     delete this->text_view;
+    delete this->players;
 }
 
 void Controller::play() {
-    // Runs an iteration of the game
-    this->text_view->add('P', 1, 1);
-    this->text_view->add('Q', 2, 2);
-    this->text_view->add('R', 3, 3);
-    this->text_view->move(2, 2, 4, 4);
-    this->text_view->print();
+    // Processess input
+    string input, parser;
+    while(getline(cin, input)) {
+        istringstream input_ss(input);
+        input_ss >> parser;
+
+        // A new player is to be added:
+        if(parser == "add") {
+            // Fetch the new player's name and level
+        }
+    }
 }

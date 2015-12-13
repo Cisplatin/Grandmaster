@@ -5,4 +5,4 @@ and so there is little to show right now.
 
 ## To-do:
 
-- Add functionality for many players, saving their statistics
+- Add functionality for saving/loading players
