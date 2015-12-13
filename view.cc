@@ -18,3 +18,13 @@ View::~View() {
     }
     delete this->board;
 }
+
+void View::add(const char piece, const int i, const int j) {
+    // Adds the piece to the given co-ordinates
+    this->board[i][j] = piece;
+}
+
+void View::remove(const int i, const int j) {
+    // Removes the piece from the given co-ordinates
+    this->board[i][j] = 0;
+}

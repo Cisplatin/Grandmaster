@@ -13,6 +13,12 @@ void Text_View::print() const {
             } else {
                 std::cout << this->WHITE_SQUARE;
             }
+
+            // Print a space after each piece so it looks more spaced, except
+            // after the last square of a row
+            if(j != Text_View::BOARD_LEN - 1) {
+                std::cout << " ";
+            }
         }
         std::cout << std::endl;
     }
