@@ -19,6 +19,11 @@ class Controller {
         Game * game;
         View * text_view;
         std::map<std::string, Player *> * players;
+
+        void error(std::string) const;
+        void addPlayer(std::string);
+
+        static const int DEFAULT_ELO = 1200;
     public:
         Controller();
         ~Controller();

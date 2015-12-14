@@ -18,12 +18,26 @@ Controller::~Controller() {
     // Delete all heap-allocated memory
     delete this->game;
     delete this->text_view;
+
+    // Delete all players
+    map<string, Player *>::iterator it = this->players->begin();
+    for(; it != this->players->end(); it++) {
+        delete it->second;
+    }
     delete this->players;
+}
+
+void Controller::error(string err) const {
+    cout << "> Error: " << err << endl;
+}
+
+void Controller::addPlayer(string name) {
+    // TODO: complete add function
 }
 
 void Controller::play() {
     // Processess input
-    string input, parser;
+    string input, parser, junk;
     while(getline(cin, input)) {
         istringstream input_ss(input);
         input_ss >> parser;
@@ -31,6 +45,15 @@ void Controller::play() {
         // A new player is to be added:
         if(parser == "add") {
             // Fetch the new player's name and level
+            string name;
+            // Check for valid inputs with no extras
+            if(!(input_ss >> name) || input_ss >> junk) {
+                this->error("Invalid input for 'add' command.");
+            } else {
+                // Add the player
+                this->addPlayer(name);
+            }
+
         }
     }
 }
