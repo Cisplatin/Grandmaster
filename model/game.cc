@@ -1,5 +1,5 @@
 #include "game.h"
-#include "controller.h"
+#include "../controller.h"
 #include "player.h"
 
 Game::Game(const Player * player_1, const Player * player_2, Controller * c) : 

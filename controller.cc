@@ -1,7 +1,7 @@
 #include "controller.h"
-#include "game.h"
-#include "player.h"
-#include "text_view.h"
+#include "model/game.h"
+#include "model/player.h"
+#include "view/text_view.h"
 
 #include <iostream>
 #include <string>
