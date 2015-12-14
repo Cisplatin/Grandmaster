@@ -10,6 +10,10 @@
 using namespace std;
 
 Controller::Controller() {
+    // Arbitrarily set current game/view pointers
+    this->game = 0;
+    this->text_view = 0;
+
     // Construct a new game
     this->players = new map<string, Player *>();
 }
@@ -63,7 +67,7 @@ void Controller::play() {
 
         // A new player is to be added:
         if(parser == "add") {
-            // Fetch the new player's name and level
+            // Fetch the new player's name
             string name;
             // Check for valid inputs with no extras
             if(!(input_ss >> name) || input_ss >> junk) {
@@ -73,6 +77,16 @@ void Controller::play() {
                 this->addPlayer(name);
             }
 
+        // An old player is to be deleted:
+        } else if(parser == "remove") {
+            // Fetch the player's name
+            string name;
+            // Check for valid inputs with no extras
+            if(!(input_ss >> name) || input_ss >> junk) {
+                this->error("Invalid input for 'remove' command.");
+            } else {
+                this->remPlayer(name);
+            }
         }
     }
 }
