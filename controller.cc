@@ -32,7 +32,13 @@ void Controller::error(string err) const {
 }
 
 void Controller::addPlayer(string name) {
-    // TODO: complete add function
+    // Check if the player already exists
+    if(this->players->count(name) != 0) {
+        this->error("Player " + name + " already exists.");
+    } else {
+        Player * new_player = new Player(Controller::DEFAULT_ELO);
+        this->players->insert(pair<string, Player *>(name, new_player));
+    }
 }
 
 void Controller::play() {
