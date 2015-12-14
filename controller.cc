@@ -58,6 +58,25 @@ void Controller::remPlayer(string name) {
     }
 }
 
+void Controller::startGame(string name_1, string name_2) {
+    // Make sure the players are unique
+    if(name_1 == name_2) {
+        this->error("Cannot play against yourself.");
+        return;
+    }
+    // Make sure the players both exist
+    map<string, Player *>::iterator it1 = this->players->find(name_1);
+    map<string, Player *>::iterator it2 = this->players->find(name_2);
+    if(it1 == this->players->end()) {
+        this->error("Player '" + name_1 + "' does not exist.");
+        return;
+    } else if(it2 == this->players->end()) {
+        this->error("Player '" + name_2 + "' does not exist.");
+        return;
+    }
+
+    // Start a game up TODO
+}
 
 void Controller::play() {
     // Processess input
@@ -87,6 +106,18 @@ void Controller::play() {
                 this->error("Invalid input for 'remove' command.");
             } else {
                 this->remPlayer(name);
+            }
+
+        // Starts a game between the two given players
+        } else if(parser == "game") {
+            // Fetch the player's names
+            string name_1, name_2;
+            // Check for valid inputs with no extras
+            if(!(input_ss >> name_1 && input_ss >> name_2) ||
+                input_ss >> junk) {
+                this->error("Invalid input for 'game' command.");
+            } else {
+                this->startGame(name_1, name_2);
             }
         }
     }
