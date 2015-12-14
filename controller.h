@@ -31,6 +31,11 @@ class Controller {
         Controller();
         ~Controller();
         void play(); // Plays the game
+
+        // Notifications from the game to the view
+        void notifyAdd(char, int, int);
+        void notifyRem(int, int);
+        void notifyMove(int, int, int, int);
 };
 
 #endif

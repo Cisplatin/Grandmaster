@@ -76,7 +76,7 @@ void Controller::startGame(string name_1, string name_2) {
     }
 
     this->text_view = new Text_View();
-    this->game = new Game(it1->second, it2->second);
+    this->game = new Game(it1->second, it2->second, this);
     this->text_view->print();
 }
 
@@ -123,4 +123,19 @@ void Controller::play() {
             }
         }
     }
+}
+
+void Controller::notifyAdd(char piece, int row, int col) {
+    // Adds the given piece to the view
+    this->text_view->add(piece, row, col);
+}
+
+void Controller::notifyRem(int row, int col) {
+    // Removes the given piece from the view
+    this->text_view->remove(row, col);
+}
+
+void Controller::notifyMove(int row1, int col1, int row2, int col2) {
+    // Moves the given piece in the view
+    this->text_view->move(row1, col1, row2, col2);
 }
