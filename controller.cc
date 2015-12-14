@@ -32,6 +32,7 @@ Controller::~Controller() {
 }
 
 void Controller::error(string err) const {
+    // Prints out an appropriate error message
     cout << "> Error: " << err << endl;
 }
 
