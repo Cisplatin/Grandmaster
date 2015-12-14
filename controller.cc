@@ -75,7 +75,9 @@ void Controller::startGame(string name_1, string name_2) {
         return;
     }
 
-    // Start a game up TODO
+    this->text_view = new Text_View();
+    this->game = new Game(it1->second, it2->second);
+    this->text_view->print();
 }
 
 void Controller::play() {
