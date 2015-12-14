@@ -13,6 +13,9 @@ class Game {
         Controller * control;
         const Player * player_1;
         const Player * player_2;
+
+        void updateAdd(char, int, int);
+        void updateRem(int, int);
     public:
         Game(const Player *, const Player *, Controller *); 
         ~Game();

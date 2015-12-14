@@ -134,8 +134,3 @@ void Controller::notifyRem(int row, int col) {
     // Removes the given piece from the view
     this->text_view->remove(row, col);
 }
-
-void Controller::notifyMove(int row1, int col1, int row2, int col2) {
-    // Moves the given piece in the view
-    this->text_view->move(row1, col1, row2, col2);
-}
