@@ -8,7 +8,3 @@ and so there is little to show right now.
 ```Bash
 add <player_name> # Adds new player with name <player_name>
 ```
-
-## To-do:
-
-- Add functionality for saving/loading players

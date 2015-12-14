@@ -34,12 +34,25 @@ void Controller::error(string err) const {
 void Controller::addPlayer(string name) {
     // Check if the player already exists
     if(this->players->count(name) != 0) {
-        this->error("Player " + name + " already exists.");
+        this->error("Player '" + name + "' already exists.");
     } else {
         Player * new_player = new Player(Controller::DEFAULT_ELO);
         this->players->insert(pair<string, Player *>(name, new_player));
     }
 }
+
+void Controller::remPlayer(string name) {
+    // Make sure the player exists
+    map<string, Player *>::iterator it = this->players->find(name);
+    if(it == this->players->end()) {
+        this->error("Player '" + name + "' does not exist."); 
+    } else {
+        // Else, delete the player and all of his records
+        delete it->second;
+        this->players->erase(it);
+    }
+}
+
 
 void Controller::play() {
     // Processess input

@@ -22,6 +22,7 @@ class Controller {
 
         void error(std::string) const;
         void addPlayer(std::string);
+        void remPlayer(std::string);
 
         static const int DEFAULT_ELO = 1200;
     public:
