@@ -13,6 +13,6 @@ game <name> <name> # Starts a game between the two given players
 
 ## To-do:
 - Make an actual Makefile
-- Implement ability to load/save games
+- Implement ability to load/save games (.PGN games)
 - Start games with normal layout by default
 - Implement ability to load/save players
