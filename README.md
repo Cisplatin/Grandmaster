@@ -6,6 +6,7 @@ and so there is little to show right now.
 ## Features:
 
 ```Bash
-add <player_name>    # Adds new player with name <player_name>
-remove <player_name> # Removes the player with name <player_name>
+add <name>         # Adds new player with name <name>
+remove <name>      # Removes the player with name <name>
+game <name> <name> # Starts a game between the two given players
 ```
