@@ -10,3 +10,9 @@ add <name>         # Adds new player with name <name>
 remove <name>      # Removes the player with name <name>
 game <name> <name> # Starts a game between the two given players
 ```
+
+## To-do:
+- Make an actual Makefile
+- Implement ability to load/save games
+- Start games with normal layout by default
+- Implement ability to load/save players
