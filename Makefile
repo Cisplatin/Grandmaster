@@ -1,2 +1,2 @@
 all:
-		g++ *.cc */*.cc   
+		g++ *.cc */*.cc -o Grandmaster
