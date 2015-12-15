@@ -6,7 +6,7 @@ class Player {
         const int level; // The level of the player: if its a human, set to 0,
                          // else set the level from 1 - 10.
     public:
-        Player(const int); // Creates a new player with the given level
+        Player(const int); // Creates a new player
         ~Player();
 };
 
