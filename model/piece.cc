@@ -28,5 +28,5 @@ Piece * Piece::generatePiece(char type, Player * player, int row, int col) {
         break;
     }
     // An invalid piece was given
-    return NULL;
+    throw "Invalid piece type was given.";
 }
