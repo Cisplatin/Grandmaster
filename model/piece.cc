@@ -4,9 +4,9 @@
 
 #include "pieces/king.h"
 
-Piece::Piece(const char type, Player * player, int row, int col) : type(type) {
+Piece::Piece(char type, const Player * player, int row, int col) 
+             : type(type), player(player) {
     // Sets the type of the piece and the player
-    this->player = player;
     this->row = row;
     this->col = col;
 }
@@ -20,13 +20,15 @@ char Piece::getType() {
     return this->type;
 }
 
-Piece * Piece::generatePiece(char type, Player * player, int row, int col) {
+Piece * Piece::generatePiece(const char type, const Player * player, 
+                             int row, int col) {
     Piece * new_piece;
     switch(type) {
         case 'K': case 'k':
             return new King(type, player, row, col);
         break;
     }
-    // An invalid piece was given
-    throw "Invalid piece type was given.";
+    // TODO: Finish this function
+    // An invalid piece was given, return no piece
+    return 0;
 }

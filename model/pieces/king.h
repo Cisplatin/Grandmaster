@@ -4,5 +4,5 @@ class Player;
 
 class King : public Piece {
     public:
-        King(char, Player *, int, int);
+        King(char, const Player *, int, int);
 };

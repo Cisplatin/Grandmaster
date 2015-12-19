@@ -7,15 +7,16 @@ class Game;
 class Piece {
     private:
         Game * game;
-        Player * player;
+        const Player * player;
         const char type;
         int row, col;
     public:
-        Piece(const char, Player * player, int, int);
+        Piece(const char, const Player * player, int, int);
         ~Piece();
 
         char getType();
-        static Piece * generatePiece(char, Player *, int, int);
+        static bool validPiece(char);
+        static Piece * generatePiece(char, const Player *, int, int);
 };
 
 #endif
