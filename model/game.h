@@ -21,6 +21,7 @@ class Game {
         void updateAdd(char, int, int);
         void updateRem(int, int);
         void loadStandard();
+        void clearBoard();
     public:
         Game(const Player *, const Player *, Controller *); 
         ~Game();

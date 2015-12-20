@@ -12,7 +12,6 @@ Game::Game(const Player * player_1, const Player * player_2, Controller * c) :
     this->control = c;
     
     // Initialize the board with empty squares
-    // TODO: write a function to clear the board
     for(int i = 0; i < Game::BOARD_LEN; i++) {
         for(int j = 0; j < Game::BOARD_LEN; j++) {
             this->board[i][j] = NULL;
@@ -25,11 +24,7 @@ Game::Game(const Player * player_1, const Player * player_2, Controller * c) :
 
 Game::~Game() {
     // Delete all pieces
-    for(int i = 0; i < Game::BOARD_LEN; i++) {
-        for(int j = 0; j < Game::BOARD_LEN; j++) {
-            delete this->board[i][j]; 
-        }
-    }
+    this->clearBoard();
 }
 
 void Game::loadStandard() {
@@ -51,6 +46,15 @@ void Game::loadStandard() {
             if(this->board[i][j] != NULL) {
                 this->updateAdd(piece, i, j);
             }
+        }
+    }
+}
+
+void Game::clearBoard() {
+    // Clears all piece from the board
+    for(int i = 0; i < Game::BOARD_LEN; i++) {
+        for(int j = 0; j < Game::BOARD_LEN; j++) {
+            delete this->board[i][j];
         }
     }
 }
