@@ -4,3 +4,8 @@
 King::King(char type, const Player * player, int row, int col) :
     Piece(type, player, row, col) {
 }
+
+bool King::validMove(int row, int col) const {
+    // TODO: write function
+    return true;
+}

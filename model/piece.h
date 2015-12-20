@@ -14,8 +14,10 @@ class Piece {
         Piece(const char, const Player * player, int, int);
         ~Piece();
 
+        // Functions for determining validity
+        virtual bool validMove(int, int) const = 0;
+
         char getType();
-        static bool validPiece(char);
         static Piece * generatePiece(char, const Player *, int, int);
 };
 
