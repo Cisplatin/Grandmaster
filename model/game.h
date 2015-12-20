@@ -6,6 +6,8 @@ class Player;
 class Controller;
 class Piece;
 
+#include <string>
+
 /*
     Stores the information associated with the player and the board
 */

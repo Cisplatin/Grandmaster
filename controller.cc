@@ -77,6 +77,10 @@ void Controller::startGame(string name_1, string name_2) {
 
     this->text_view = new Text_View();
     this->game = new Game(it1->second, it2->second, this);
+}
+
+void Controller::playGame() {
+    // TODO: finish this function
     this->text_view->print();
 }
 
@@ -120,6 +124,7 @@ void Controller::play() {
                 this->error("Invalid input for 'game' command.");
             } else {
                 this->startGame(name_1, name_2);
+                this->playGame();
             }
         }
     }

@@ -25,6 +25,7 @@ class Controller {
         void remPlayer(std::string);
 
         void startGame(std::string, std::string);
+        void playGame();
 
         static const int DEFAULT_ELO = 1200;
     public:

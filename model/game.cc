@@ -8,6 +8,7 @@ using namespace std;
 
 Game::Game(const Player * player_1, const Player * player_2, Controller * c) : 
     player_1(player_1), player_2(player_2) {
+
     // Sets the players in the game to the given players
     this->control = c;
     
@@ -29,8 +30,6 @@ Game::~Game() {
 
 void Game::loadStandard() {
     // Loads the standard game setup
-    // TODO: make game variable path to standard.txt
-    // TODO: make any game load-able, add error detection
     ifstream standard("model/standard.txt");
     
     // Load the board one piece at a time
