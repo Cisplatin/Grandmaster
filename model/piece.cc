@@ -3,6 +3,11 @@
 #include "player.h"
 
 #include "pieces/king.h"
+#include "pieces/queen.h"
+#include "pieces/rook.h"
+#include "pieces/bishop.h"
+#include "pieces/knight.h"
+#include "pieces/pawn.h"
 
 Piece::Piece(char type, const Player * player, int row, int col) 
              : type(type), player(player) {
@@ -27,8 +32,22 @@ Piece * Piece::generatePiece(const char type, const Player * player,
         case 'K': case 'k':
             return new King(type, player, row, col);
         break;
+        case 'Q': case 'q':
+            return new Queen(type, player, row, col);
+        break;
+        case 'R': case 'r':
+            return new Rook(type, player, row, col);
+        break;
+        case 'B': case 'b':
+            return new Bishop(type, player, row, col);
+        break;
+        case 'N': case 'n':
+            return new Knight(type, player, row, col);
+        break;
+        case 'P': case 'p':
+            return new Pawn(type, player, row, col);
+        break;
     }
-    // TODO: Finish this function
     // An invalid piece was given, return no piece
     return 0;
 }
