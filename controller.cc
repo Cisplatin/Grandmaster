@@ -126,6 +126,10 @@ void Controller::play() {
                 this->startGame(name_1, name_2);
                 this->playGame();
             }
+
+        // Invalid command given
+        } else {
+            this->error("Command '" + parser + "' not found.");
         }
     }
 }
