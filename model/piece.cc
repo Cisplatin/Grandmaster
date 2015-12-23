@@ -31,6 +31,12 @@ Player * Piece::getPlayer() const {
     return this->player;
 }
 
+void Piece::updateMove(int row, int col) {
+    // Updates the row and column of this piece
+    this->row = row;
+    this->col = col;
+}
+
 Piece * Piece::generatePiece(const char type, Player * const player, 
                              int row, int col, Game * game) {
     Piece * new_piece;

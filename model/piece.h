@@ -19,6 +19,7 @@ class Piece {
 
         char getType() const;
         Player * getPlayer() const;
+        void updateMove(int, int);
         static Piece * generatePiece(char, Player * const, int, int, Game *);
 };
 

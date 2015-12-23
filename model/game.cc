@@ -135,12 +135,19 @@ bool Game::move(string pos_1, string pos_2) {
     }
 
     // Move the piece
+    this->movePiece(row_1, col_1, row_2, col_2);
+    this->switchTurns(); 
+    return 1;
+}
+
+void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
+    // Moves a piece from row/col_1 to row/col_2
+    delete this->board[row_2][col_2];
     this->board[row_2][col_2] = this->board[row_1][col_1];
     this->board[row_1][col_1] = NULL;
     this->updateAdd(this->board[row_2][col_2]->getType(), row_2, col_2);
-    this->updateRem(row_1, col_2);
-    this->switchTurns(); 
-    return 1;
+    this->updateRem(row_1, col_1);
+    this->board[row_2][col_2]->updateMove(row_2, col_2);
 }
 
 bool Game::isEmpty(int row, int col) const {
