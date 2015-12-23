@@ -4,6 +4,7 @@
 #include "piece.h"
 
 #include <fstream>
+#include <iostream>
 using namespace std;
 
 Game::Game(Player * const player_1, Player * const player_2, Controller * c) : 
@@ -42,8 +43,8 @@ void Game::loadStandard() {
             standard >> piece;
     
             // Determine which player this piece belongs to
-            const Player * player;
-            player = (piece >= 'A') ? this->player_1 : this->player_2;
+            Player * player;
+            player = (piece < 'a') ? this->player_1 : this->player_2;
             this->board[i][j] = Piece::generatePiece(piece, player, i, j); 
             if(this->board[i][j] != NULL) {
                 this->updateAdd(piece, i, j);
@@ -109,10 +110,35 @@ Player * Game::getNext() const {
     return this->next;
 }
 
-void Game::move(string pos_1, string pos_2) {
+bool Game::move(string pos_1, string pos_2) {
     // Make sure the given positions are valid
     if(!Game::validPosition(pos_1) || !Game::validPosition(pos_2)) {
         this->control->error("Invalid position given.");
-        return;
+        return 0;
     }
+
+    // Convert the positions
+    int row_1, col_1, row_2, col_2;
+    Game::convertPosToInt(pos_1, &row_1, &col_1);
+    Game::convertPosToInt(pos_2, &row_2, &col_2);
+
+    // Make sure the position moving from belongs to the right player
+    if(this->board[row_1][col_1]->getPlayer() != this->next) {
+        this->control->error("Cannot move opponent's piece.");
+        return 0;
+    }
+
+    // Make sure its a valid move for the piece
+    if(!this->board[row_1][col_1]->validMove(row_2, col_2)) {
+        this->control->error("Cannot move that piece there.");
+        return 0;
+    }
+
+    // Move the piece
+    this->board[row_2][col_2] = this->board[row_1][col_1];
+    this->board[row_1][col_1] = NULL;
+    this->updateAdd(this->board[row_2][col_2]->getType(), row_2, col_2);
+    this->updateRem(row_1, col_2);
+    this->switchTurns(); 
+    return 1;
 }

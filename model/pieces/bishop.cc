@@ -1,7 +1,7 @@
 #include "bishop.h"
 #include "../player.h"
 
-Bishop::Bishop(char type, const Player * player, int row, int col) :
+Bishop::Bishop(char type, Player * const player, int row, int col) :
     Piece(type, player, row, col) {
 }
 

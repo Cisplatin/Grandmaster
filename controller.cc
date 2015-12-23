@@ -97,14 +97,14 @@ void Controller::playGame() {
                 if(!(input_ss >> pos_1 >> pos_2) || input_ss >> junk) {
                     this->error("Invalid input for 'move' command.");   
                 } else {
-                    this->game->move(pos_1, pos_2);
+                    if(this->game->move(pos_1, pos_2)) {
+                        // If the move is a success, print the board
+                        this->text_view->print();
+                    }
                 }
             } else {
                 // TODO: generate a computer move
             }
-
-            // Print out the new board
-            this->text_view->print();
 
         // An invalid command was given
         } else {

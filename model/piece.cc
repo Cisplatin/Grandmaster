@@ -9,7 +9,7 @@
 #include "pieces/knight.h"
 #include "pieces/pawn.h"
 
-Piece::Piece(char type, const Player * player, int row, int col) 
+Piece::Piece(char type, Player * const player, int row, int col) 
              : type(type), player(player) {
     // Sets the type of the piece and the player
     this->row = row;
@@ -20,12 +20,17 @@ Piece::~Piece() {
     // No heap-allocated memory so no destructor required
 }
 
-char Piece::getType() {
+char Piece::getType() const {
     // A getter for the type of the piece
     return this->type;
 }
 
-Piece * Piece::generatePiece(const char type, const Player * player, 
+Player * Piece::getPlayer() const {
+    // A getter for the player this piece belongs to
+    return this->player;
+}
+
+Piece * Piece::generatePiece(const char type, Player * const player, 
                              int row, int col) {
     Piece * new_piece;
     switch(type) {

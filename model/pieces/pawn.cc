@@ -1,7 +1,7 @@
 #include "pawn.h"
 #include "../player.h"
 
-Pawn::Pawn(char type, const Player * player, int row, int col) :
+Pawn::Pawn(char type, Player * const player, int row, int col) :
     Piece(type, player, row, col) {
 }
 

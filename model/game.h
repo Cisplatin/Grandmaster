@@ -35,7 +35,7 @@ class Game {
         Game(Player * const, Player * const, Controller *); 
         ~Game();
         Player * getNext() const;
-        void move(std::string, std::string);
+        bool move(std::string, std::string);
 };
 
 #endif

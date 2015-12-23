@@ -1,7 +1,7 @@
 #include "knight.h"
 #include "../player.h"
 
-Knight::Knight(char type, const Player * player, int row, int col) :
+Knight::Knight(char type, Player * const player, int row, int col) :
     Piece(type, player, row, col) {
 }
 

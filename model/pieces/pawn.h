@@ -4,6 +4,6 @@ class Player;
 
 class Pawn : public Piece {
     public:
-        Pawn(char, const Player *, int, int);
+        Pawn(char, Player * const, int, int);
         bool validMove(int, int) const;
 };
