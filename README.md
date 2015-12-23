@@ -16,3 +16,9 @@ move <pos> <pos>   # Moves the piece at the given position
 - Make an actual Makefile
 - Implement ability to load/save games (.PGN games)
 - Implement ability to load/save players
+- Finish piece movement (Rook, Queen, Bishop, Pawn)
+- Add ability to resign
+- Add end-game (checkmate, stalemate, winner statement)
+- Add ELO scoring
+- Add AI levels 1 - 10
+- Implement real graphics (I dislike ASCII) with mouse capabilities

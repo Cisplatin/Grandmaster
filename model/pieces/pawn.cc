@@ -7,7 +7,7 @@ Pawn::Pawn(char type, Player * const player, int row, int col, Game * game) :
 }
 
 bool Pawn::validMove(int row, int col) const {
-    // TODO: en passent and diagonal capture
+    // TODO: en passent
     int allowed = (this->player == this->game->player_1) ? -1 : 1;
     if(this->game->isEmpty(row, col)) {
         if(this->col == col && this->row + allowed == row) {
@@ -21,6 +21,14 @@ bool Pawn::validMove(int row, int col) const {
                 // Standard two-step
                 return true;
             }
+        }
+    }
+
+    // Diagonal capture
+    if(row == this->row + allowed && 
+      (col == this->col - 1 || col == this->col + 1)) {
+        if(!this->game->isEmpty(row, col)) {
+            return true;
         }
     }
     return false;
