@@ -5,11 +5,10 @@ class Player;
 class Game;
 
 class Piece {
-    private:
-        Game * game;
+    protected:
+        int row, col;
         Player * const player;
         const char type;
-        int row, col;
     public:
         Piece(const char, Player * const player, int, int);
         ~Piece();

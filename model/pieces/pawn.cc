@@ -6,6 +6,6 @@ Pawn::Pawn(char type, Player * const player, int row, int col) :
 }
 
 bool Pawn::validMove(int row, int col) const {
-    // TODO: write function
+    // TODO: write the function
     return true;
 }

@@ -14,10 +14,8 @@ class Piece;
 class Game {
     private:
         const static int BOARD_LEN = 8;
-
         Controller * control;
-        Player * const player_1;
-        Player * const player_2;
+
         Piece * board[Game::BOARD_LEN][Game::BOARD_LEN];
 
         void updateAdd(char, int, int);
@@ -35,6 +33,8 @@ class Game {
         Game(Player * const, Player * const, Controller *); 
         ~Game();
         Player * getNext() const;
+        Player * const player_1;
+        Player * const player_2;
         bool move(std::string, std::string);
 };
 
