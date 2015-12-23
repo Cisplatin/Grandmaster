@@ -71,6 +71,14 @@ void Game::updateRem(int row, int col) {
     this->control->notifyRem(row, col);
 }
 
+void Game::convertPosToInt(string pos, int * row, int * col) {
+    // Convets the given position into a row/col position,
+    // setting the given pointers to the correct numbers. Assumes
+    // that a valid position was given.
+    *row = Game::BOARD_LEN - pos[1] + '1' - 1;
+    *col = pos[0] - 'a';
+}
+
 void Game::switchTurns() {
     // Changes whose turn it is
     if(this->next == this->player_1) {
