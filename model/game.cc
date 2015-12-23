@@ -45,7 +45,7 @@ void Game::loadStandard() {
             // Determine which player this piece belongs to
             Player * player;
             player = (piece < 'a') ? this->player_1 : this->player_2;
-            this->board[i][j] = Piece::generatePiece(piece, player, i, j); 
+            this->board[i][j] = Piece::generatePiece(piece, player, i, j, this); 
             if(this->board[i][j] != NULL) {
                 this->updateAdd(piece, i, j);
             }

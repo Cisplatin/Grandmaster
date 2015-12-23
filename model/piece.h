@@ -9,8 +9,9 @@ class Piece {
         int row, col;
         Player * const player;
         const char type;
+        Game * game;
     public:
-        Piece(const char, Player * const player, int, int);
+        Piece(const char, Player * const player, int, int, Game *);
         ~Piece();
 
         // Functions for determining validity
@@ -18,7 +19,7 @@ class Piece {
 
         char getType() const;
         Player * getPlayer() const;
-        static Piece * generatePiece(char, Player * const, int, int);
+        static Piece * generatePiece(char, Player * const, int, int, Game *);
 };
 
 #endif

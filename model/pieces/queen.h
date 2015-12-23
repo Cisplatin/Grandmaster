@@ -4,6 +4,6 @@ class Player;
 
 class Queen : public Piece {
     public:
-        Queen(char, Player * const, int, int);
+        Queen(char, Player * const, int, int, Game *);
         bool validMove(int, int) const;
 };
