@@ -15,6 +15,7 @@ Piece::Piece(char type, Player * const player, int row, int col, Game * game)
     this->row = row;
     this->col = col;
     this->game = game;
+    this->moved = false;
 }
 
 Piece::~Piece() {
@@ -35,6 +36,7 @@ void Piece::updateMove(int row, int col) {
     // Updates the row and column of this piece
     this->row = row;
     this->col = col;
+    this->moved = true;
 }
 
 Piece * Piece::generatePiece(const char type, Player * const player, 

@@ -10,6 +10,7 @@ class Piece {
         Player * const player;
         const char type;
         Game * game;
+        bool moved;
     public:
         Piece(const char, Player * const player, int, int, Game *);
         ~Piece();
