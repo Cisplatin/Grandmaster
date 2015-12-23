@@ -33,6 +33,7 @@ class Game {
     public:
         Game(Player * const, Player * const, Controller *); 
         ~Game();
+        Player * getNext() const;
 };
 
 #endif

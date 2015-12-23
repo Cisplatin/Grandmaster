@@ -93,3 +93,8 @@ void Game::switchTurns() {
         this->next = this->player_1;
     }
 }
+
+Player * Game::getNext() const {
+    // Returns a pointer to the player whose turn is next
+    return this->next;
+}
