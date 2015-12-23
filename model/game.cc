@@ -123,7 +123,7 @@ bool Game::move(string pos_1, string pos_2) {
     Game::convertPosToInt(pos_2, &row_2, &col_2);
 
     // Make sure the position moving from belongs to the right player
-    if(this->board[row_1][col_1]->getPlayer() != this->next) {
+    if(this->getPlayer(row_1, col_1) != this->next) {
         this->control->error("Cannot move opponent's piece.");
         return 0;
     }
@@ -134,10 +134,25 @@ bool Game::move(string pos_1, string pos_2) {
         return 0;
     }
 
+    // Make sure they're not capturing their own piece
+    if(this->getPlayer(row_2, col_2) == this->next) {
+        this->control->error("Cannot capture your own piece.");
+        return 0;
+    }
+
     // Move the piece
     this->movePiece(row_1, col_1, row_2, col_2);
     this->switchTurns(); 
     return 1;
+}
+
+Player * Game::getPlayer(int row, int col) const {
+    // Returns the player at the given position with a check for NULL
+    if(this->board[row][col] == NULL) {
+        return NULL;
+    } else {
+        return this->board[row][col]->getPlayer();
+    }
 }
 
 void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {

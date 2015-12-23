@@ -30,6 +30,7 @@ class Game {
         Player * next; 
         void switchTurns();
         void movePiece(int, int, int, int);
+        Player * getPlayer(int, int) const;
     public:
         Game(Player * const, Player * const, Controller *); 
         ~Game();
