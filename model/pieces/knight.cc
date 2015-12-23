@@ -6,8 +6,7 @@ Knight::Knight(char type, Player * const player, int row, int col, Game * game) 
 }
 
 bool Knight::validMove(int row, int col) const {
-    // Returns true if the position is valid, ignoring if they are
-    // capturing their own piece
+    // Returns true if the relative position is valid
     if(this->row + 2 == row || this->row - 2 == row) {
         if(this->col + 1 == col || this->col - 1 == col) {
             return true;

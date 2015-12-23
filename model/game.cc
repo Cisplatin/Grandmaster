@@ -122,6 +122,12 @@ bool Game::move(string pos_1, string pos_2) {
     Game::convertPosToInt(pos_1, &row_1, &col_1);
     Game::convertPosToInt(pos_2, &row_2, &col_2);
 
+    // Make sure a piece is there
+    if(this->getPlayer(row_1, col_1) == NULL) {
+        this->control->error("There is no piece there.");
+        return 0;
+    }
+     
     // Make sure the position moving from belongs to the right player
     if(this->getPlayer(row_1, col_1) != this->next) {
         this->control->error("Cannot move opponent's piece.");

@@ -6,6 +6,14 @@ King::King(char type, Player * const player, int row, int col, Game * game) :
 }
 
 bool King::validMove(int row, int col) const {
-    // TODO: write function
-    return true;
+    // Returns true if a valid relative move is given
+    if(row + col == this->row + this->col - 1 ||
+       row + col == this->row + this->col + 1) {
+        return true;
+    }
+    if((row == this->row + 1 || row == this->row - 1) && 
+       (col == this->col + 1 || col == this->col - 1)) {
+        return true;
+    }
+    return false;
 }
