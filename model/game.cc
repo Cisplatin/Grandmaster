@@ -6,7 +6,7 @@
 #include <fstream>
 using namespace std;
 
-Game::Game(const Player * player_1, const Player * player_2, Controller * c) : 
+Game::Game(Player * const player_1, Player * const player_2, Controller * c) : 
     player_1(player_1), player_2(player_2) {
 
     // Sets the players in the game to the given players
@@ -21,6 +21,9 @@ Game::Game(const Player * player_1, const Player * player_2, Controller * c) :
 
     // Load up the standard board
     this->loadStandard();
+    
+    // Make player one move first
+    this->next = this->player_1;
 }
 
 Game::~Game() {
@@ -66,4 +69,13 @@ void Game::updateAdd(char piece, int row, int col) {
 void Game::updateRem(int row, int col) {
     // Updates the view with a removal
     this->control->notifyRem(row, col);
+}
+
+void Game::switchTurns() {
+    // Changes whose turn it is
+    if(this->next == this->player_1) {
+        this->next = this->player_2;
+    } else {
+        this->next = this->player_1;
+    }
 }

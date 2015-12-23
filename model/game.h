@@ -16,16 +16,19 @@ class Game {
         const static int BOARD_LEN = 8;
 
         Controller * control;
-        const Player * player_1;
-        const Player * player_2;
+        Player * const player_1;
+        Player * const player_2;
         Piece * board[Game::BOARD_LEN][Game::BOARD_LEN];
 
         void updateAdd(char, int, int);
         void updateRem(int, int);
         void loadStandard();
         void clearBoard();
+
+        Player * next; 
+        void switchTurns();
     public:
-        Game(const Player *, const Player *, Controller *); 
+        Game(Player * const, Player * const, Controller *); 
         ~Game();
 };
 

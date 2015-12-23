@@ -80,8 +80,22 @@ void Controller::startGame(string name_1, string name_2) {
 }
 
 void Controller::playGame() {
-    // TODO: finish this function
+    // Plays the game until completion
+    string input, parser, junk;
     this->text_view->print();
+    while(getline(cin, input)) {
+        istringstream input_ss(input);
+        input_ss >> parser;
+
+        // A move was made
+        if(parser == "move") {
+            // TODO write the move command        
+
+        // An invalid command was given
+        } else {
+            this->error("Command '" + parser + "' not found.");
+        }
+    }
 }
 
 void Controller::play() {
