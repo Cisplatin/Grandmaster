@@ -10,6 +10,7 @@ class Player {
         ~Player();
         bool isHuman() const;
         int wins, loses;
+        int totalGames() const;
 };
 
 #endif
