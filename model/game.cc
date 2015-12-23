@@ -142,3 +142,8 @@ bool Game::move(string pos_1, string pos_2) {
     this->switchTurns(); 
     return 1;
 }
+
+bool Game::isEmpty(int row, int col) const {
+    // Returns true if the given square is empty
+    return (this->board[row][col] == NULL);
+}

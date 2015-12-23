@@ -36,6 +36,7 @@ class Game {
         Player * const player_1;
         Player * const player_2;
         bool move(std::string, std::string);
+        bool isEmpty(int, int) const;
 };
 
 #endif
