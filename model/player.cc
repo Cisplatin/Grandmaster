@@ -6,3 +6,8 @@ Player::Player(const int level) : level(level) {
 
 Player::~Player() {
 }
+
+bool Player::isHuman() const {
+    // Returns true if this player is a human
+    return (this->level == 0);
+}

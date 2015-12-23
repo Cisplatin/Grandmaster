@@ -77,6 +77,16 @@ bool Game::validPosition(int row, int col) {
          && 0 <= col && col < Game::BOARD_LEN);
 }
 
+bool Game::validPosition(string position) {
+    // Checks if the given position is within the board
+    if(position.length() != 2) {
+        return false;
+    }
+    int row, col;
+    Game::convertPosToInt(position, &row, &col);
+    return Game::validPosition(row, col);
+}
+
 void Game::convertPosToInt(string pos, int * row, int * col) {
     // Convets the given position into a row/col position,
     // setting the given pointers to the correct numbers. Assumes
@@ -97,4 +107,12 @@ void Game::switchTurns() {
 Player * Game::getNext() const {
     // Returns a pointer to the player whose turn is next
     return this->next;
+}
+
+void Game::move(string pos_1, string pos_2) {
+    // Make sure the given positions are valid
+    if(!Game::validPosition(pos_1) || !Game::validPosition(pos_2)) {
+        this->control->error("Invalid position given.");
+        return;
+    }
 }

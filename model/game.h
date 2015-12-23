@@ -26,6 +26,7 @@ class Game {
         void clearBoard();
 
         static bool validPosition(int, int);
+        static bool validPosition(std::string);
         static void convertPosToInt(std::string, int *, int *);
 
         Player * next; 
@@ -34,6 +35,7 @@ class Game {
         Game(Player * const, Player * const, Controller *); 
         ~Game();
         Player * getNext() const;
+        void move(std::string, std::string);
 };
 
 #endif

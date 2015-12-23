@@ -8,6 +8,7 @@ class Player {
     public:
         Player(const int); // Creates a new player
         ~Player();
+        bool isHuman() const;
 };
 
 #endif

@@ -20,14 +20,12 @@ class Controller {
         View * text_view;
         std::map<std::string, Player *> * players;
 
-        void error(std::string) const;
         void addPlayer(std::string);
         void remPlayer(std::string);
 
         void startGame(std::string, std::string);
         void playGame();
-
-        static const int DEFAULT_ELO = 1200;
+    
     public:
         Controller();
         ~Controller();
@@ -36,6 +34,7 @@ class Controller {
         // Notifications from the game to the view
         void notifyAdd(char, int, int);
         void notifyRem(int, int);
+        void error(std::string) const;
 };
 
 #endif

@@ -41,7 +41,8 @@ void Controller::addPlayer(string name) {
     if(this->players->count(name) != 0) {
         this->error("Player '" + name + "' already exists.");
     } else {
-        Player * new_player = new Player(Controller::DEFAULT_ELO);
+        // TODO: add a way to set the level of the player to computer
+        Player * new_player = new Player(0);
         this->players->insert(pair<string, Player *>(name, new_player));
     }
 }
@@ -89,7 +90,21 @@ void Controller::playGame() {
 
         // A move was made
         if(parser == "move") {
-            // TODO write the move command        
+            // Check if the player is human, in which case, fetch the move
+            if(this->game->getNext()->isHuman()) {
+                // Get the move from standard input
+                string pos_1, pos_2;
+                if(!(input_ss >> pos_1 >> pos_2) || input_ss >> junk) {
+                    this->error("Invalid input for 'move' command.");   
+                } else {
+                    this->game->move(pos_1, pos_2);
+                }
+            } else {
+                // TODO: generate a computer move
+            }
+
+            // Print out the new board
+            this->text_view->print();
 
         // An invalid command was given
         } else {
