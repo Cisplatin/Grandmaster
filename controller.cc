@@ -126,6 +126,8 @@ void Controller::playGame() {
 void Controller::endGame() {
     // Ends the game
     cout << this->game->getPrevColor() << " wins!" << endl;
+    this->game->getPrev()->wins++;
+    this->game->getNext()->loses++;
 
     // Frees memory associated with the game
     delete this->game;

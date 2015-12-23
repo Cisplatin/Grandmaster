@@ -2,6 +2,8 @@
 
 Player::Player(const int level) : level(level) {
     // Sets the level of the new player
+    this->wins = 0;
+    this->loses = 0;
 }
 
 Player::~Player() {

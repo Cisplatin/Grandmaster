@@ -36,6 +36,7 @@ class Game {
         ~Game();
 
         Player * getNext() const;
+        Player * getPrev() const;
         std::string getPrevColor() const;
 
         Player * const player_1;

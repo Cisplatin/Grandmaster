@@ -110,6 +110,15 @@ Player * Game::getNext() const {
     return this->next;
 }
 
+Player * Game::getPrev() const {
+    // Returns a pointer to the player who's turn it's not
+    if(this->next == this->player_1) {
+        return this->player_2;
+    } else {
+        return this->player_1;
+    }
+}
+
 string Game::getPrevColor() const {
     // Returns the color of the previous player
     if(this->next == this->player_2) {

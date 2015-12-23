@@ -9,6 +9,7 @@ class Player {
         Player(const int); // Creates a new player
         ~Player();
         bool isHuman() const;
+        int wins, loses;
 };
 
 #endif
