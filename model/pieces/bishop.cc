@@ -6,6 +6,6 @@ Bishop::Bishop(char type, Player * const player, int row, int col, Game * game) 
 }
 
 bool Bishop::validMove(int row, int col) const {
-    // TODO: write the function
+    // TODO: Returns true if given a valid relative position                          
     return true;
 }
