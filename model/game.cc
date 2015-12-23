@@ -71,6 +71,12 @@ void Game::updateRem(int row, int col) {
     this->control->notifyRem(row, col);
 }
 
+bool Game::validPosition(int row, int col) {
+    // Checks if the given position is within the board
+    return (0 <= row && row < Game::BOARD_LEN 
+         && 0 <= col && col < Game::BOARD_LEN);
+}
+
 void Game::convertPosToInt(string pos, int * row, int * col) {
     // Convets the given position into a row/col position,
     // setting the given pointers to the correct numbers. Assumes

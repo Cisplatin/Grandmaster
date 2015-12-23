@@ -25,6 +25,7 @@ class Game {
         void loadStandard();
         void clearBoard();
 
+        static bool validPosition(int, int);
         static void convertPosToInt(std::string, int *, int *);
 
         Player * next; 
