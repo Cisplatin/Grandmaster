@@ -110,6 +110,15 @@ Player * Game::getNext() const {
     return this->next;
 }
 
+string Game::getPrevColor() const {
+    // Returns the color of the previous player
+    if(this->next == this->player_2) {
+        return "White";
+    } else {
+        return "Black";
+    }
+}
+
 bool Game::move(string pos_1, string pos_2) {
     // Make sure the given positions are valid
     if(!Game::validPosition(pos_1) || !Game::validPosition(pos_2)) {

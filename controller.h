@@ -25,6 +25,7 @@ class Controller {
 
         void startGame(std::string, std::string);
         void playGame();
+        void endGame();
     
     public:
         Controller();

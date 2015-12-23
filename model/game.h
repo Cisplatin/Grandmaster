@@ -34,7 +34,10 @@ class Game {
     public:
         Game(Player * const, Player * const, Controller *); 
         ~Game();
+
         Player * getNext() const;
+        std::string getPrevColor() const;
+
         Player * const player_1;
         Player * const player_2;
         bool move(std::string, std::string);

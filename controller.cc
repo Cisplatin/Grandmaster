@@ -106,11 +106,30 @@ void Controller::playGame() {
                 // TODO: generate a computer move
             }
 
+        // A resign was called
+        } else if(parser == "resign") {
+            // Make sure no junk was given
+            if(input_ss >> junk) {
+                this->error("Invalid input for 'resign' command.");
+            } else {
+                this->endGame();
+                return;
+            }
+
         // An invalid command was given
         } else {
             this->error("Command '" + parser + "' not found.");
         }
     }
+}
+
+void Controller::endGame() {
+    // Ends the game
+    cout << this->game->getPrevColor() << " wins!" << endl;
+
+    // Frees memory associated with the game
+    delete this->game;
+    delete this->text_view;
 }
 
 void Controller::play() {
