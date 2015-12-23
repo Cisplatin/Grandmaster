@@ -9,6 +9,7 @@ and so there is little to show right now.
 add <name>         # Adds new player with name <name>
 remove <name>      # Removes the player with name <name>
 game <name> <name> # Starts a game between the two given players
+move <pos> <pos>   # Moves the piece at the given position
 ```
 
 ## To-do:
