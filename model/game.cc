@@ -152,6 +152,12 @@ bool Game::move(string pos_1, string pos_2) {
         return 0;
     }
 
+    // Make sure the piece is not moving onto itself
+    if(pos_1 == pos_2) {
+        this->control->error("Cannot move a piece onto itself.");
+        return 0;
+    }
+
     // Make sure its a valid move for the piece
     if(!this->board[row_1][col_1]->validMove(row_2, col_2)) {
         this->control->error("Cannot move that piece there.");

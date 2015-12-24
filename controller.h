@@ -23,7 +23,7 @@ class Controller {
         void addPlayer(std::string);
         void remPlayer(std::string);
 
-        void startGame(std::string, std::string);
+        bool startGame(std::string, std::string);
         void playGame();
         void endGame();
     

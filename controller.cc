@@ -59,25 +59,26 @@ void Controller::remPlayer(string name) {
     }
 }
 
-void Controller::startGame(string name_1, string name_2) {
+bool Controller::startGame(string name_1, string name_2) {
     // Make sure the players are unique
     if(name_1 == name_2) {
         this->error("Cannot play against yourself.");
-        return;
+        return 0;
     }
     // Make sure the players both exist
     map<string, Player *>::iterator it1 = this->players->find(name_1);
     map<string, Player *>::iterator it2 = this->players->find(name_2);
     if(it1 == this->players->end()) {
         this->error("Player '" + name_1 + "' does not exist.");
-        return;
+        return 0;
     } else if(it2 == this->players->end()) {
         this->error("Player '" + name_2 + "' does not exist.");
-        return;
+        return 0;
     }
 
     this->text_view = new Text_View();
     this->game = new Game(it1->second, it2->second, this);
+    return 1;
 }
 
 void Controller::playGame() {
@@ -173,8 +174,9 @@ void Controller::play() {
                 input_ss >> junk) {
                 this->error("Invalid input for 'game' command.");
             } else {
-                this->startGame(name_1, name_2);
-                this->playGame();
+                if(this->startGame(name_1, name_2)) {
+                    this->playGame();
+                }
             }
 
         // Invalid command given

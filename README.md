@@ -22,3 +22,4 @@ resign             # Resigns from the current game
 - Add ELO scoring
 - Add AI levels 1 - 10
 - Implement real graphics (I dislike ASCII) with mouse capabilities
+- SEGFAULT if a game starts with non-existant players
