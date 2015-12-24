@@ -5,6 +5,7 @@
 class Player;
 class Controller;
 class Piece;
+class Move;
 
 #include <string>
 
@@ -31,6 +32,8 @@ class Game {
         void switchTurns();
         void movePiece(int, int, int, int);
         Player * getPlayer(int, int) const;
+
+        Move * lastMove;
     public:
         Game(Player * const, Player * const, Controller *); 
         ~Game();

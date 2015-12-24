@@ -2,6 +2,7 @@
 #include "../controller.h"
 #include "player.h"
 #include "piece.h"
+#include "move.h"
 
 #include <fstream>
 #include <iostream>
@@ -25,6 +26,7 @@ Game::Game(Player * const player_1, Player * const player_2, Controller * c) :
     
     // Make player one move first
     this->next = this->player_1;
+    this->lastMove = NULL;
 }
 
 Game::~Game() {
@@ -193,6 +195,10 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
     this->updateAdd(this->board[row_2][col_2]->getType(), row_2, col_2);
     this->updateRem(row_1, col_1);
     this->board[row_2][col_2]->updateMove(row_2, col_2);
+
+    // Sets the last move to be this one
+    delete this->lastMove;
+    this->lastMove = new Move(row_1, col_1, row_2, col_2);
 }
 
 bool Game::isEmpty(int row, int col) const {
