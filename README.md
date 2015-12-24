@@ -17,7 +17,7 @@ resign             # Resigns from the current game
 - A more comprehensive Makefile
 - Ability to load/save games in .PGN format
 - Ability to load/save players (with ELO rating)
-- En passent and castling
+- En passent (capture) and castling
 - End-game detection (checkmate, stalemate)
 - ELO scoring for players
 - Artificial intelligence to play against

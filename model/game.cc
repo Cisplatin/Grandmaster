@@ -175,6 +175,7 @@ bool Game::move(string pos_1, string pos_2) {
     // Move the piece
     this->movePiece(row_1, col_1, row_2, col_2);
     this->switchTurns(); 
+
     return 1;
 }
 
@@ -225,7 +226,7 @@ int Game::enPassent() const {
     }
 
     // Check if it was a pawn that moved
-    char type = this->getType(this->lastMove->row_1, this->lastMove->col_2);
+    char type = this->getType(this->lastMove->row_2, this->lastMove->col_2);
     if(type != 'p' && type != 'P') {
         return -1;
     }

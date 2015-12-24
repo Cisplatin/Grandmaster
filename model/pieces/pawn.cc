@@ -31,5 +31,12 @@ bool Pawn::validMove(int row, int col) const {
             return true;
         }
     }
+
+    // En passent
+    if(row == this->row + allowed &&
+      (col == this->col - 1 || col == this->col + 1) &&
+      this->game->enPassent() == col) {
+            return true;
+    }
     return false;
 }
