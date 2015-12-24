@@ -32,6 +32,7 @@ class Game {
         void switchTurns();
         void movePiece(int, int, int, int);
         Player * getPlayer(int, int) const;
+        char getType(int, int) const;
 
         Move * lastMove;
     public:
@@ -46,6 +47,7 @@ class Game {
         Player * const player_2;
         bool move(std::string, std::string);
         bool isEmpty(int, int) const;
+        int enPassent() const;
 };
 
 #endif

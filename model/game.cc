@@ -187,6 +187,15 @@ Player * Game::getPlayer(int row, int col) const {
     }
 }
 
+char Game::getType(int row, int col) const {
+    // Returns the type at the given position with a check for NULL
+    if(this->board[row][col] == NULL) {
+        return 0;
+    } else {
+        return this->board[row][col]->getType();
+    }
+}
+
 void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
     // Moves a piece from row/col_1 to row/col_2
     delete this->board[row_2][col_2];
@@ -204,4 +213,10 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
 bool Game::isEmpty(int row, int col) const {
     // Returns true if the given square is empty
     return (this->board[row][col] == NULL);
+}
+
+int Game::enPassent() const {
+    // Returns -1 if the last move was not an en passent, else returns
+    // the row in which an en passent occured.
+    if(this->lastMove == NULL) return -1;
 }
