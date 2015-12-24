@@ -218,5 +218,24 @@ bool Game::isEmpty(int row, int col) const {
 int Game::enPassent() const {
     // Returns -1 if the last move was not an en passent, else returns
     // the row in which an en passent occured.
-    if(this->lastMove == NULL) return -1;
+        
+    // Check if a move has even occured yet
+    if(this->lastMove == NULL) {
+        return -1;
+    }
+
+    // Check if it was a pawn that moved
+    char type = this->getType(this->lastMove->row_1, this->lastMove->col_2);
+    if(type != 'p' && type != 'P') {
+        return -1;
+    }
+
+    // Check if the pawn double-stepped
+    if(this->lastMove->row_2 - this->lastMove->row_1 != 2 &&
+       this->lastMove->row_2 - this->lastMove->row_1 != -2) {
+        return -1;
+    }
+
+    // All checks made, return the column
+    return this->lastMove->col_1;
 }
