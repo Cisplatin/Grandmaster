@@ -17,9 +17,8 @@ resign             # Resigns from the current game
 - Make an actual Makefile
 - Implement ability to load/save games (.PGN games)
 - Implement ability to load/save players
-- Finish piece movement (Queen, Pawn, King)
+- Finish piece movement (Pawn, King)
 - Add end-game (checkmate, stalemate, winner statement)
 - Add ELO scoring
 - Add AI levels 1 - 10
 - Implement real graphics (I dislike ASCII) with mouse capabilities
-- SEGFAULT if a game starts with non-existant players

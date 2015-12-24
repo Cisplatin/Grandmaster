@@ -16,16 +16,15 @@ bool Rook::validMove(int row, int col) const {
     if((row == this->row) != (col == this->col)) {
         int maximum, minimum;
         if(row == this->row) {
-            maximum = (col < this->col) ? col : this->col;
-            minimum = (col < this->col) ? this->col : col;
+            minimum = (col < this->col) ? col : this->col;
+            maximum = (col < this->col) ? this->col : col;
             row_move = true;
         } else {
-            maximum = (row < this->row) ? row : this->row;
-            minimum = (row < this->row) ? this->row : row;
+            minimum = (row < this->row) ? row : this->row;
+            maximum = (row < this->row) ? this->row : row;
             row_move = false;
         }
         for(int i = minimum + 1; i < maximum; i++) {
-            cout << i << endl;
             if((row_move && !this->game->isEmpty(row, i)) ||
               (!row_move && !this->game->isEmpty(i, col))) {
                 return false;
