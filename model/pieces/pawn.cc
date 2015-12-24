@@ -7,7 +7,6 @@ Pawn::Pawn(char type, Player * const player, int row, int col, Game * game) :
 }
 
 bool Pawn::validMove(int row, int col) const {
-    // TODO: en passent
     int allowed = (this->player == this->game->player_1) ? -1 : 1;
     if(this->game->isEmpty(row, col)) {
         if(this->col == col && this->row + allowed == row) {
@@ -33,9 +32,11 @@ bool Pawn::validMove(int row, int col) const {
     }
 
     // En passent
+    int enPassent = 3;
     if(row == this->row + allowed &&
       (col == this->col - 1 || col == this->col + 1) &&
-      this->game->enPassent() == col) {
+      this->game->enPassent() == col &&
+      this->row == enPassent || this->row == Piece::BOARD_LEN - enPassent) {
             return true;
     }
     return false;

@@ -6,6 +6,8 @@ class Game;
 
 class Piece {
     protected:
+        const static int BOARD_LEN = 8;
+
         int row, col;
         Player * const player;
         const char type;
