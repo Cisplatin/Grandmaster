@@ -177,6 +177,9 @@ bool Game::move(string pos_1, string pos_2) {
         return 0;
     }
 
+
+    // TODO: make sure they're not putting themselves into check
+
     // Move the piece
     this->movePiece(row_1, col_1, row_2, col_2);
     this->switchTurns(); 
