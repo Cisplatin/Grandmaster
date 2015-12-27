@@ -221,6 +221,17 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
         player->setKingCoordinates(row_2, col_2);
     }
 
+    // Check if an en-passent occured
+    int enPassentDist = 3;
+    if((type == 'p' || type == 'P') &&
+       col_1 != col_2 &&
+       this->enPassent() == col_2 &&
+       ((row_1 - row_2 == 1 && row_1 == enPassentDist) ||
+        (row_2 - row_1 == 1 && row_1 == Game::BOARD_LEN - enPassentDist - 1))) {
+        delete this->board[row_1][col_2];
+        this->updateRem(row_1, col_2);    
+    }
+
     // Sets the last move to be this one
     delete this->lastMove;
     this->lastMove = new Move(row_1, col_1, row_2, col_2);
