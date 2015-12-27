@@ -18,3 +18,17 @@ int Player::totalGames() const {
     // Returns the total number of games played by this player
     return this->wins + this->loses;
 }
+
+void Player::setKingCoordinates(int row, int col) {
+    // Sets the co-ordinates of the king
+    this->kingRow = row;
+    this->kingCol = col;
+}
+
+int Player::getKingRow() const {
+    return this->kingRow;
+}
+
+int Player::getKingCol() const {
+    return this->kingCol;
+}
