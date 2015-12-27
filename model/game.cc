@@ -50,6 +50,11 @@ void Game::loadStandard() {
             this->board[i][j] = Piece::generatePiece(piece, player, i, j, this); 
             if(this->board[i][j] != NULL) {
                 this->updateAdd(piece, i, j);
+                
+                // Check if a king was created
+                if(piece == 'K' || piece == 'k') {
+                    player->setKingCoordinates(i, j);
+                }
             }
         }
     }
@@ -205,6 +210,13 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
     this->updateAdd(this->board[row_2][col_2]->getType(), row_2, col_2);
     this->updateRem(row_1, col_1);
     this->board[row_2][col_2]->updateMove(row_2, col_2);
+
+    // Check if a king was moved
+    char type = this->board[row_2][col_2]->getType();
+    if(type == 'k' || type == 'K') {
+        Player * player = this->board[row_2][col_2]->getPlayer();
+        player->setKingCoordinates(row_2, col_2);
+    }
 
     // Sets the last move to be this one
     delete this->lastMove;
