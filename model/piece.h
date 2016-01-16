@@ -15,7 +15,7 @@ class Piece {
         bool moved;
     public:
         Piece(const char, Player * const player, int, int, Game *);
-        ~Piece();
+        virtual ~Piece();
 
         // Functions for determining validity
         virtual bool validMove(int, int) const = 0;

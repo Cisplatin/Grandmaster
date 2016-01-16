@@ -13,7 +13,7 @@ class View {
                       // no piece, put a 0 instead.
     public:
         View();
-        ~View();
+        virtual ~View();
         virtual void print() const = 0;
 
         // Adds/removes the appropriate piece
