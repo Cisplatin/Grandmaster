@@ -272,7 +272,7 @@ int Game::enPassent() const {
 }
 
 int Game::undo() {
-    // Undos the last move (only currently goes back one move at move
+    // Undos the last move
 
     // Checks if a move was made
     // TODO: Allow for more than one undos (possibly add a stack of moves)
@@ -295,7 +295,8 @@ int Game::undo() {
     this->board[row_1][col_1] = piece;
     this->board[row_2][col_2] = NULL;
     piece->updateMove(row_1, col_1);
-    // Undos the move made and the undo itself (two moves)
+
+    // Undoes the move made and the undo itself (two moves)
     piece->moved -= 2;
 
     // Updates the view
