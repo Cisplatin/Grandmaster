@@ -230,6 +230,7 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
        this->enPassent() == col_2 &&
        ((row_1 - row_2 == 1 && row_1 == enPassentDist) ||
         (row_2 - row_1 == 1 && row_1 == Game::BOARD_LEN - enPassentDist - 1))) {
+        captured = this->getType(row_1, col_2);
         delete this->board[row_1][col_2];
         this->updateRem(row_1, col_2);
         enPassentOccured = true;
@@ -268,4 +269,45 @@ int Game::enPassent() const {
 
     // All checks made, return the column
     return this->lastMove->col_1;
+}
+
+int Game::undoLastMove() {
+    // Undos the last move (only currently goes back one move at move
+
+    // Checks if a move was made
+    // TODO: Allow for more than one undos (possibly add a stack of moves)
+    if(this->lastMove == NULL) {
+        this->control->error("There is nothing to undo.");
+        return 1;
+    }
+
+    // TODO: account for castling
+    // TODO: account for promotion
+    // TODO: replace the moved flag
+    // Moves the piece back to its original position, update the piece
+    Piece * piece = this->board[this->lastMove->row_2][this->lastMove->col_2];
+    this->board[this->lastMove->row_1][this->lastMove->col_1] = piece;
+    this->board[this->lastMove->row_2][this->lastMove->col_2] = NULL;
+    piece->updateMove(this->lastMove->row_1, this->lastMove->col_1);
+
+    // Updates the view
+    this->updateAdd(piece->getType(), this->lastMove->row_1, this->lastMove->col_1);
+    this->updateRem(this->lastMove->row_2, this->lastMove->col_2);
+
+    // Replace any captured pieces (check if en-passent!)
+    // TODO: change the turn, delete the last move
+    if(this->lastMove->captured != 0) {
+            Player * player = this->getPrev(); 
+            Piece * regenerated = Piece::generatePiece(this->lastMove->captured, player, 
+                                                       this->lastMove->row_2,
+                                                       this->lastMove->col_2, this);
+            this->board[this->lastMove->row_2][this->lastMove->col_2] = regenerated;
+            // TODO: special case for en-passent
+    }
+
+    // Changes the turn, deletes the last move
+    delete this->lastMove;
+    this->lastMove = NULL;
+    this->switchTurns();
+    return 0;
 }
