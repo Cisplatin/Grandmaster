@@ -276,6 +276,7 @@ int Game::undoLastMove() {
 
     // Checks if a move was made
     // TODO: Allow for more than one undos (possibly add a stack of moves)
+    //       This will also allow for an en-passent after an undo
     if(this->lastMove == NULL) {
         this->control->error("There is nothing to undo.");
         return 1;
@@ -284,25 +285,33 @@ int Game::undoLastMove() {
     // TODO: account for castling
     // TODO: account for promotion
     // TODO: replace the moved flag
+    // Variables declared for readability sake
+    int row_1 = this->lastMove->row_1;
+    int row_2 = this->lastMove->row_2;
+    int col_1 = this->lastMove->col_1;
+    int col_2 = this->lastMove->col_2;
+
     // Moves the piece back to its original position, update the piece
-    Piece * piece = this->board[this->lastMove->row_2][this->lastMove->col_2];
-    this->board[this->lastMove->row_1][this->lastMove->col_1] = piece;
-    this->board[this->lastMove->row_2][this->lastMove->col_2] = NULL;
-    piece->updateMove(this->lastMove->row_1, this->lastMove->col_1);
+    Piece * piece = this->board[row_2][col_2];
+    this->board[row_1][col_1] = piece;
+    this->board[row_2][col_2] = NULL;
+    piece->updateMove(row_1, col_1);
 
     // Updates the view
-    this->updateAdd(piece->getType(), this->lastMove->row_1, this->lastMove->col_1);
-    this->updateRem(this->lastMove->row_2, this->lastMove->col_2);
+    this->updateAdd(piece->getType(), row_1, col_1);
+    this->updateRem(row_2, col_2);
 
     // Replace any captured pieces (check if en-passent!)
-    // TODO: change the turn, delete the last move
     if(this->lastMove->captured != 0) {
             Player * player = this->getPrev(); 
-            Piece * regenerated = Piece::generatePiece(this->lastMove->captured, player, 
-                                                       this->lastMove->row_2,
-                                                       this->lastMove->col_2, this);
-            this->board[this->lastMove->row_2][this->lastMove->col_2] = regenerated;
-            // TODO: special case for en-passent
+            if(this->lastMove->enpassent) {
+                // If its an en passent, treat the row as the previous one
+                row_2 = row_1;
+            }
+            Piece * regenerated = Piece::generatePiece(this->lastMove->captured, 
+                                                       player, row_2, col_2, this);
+            this->board[row_2][col_2] = regenerated;
+            this->updateAdd(this->lastMove->captured, row_2, col_2);
     }
 
     // Changes the turn, deletes the last move
@@ -310,4 +319,4 @@ int Game::undoLastMove() {
     this->lastMove = NULL;
     this->switchTurns();
     return 0;
-}
+

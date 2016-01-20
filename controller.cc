@@ -117,6 +117,17 @@ void Controller::playGame() {
                 return;
             }
 
+        // An undo was called for
+        } else if(parser == "undo") {
+            // Make sure no junk was given
+            if(input_ss >> junk) {
+                this->error("Invalid input for 'undo' command.");
+            } else {
+                if(!this->game->undoLastMove()) {
+                    this->text_view->print();
+                }
+            }
+
         // An invalid command was given
         } else {
             this->error("Command '" + parser + "' not found.");
