@@ -207,6 +207,7 @@ char Game::getType(int row, int col) const {
 
 void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
     // Moves a piece from row/col_1 to row/col_2
+    char captured = this->getType(row_2, col_2);
     delete this->board[row_2][col_2];
     this->board[row_2][col_2] = this->board[row_1][col_1];
     this->board[row_1][col_1] = NULL;
@@ -223,18 +224,20 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
 
     // Check if an en-passent occured
     int enPassentDist = 3;
+    bool enPassentOccured = false;
     if((type == 'p' || type == 'P') &&
        col_1 != col_2 &&
        this->enPassent() == col_2 &&
        ((row_1 - row_2 == 1 && row_1 == enPassentDist) ||
         (row_2 - row_1 == 1 && row_1 == Game::BOARD_LEN - enPassentDist - 1))) {
         delete this->board[row_1][col_2];
-        this->updateRem(row_1, col_2);    
+        this->updateRem(row_1, col_2);
+        enPassentOccured = true;
     }
 
     // Sets the last move to be this one
     delete this->lastMove;
-    this->lastMove = new Move(row_1, col_1, row_2, col_2);
+    this->lastMove = new Move(row_1, col_1, row_2, col_2, captured, enPassentOccured);
 }
 
 bool Game::isEmpty(int row, int col) const {
