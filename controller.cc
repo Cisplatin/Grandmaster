@@ -123,7 +123,7 @@ void Controller::playGame() {
             if(input_ss >> junk) {
                 this->error("Invalid input for 'undo' command.");
             } else {
-                if(!this->game->undoLastMove()) {
+                if(!this->game->undo()) {
                     this->text_view->print();
                 }
             }

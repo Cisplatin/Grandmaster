@@ -48,7 +48,7 @@ class Game {
         bool move(std::string, std::string);
         bool isEmpty(int, int) const;
         int enPassent() const;
-        int undoLastMove();
+        int undo();
 };
 
 #endif

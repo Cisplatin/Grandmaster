@@ -271,7 +271,7 @@ int Game::enPassent() const {
     return this->lastMove->col_1;
 }
 
-int Game::undoLastMove() {
+int Game::undo() {
     // Undos the last move (only currently goes back one move at move
 
     // Checks if a move was made
@@ -284,7 +284,6 @@ int Game::undoLastMove() {
 
     // TODO: account for castling
     // TODO: account for promotion
-    // TODO: replace the moved flag
     // Variables declared for readability sake
     int row_1 = this->lastMove->row_1;
     int row_2 = this->lastMove->row_2;
@@ -296,6 +295,8 @@ int Game::undoLastMove() {
     this->board[row_1][col_1] = piece;
     this->board[row_2][col_2] = NULL;
     piece->updateMove(row_1, col_1);
+    // Undos the move made and the undo itself (two moves)
+    piece->moved -= 2;
 
     // Updates the view
     this->updateAdd(piece->getType(), row_1, col_1);
@@ -319,4 +320,4 @@ int Game::undoLastMove() {
     this->lastMove = NULL;
     this->switchTurns();
     return 0;
-
+}

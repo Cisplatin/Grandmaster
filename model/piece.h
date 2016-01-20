@@ -12,7 +12,6 @@ class Piece {
         Player * const player;
         const char type;
         Game * game;
-        bool moved;
     public:
         Piece(const char, Player * const player, int, int, Game *);
         virtual ~Piece();
@@ -23,6 +22,7 @@ class Piece {
         char getType() const;
         Player * getPlayer() const;
         void updateMove(int, int);
+        int moved; // The number of times the piece has moved
         static Piece * generatePiece(char, Player * const, int, int, Game *);
 };
 
