@@ -26,12 +26,17 @@ Game::Game(Player * const player_1, Player * const player_2, Controller * c) :
     
     // Make player one move first
     this->next = this->player_1;
-    this->lastMove = NULL;
 }
 
 Game::~Game() {
     // Delete all pieces
     this->clearBoard();
+
+    // Deletes all stored moves
+    while(!this->moves.empty()) {
+        delete this->moves.top();
+        this->moves.pop();
+    }
 }
 
 void Game::loadStandard() {
@@ -236,9 +241,9 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
         enPassentOccured = true;
     }
 
-    // Sets the last move to be this one
-    delete this->lastMove;
-    this->lastMove = new Move(row_1, col_1, row_2, col_2, captured, enPassentOccured);
+    // Push the new move onto the stack
+    Move * move = new Move(row_1, col_1, row_2, col_2, captured, enPassentOccured);
+    this->moves.push(move);
 }
 
 bool Game::isEmpty(int row, int col) const {
@@ -251,24 +256,25 @@ int Game::enPassent() const {
     // the row in which an en passent occured.
         
     // Check if a move has even occured yet
-    if(this->lastMove == NULL) {
+    if(this->moves.empty()) {
         return -1;
     }
+    Move * lastMove = this->moves.top();
 
     // Check if it was a pawn that moved
-    char type = this->getType(this->lastMove->row_2, this->lastMove->col_2);
+    char type = this->getType(lastMove->row_2, lastMove->col_2);
     if(type != 'p' && type != 'P') {
         return -1;
     }
 
     // Check if the pawn double-stepped
-    if(this->lastMove->row_2 - this->lastMove->row_1 != 2 &&
-       this->lastMove->row_2 - this->lastMove->row_1 != -2) {
+    if(lastMove->row_2 - lastMove->row_1 != 2 &&
+       lastMove->row_2 - lastMove->row_1 != -2) {
         return -1;
     }
 
     // All checks made, return the column
-    return this->lastMove->col_1;
+    return lastMove->col_1;
 }
 
 int Game::undo() {
@@ -277,18 +283,19 @@ int Game::undo() {
     // Checks if a move was made
     // TODO: Allow for more than one undos (possibly add a stack of moves)
     //       This will also allow for an en-passent after an undo
-    if(this->lastMove == NULL) {
+    if(this->moves.empty()) {
         this->control->error("There is nothing to undo.");
         return 1;
     }
+    Move * lastMove = this->moves.top();
 
     // TODO: account for castling
     // TODO: account for promotion
     // Variables declared for readability sake
-    int row_1 = this->lastMove->row_1;
-    int row_2 = this->lastMove->row_2;
-    int col_1 = this->lastMove->col_1;
-    int col_2 = this->lastMove->col_2;
+    int row_1 = lastMove->row_1;
+    int row_2 = lastMove->row_2;
+    int col_1 = lastMove->col_1;
+    int col_2 = lastMove->col_2;
 
     // Moves the piece back to its original position, update the piece
     Piece * piece = this->board[row_2][col_2];
@@ -304,21 +311,21 @@ int Game::undo() {
     this->updateRem(row_2, col_2);
 
     // Replace any captured pieces (check if en-passent!)
-    if(this->lastMove->captured != 0) {
+    if(lastMove->captured != 0) {
             Player * player = this->getPrev(); 
-            if(this->lastMove->enpassent) {
+            if(lastMove->enpassent) {
                 // If its an en passent, treat the row as the previous one
                 row_2 = row_1;
             }
-            Piece * regenerated = Piece::generatePiece(this->lastMove->captured, 
+            Piece * regenerated = Piece::generatePiece(lastMove->captured, 
                                                        player, row_2, col_2, this);
             this->board[row_2][col_2] = regenerated;
-            this->updateAdd(this->lastMove->captured, row_2, col_2);
+            this->updateAdd(lastMove->captured, row_2, col_2);
     }
 
     // Changes the turn, deletes the last move
-    delete this->lastMove;
-    this->lastMove = NULL;
+    delete lastMove;
+    this->moves.pop();
     this->switchTurns();
     return 0;
 }

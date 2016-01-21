@@ -8,6 +8,7 @@ class Piece;
 class Move;
 
 #include <string>
+#include <stack>
 
 /*
     Stores the information associated with the player and the board
@@ -34,7 +35,7 @@ class Game {
         Player * getPlayer(int, int) const;
         char getType(int, int) const;
 
-        Move * lastMove;
+        std::stack<Move *> moves;
     public:
         Game(Player * const, Player * const, Controller *); 
         ~Game();
