@@ -20,8 +20,8 @@ resign             # Resigns from the current game
 - Ability to load/save players (with ELO rating)
 - Ability to castle
 - Ability to promote pawns
-- Undo stack going further than one move (***)
-- End-game detection (checkmate, stalemate)
+- End-game detection (checkmate, stalemate) (***)
+- - This needs a "isThisMoveDangerous" function (using undo!)
 - ELO scoring for players
 - Artificial intelligence to play against
 - Graphical interface

@@ -36,6 +36,8 @@ class Game {
         char getType(int, int) const;
 
         std::stack<Move *> moves;
+
+        bool isDangerousTo(Player *, int, int) const;
     public:
         Game(Player * const, Player * const, Controller *); 
         ~Game();

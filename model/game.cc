@@ -278,11 +278,7 @@ int Game::enPassent() const {
 }
 
 int Game::undo() {
-    // Undos the last move
-
     // Checks if a move was made
-    // TODO: Allow for more than one undos (possibly add a stack of moves)
-    //       This will also allow for an en-passent after an undo
     if(this->moves.empty()) {
         this->control->error("There is nothing to undo.");
         return 1;
@@ -328,4 +324,19 @@ int Game::undo() {
     this->moves.pop();
     this->switchTurns();
     return 0;
+}
+
+bool Game::isDangerousTo(Player * player, int row, int col) const {
+    // Returns true if the given square is dangerous to the given player
+    // TODO: make this more efficient by only checking certain positions
+    for(int i = 0; i < Game::BOARD_LEN; i++) {
+        for(int j = 0; j < Game::BOARD_LEN; j++) {
+            if(this->getPlayer(i, j) != NULL &&
+               this->getPlayer(i, j) != player &&
+               this->board[i][j]->validMove(row, col)) {
+                    return true;
+            }
+        }
+    }
+    return false;
 }
