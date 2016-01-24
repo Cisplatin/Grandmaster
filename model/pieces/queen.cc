@@ -12,11 +12,12 @@ bool Queen::validMove(int row, int col) const {
     // Check for diagonal movement
     if((row - this->row == col - this->col) ||                                  
        (row - this->row == this->col - col)) {                                  
-        int mini_row = (row < this->row) ? row : this->row;                     
-        int maxi_row = (row < this->row) ? this->row : row;                     
-        int mini_col = (col < this->col) ? col : this->col;                     
+        int mini_row = (row < this->row) ? row : this->row;
+        int maxi_row = (row < this->row) ? this->row : row;
+        int row_incr = (row < this->row) ? 1 : -1;
+        int col_incr = (col < this->col) ? 1 : -1;
         for(int i = 1; mini_row + i < maxi_row; i++) {                          
-            if(!this->game->isEmpty(mini_row + i, mini_col + i)) {              
+            if(!this->game->isEmpty(row * (i * row_incr), col * (i * col_incr))) {              
                 return false;                                                   
             }                                                                   
         }                                                                       

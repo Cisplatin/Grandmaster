@@ -16,6 +16,7 @@ resign             # Resigns from the current game
 
 ## To-do:
 - Fix bishop/queen diagnonal movement
+- Fix king movement
 - A more comprehensive Makefile
 - Ability to load/save games in .PGN format
 - Ability to load/save players (with ELO rating)
