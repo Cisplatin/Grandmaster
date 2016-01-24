@@ -184,15 +184,16 @@ char Game::getType(int row, int col) const {
 
 bool Game::validMove(int row_1, int col_1, int row_2, int col_2) {
     // Returns true if the given move is valid
+    Player * player = this->getPlayer(row_1, col_1);
 
     // Make sure a piece is there
-    if(this->getPlayer(row_1, col_1) == NULL) {
+    if(player == NULL) {
         this->control->error("There is no piece there.");
         return 0;
     }
      
     // Make sure the position moving from belongs to the right player
-    if(this->getPlayer(row_1, col_1) != this->next) {
+    if(player != this->next) {
         this->control->error("Cannot move opponent's piece.");
         return 0;
     }
@@ -215,19 +216,14 @@ bool Game::validMove(int row_1, int col_1, int row_2, int col_2) {
         return 0;
     }
 
-    // Make sure the move does not put them into check
+    // Make sure the move does not put them into check. We do this
+    // by doing the actual move and checking if the king is in check.
     this->movePiece(row_1, col_1, row_2, col_2);
-    Player * player = this->board[row_2][col_2]->getPlayer();
-    int kingRow = player->getKingRow();
-    int kingCol = player->getKingCol();
-    bool resultsInCheck = false;
-    if(this->isDangerousTo(player, kingRow, kingCol)) {
-        resultsInCheck = true;
-    }
-    this->undo();
-    this->switchTurns();
-    if(resultsInCheck) {
-        this->control->error("Cannot place your king into check.");
+    bool check = this->inCheck(this->board[row_2][col_2]->getPlayer());
+    this->undo();        // Undo switches turns, so we switch again
+    this->switchTurns(); // to make up for the fake move
+    if(check) {
+        this->control->error("Cannot keep your king into check.");
         return 0;
     }
 
@@ -370,4 +366,15 @@ bool Game::isDangerousTo(Player * player, int row, int col) const {
         }
     }
     return false;
+}
+
+bool Game::inCheck(Player * player) const {
+    // Returns true if the given player is in check
+    int kingRow = player->getKingRow();
+    int kingCol = player->getKingCol();
+    if(this->isDangerousTo(player, kingRow, kingCol)) {
+        return true;
+    } else {
+        return false;
+    }
 }
