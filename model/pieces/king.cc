@@ -9,8 +9,8 @@ bool King::validMove(int row, int col) const {
     // Returns true if a valid relative move is given
     
     // Checks for standard one-steps
-    if(row + col == this->row + this->col - 1 ||
-       row + col == this->row + this->col + 1) {
+    if((row == this->row && (col - this->col == 1 || col - this->col == -1)) ||  
+       (col == this->col && (row - this->row == 1 || row - this->row == -1))) {
         return true;
     }
     if((row == this->row + 1 || row == this->row - 1) && 
