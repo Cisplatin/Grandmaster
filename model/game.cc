@@ -152,38 +152,10 @@ bool Game::move(string pos_1, string pos_2) {
     Game::convertPosToInt(pos_1, &row_1, &col_1);
     Game::convertPosToInt(pos_2, &row_2, &col_2);
 
-    // Make sure a piece is there
-    if(this->getPlayer(row_1, col_1) == NULL) {
-        this->control->error("There is no piece there.");
+    // Check if its a valid move
+    if(!this->validMove(row_1, col_1, row_2, col_2)) {
         return 0;
     }
-     
-    // Make sure the position moving from belongs to the right player
-    if(this->getPlayer(row_1, col_1) != this->next) {
-        this->control->error("Cannot move opponent's piece.");
-        return 0;
-    }
-
-    // Make sure the piece is not moving onto itself
-    if(pos_1 == pos_2) {
-        this->control->error("Cannot move a piece onto itself.");
-        return 0;
-    }
-
-    // Make sure its a valid move for the piece
-    if(!this->board[row_1][col_1]->validMove(row_2, col_2)) {
-        this->control->error("Cannot move that piece there.");
-        return 0;
-    }
-
-    // Make sure they're not capturing their own piece
-    if(this->getPlayer(row_2, col_2) == this->next) {
-        this->control->error("Cannot capture your own piece.");
-        return 0;
-    }
-
-
-    // TODO: make sure they're not putting themselves into check
 
     // Move the piece
     this->movePiece(row_1, col_1, row_2, col_2);
@@ -208,6 +180,58 @@ char Game::getType(int row, int col) const {
     } else {
         return this->board[row][col]->getType();
     }
+}
+
+bool Game::validMove(int row_1, int col_1, int row_2, int col_2) {
+    // Returns true if the given move is valid
+
+    // Make sure a piece is there
+    if(this->getPlayer(row_1, col_1) == NULL) {
+        this->control->error("There is no piece there.");
+        return 0;
+    }
+     
+    // Make sure the position moving from belongs to the right player
+    if(this->getPlayer(row_1, col_1) != this->next) {
+        this->control->error("Cannot move opponent's piece.");
+        return 0;
+    }
+
+    // Make sure the piece is not moving onto itself
+    if(row_1 == row_2 && col_1 == col_2) {
+        this->control->error("Cannot move a piece onto itself.");
+        return 0;
+    }
+
+    // Make sure its a valid move for the piece
+    if(!this->board[row_1][col_1]->validMove(row_2, col_2)) {
+        this->control->error("Cannot move that piece there.");
+        return 0;
+    }
+
+    // Make sure they're not capturing their own piece
+    if(this->getPlayer(row_2, col_2) == this->next) {
+        this->control->error("Cannot capture your own piece.");
+        return 0;
+    }
+
+    // Make sure the move does not put them into check
+    this->movePiece(row_1, col_1, row_2, col_2);
+    Player * player = this->board[row_2][col_2]->getPlayer();
+    int kingRow = player->getKingRow();
+    int kingCol = player->getKingCol();
+    bool resultsInCheck = false;
+    if(this->isDangerousTo(player, kingRow, kingCol)) {
+        resultsInCheck = true;
+    }
+    this->undo();
+    this->switchTurns();
+    if(resultsInCheck) {
+        this->control->error("Cannot place your king into check.");
+        return 0;
+    }
+
+    return 1;
 }
 
 void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
@@ -298,6 +322,13 @@ int Game::undo() {
     this->board[row_1][col_1] = piece;
     this->board[row_2][col_2] = NULL;
     piece->updateMove(row_1, col_1);
+    
+    // Check if a king was moved
+    char type = this->board[row_1][col_1]->getType();
+    if(type == 'k' || type == 'K') {
+        Player * player = this->board[row_1][col_1]->getPlayer();
+        player->setKingCoordinates(row_1, col_1);
+    }
 
     // Undoes the move made and the undo itself (two moves)
     piece->moved -= 2;
