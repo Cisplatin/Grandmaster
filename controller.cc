@@ -101,6 +101,12 @@ void Controller::playGame() {
                     if(this->game->move(pos_1, pos_2)) {
                         // If the move is a success, print the board
                         this->text_view->print();
+
+                        // Check for end-game possibilities
+                        if(this->game->checkmate() || this->game->stalemate()) {
+                            this->endGame();
+                            return;
+                        }
                     }
                 }
             } else {
@@ -136,10 +142,23 @@ void Controller::playGame() {
 }
 
 void Controller::endGame() {
+    // Check for stalemate
+    if(this->game->stalemate()) {
+        cout << "Stalemate!" << endl;
+    } else if(this->game->checkmate()) {
+        cout << "Checkmate! " << this->game->getPrevColor() << " wins!" << endl;
+    } else {
+        cout << this->game->getPrevColor() << " wins by resignation!" << endl;
+    }
+
     // Ends the game
-    cout << this->game->getPrevColor() << " wins!" << endl;
-    this->game->getPrev()->wins++;
-    this->game->getNext()->loses++;
+    if(this->game->stalemate()) {
+        this->game->getPrev()->ties++;
+        this->game->getNext()->ties++;
+    } else {
+        this->game->getPrev()->wins++;
+        this->game->getNext()->loses++;
+    }
 
     // Frees memory associated with the game
     delete this->game;

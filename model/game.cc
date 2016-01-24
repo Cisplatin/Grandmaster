@@ -153,7 +153,7 @@ bool Game::move(string pos_1, string pos_2) {
     Game::convertPosToInt(pos_2, &row_2, &col_2);
 
     // Check if its a valid move
-    if(!this->validMove(row_1, col_1, row_2, col_2)) {
+    if(!this->validMove(row_1, col_1, row_2, col_2, false)) {
         return 0;
     }
 
@@ -182,37 +182,37 @@ char Game::getType(int row, int col) const {
     }
 }
 
-bool Game::validMove(int row_1, int col_1, int row_2, int col_2) {
+bool Game::validMove(int row_1, int col_1, int row_2, int col_2, bool mute) {
     // Returns true if the given move is valid
     Player * player = this->getPlayer(row_1, col_1);
 
     // Make sure a piece is there
     if(player == NULL) {
-        this->control->error("There is no piece there.");
+        if(!mute) this->control->error("There is no piece there.");
         return 0;
     }
      
     // Make sure the position moving from belongs to the right player
     if(player != this->next) {
-        this->control->error("Cannot move opponent's piece.");
+        if(!mute) this->control->error("Cannot move opponent's piece.");
         return 0;
     }
 
     // Make sure the piece is not moving onto itself
     if(row_1 == row_2 && col_1 == col_2) {
-        this->control->error("Cannot move a piece onto itself.");
+        if(!mute) this->control->error("Cannot move a piece onto itself.");
         return 0;
     }
 
     // Make sure its a valid move for the piece
     if(!this->board[row_1][col_1]->validMove(row_2, col_2)) {
-        this->control->error("Cannot move that piece there.");
+        if(!mute) this->control->error("Cannot move that piece there.");
         return 0;
     }
 
     // Make sure they're not capturing their own piece
     if(this->getPlayer(row_2, col_2) == this->next) {
-        this->control->error("Cannot capture your own piece.");
+        if(!mute) this->control->error("Cannot capture your own piece.");
         return 0;
     }
 
@@ -223,7 +223,7 @@ bool Game::validMove(int row_1, int col_1, int row_2, int col_2) {
     this->undo();        // Undo switches turns, so we switch again
     this->switchTurns(); // to make up for the fake move
     if(check) {
-        this->control->error("Cannot keep your king into check.");
+        if(!mute) this->control->error("Cannot keep your king into check.");
         return 0;
     }
 
@@ -386,7 +386,7 @@ bool Game::noValidMove(Player * player) {
         for(int j = 0; j < Game::BOARD_LEN; j++) {
             for(int k = 0; k < Game::BOARD_LEN; k++) {
                 for(int l = 0; l < Game::BOARD_LEN; l++) {
-                    if(this->validMove(i, j, k, l)) {
+                    if(this->validMove(i, j, k, l, true)) {
                         return false;
                     }
                 }

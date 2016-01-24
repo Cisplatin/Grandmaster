@@ -10,7 +10,7 @@ class Player {
         Player(const int); // Creates a new player
         ~Player();
         bool isHuman() const;
-        int wins, loses;
+        int wins, loses, ties;
         int totalGames() const;
         void setKingCoordinates(int, int);
         int getKingRow() const;
