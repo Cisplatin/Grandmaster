@@ -15,7 +15,7 @@ resign             # Resigns from the current game
 ```
 
 ## To-do:
-- Fix king movement
+- Fix queen and bishop diagonal movement
 - A more comprehensive Makefile
 - Ability to load/save games in .PGN format
 - Ability to load/save players (with ELO rating)
