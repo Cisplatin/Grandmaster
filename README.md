@@ -20,7 +20,6 @@ resign             # Resigns from the current game
 - Ability to load/save players (with ELO rating)
 - Ability to castle
 - Ability to promote pawns
-- End-game detection (checkmate, stalemate) (**TEST**)
 - ELO scoring for players
 - Artificial intelligence to play against
 - Graphical interface

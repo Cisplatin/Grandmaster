@@ -107,6 +107,11 @@ void Controller::playGame() {
                             this->endGame();
                             return;
                         }
+
+                        // See if the player is now in checkmate
+                        if(this->game->inCheck(this->game->getNext())) {
+                            cout << this->game->getNextColor() << " is in check!" << endl;
+                        }
                     }
                 }
             } else {

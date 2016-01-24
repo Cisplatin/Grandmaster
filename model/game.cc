@@ -131,6 +131,15 @@ Player * Game::getPrev() const {
     }
 }
 
+string Game::getNextColor() const {
+    // Returns the color of the next player
+    if(this->next == this->player_2) {
+        return "Black";
+    } else {
+        return "White";
+    }
+}
+
 string Game::getPrevColor() const {
     // Returns the color of the previous player
     if(this->next == this->player_2) {

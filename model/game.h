@@ -39,7 +39,6 @@ class Game {
         std::stack<Move *> moves;
 
         bool isDangerousTo(Player *, int, int) const;
-        bool inCheck(Player *) const;
         bool noValidMove(Player *);
     public:
         Game(Player * const, Player * const, Controller *); 
@@ -48,6 +47,7 @@ class Game {
         Player * getNext() const;
         Player * getPrev() const;
         std::string getPrevColor() const;
+        std::string getNextColor() const;
 
         Player * const player_1;
         Player * const player_2;
@@ -58,6 +58,7 @@ class Game {
 
         bool checkmate();
         bool stalemate();
+        bool inCheck(Player *) const;
 };
 
 #endif
