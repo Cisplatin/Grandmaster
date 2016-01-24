@@ -23,3 +23,4 @@ resign             # Resigns from the current game
 - ELO scoring for players
 - Artificial intelligence to play against
 - Graphical interface
+
