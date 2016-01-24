@@ -15,7 +15,7 @@ bool Bishop::validMove(int row, int col) const {
         int row_incr = (row < this->row) ? 1 : -1;
         int col_incr = (col < this->col) ? 1 : -1;
         for(int i = 1; mini_row + i < maxi_row; i++) {
-            if(!this->game->isEmpty(row * (i * row_incr), col * (i * col_incr))) {
+            if(!this->game->isEmpty(row + (i * row_incr), col + (i * col_incr))) {
                 return false;                                                    
             }                                                                    
         }                                                                       
