@@ -40,6 +40,9 @@ class Game {
 
         bool isDangerousTo(Player *, int, int) const;
         bool inCheck(Player *) const;
+        bool noValidMove(Player *);
+        bool checkmate();
+        bool stalemate();
     public:
         Game(Player * const, Player * const, Controller *); 
         ~Game();

@@ -378,3 +378,40 @@ bool Game::inCheck(Player * player) const {
         return false;
     }
 }
+
+bool Game::noValidMove(Player * player) {
+    // Returns true if the given player has no valid moves
+    // TODO: make this more efficient
+    for(int i = 0; i < Game::BOARD_LEN; i++) {
+        for(int j = 0; j < Game::BOARD_LEN; j++) {
+            for(int k = 0; k < Game::BOARD_LEN; k++) {
+                for(int l = 0; l < Game::BOARD_LEN; l++) {
+                    if(this->validMove(i, j, k, l)) {
+                        return false;
+                    }
+                }
+            }
+        }
+    }
+    return true;
+}
+
+bool Game::checkmate() {
+    // Returns true if the game is a checkmate
+    Player * player = this->getNext();
+    if(this->inCheck(player) && this->noValidMove(player)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool Game::stalemate() {
+    // Returns true if the game is a checkmate
+    Player * player = this->getNext();
+    if(!inCheck(player) && this->noValidMove(player)) {
+        return true;
+    } else {
+        return false;
+    }
+}
