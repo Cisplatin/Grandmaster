@@ -18,7 +18,6 @@ resign             # Resigns from the current game
 - A more comprehensive Makefile
 - Ability to load/save games in .PGN format
 - Ability to load/save players (with ELO rating)
-- Ability to castle
 - Ability to promote pawns
 - ELO scoring for players
 - Artificial intelligence to play against
