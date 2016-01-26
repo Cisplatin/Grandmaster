@@ -349,9 +349,10 @@ int Game::undo() {
     int col_2 = lastMove->col_2;
 
     // Moves the piece back to its original position, update the piece
-    this->forceMovePiece(row_1, col_1, row_2, col_2);
+    this->forceMovePiece(row_2, col_2, row_1, col_1);
     
     // Check if a king was moved
+    Piece * piece = this->board[row_1][col_1];
     char type = this->board[row_1][col_1]->getType();
     if(type == 'k' || type == 'K') {
         Player * player = this->board[row_1][col_1]->getPlayer();
