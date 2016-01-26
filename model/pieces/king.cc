@@ -27,8 +27,22 @@ bool King::validMove(int row, int col) const {
             // Make sure the necessary positions are
             // not currently in check
             if(!this->game->isDangerousTo(this->player, row, col) &&
-               !this->game->isDangerousTo(this->player, row, col + 1) &&
-               !this->game->isDangerousTo(this->player, row, col + 2)) {
+               !this->game->isDangerousTo(this->player, row, col - 1) &&
+               !this->game->isDangerousTo(this->player, row, col - 2)) {
+                return true;
+            }
+        }
+    }
+
+    // Check for left castling
+    if(row == this->row && col == this->col - 2) {
+        // Make sure the king and the rook have not moved
+        if(!this->moved && !this->game->isMoved(row, col - 1)) {
+            // Make sure the necessary positions are 
+            // not currently in check
+            if(!this->game->isDangerousTo(this->player, row, col) &&
+               !this->game->isDangerousTo(this->player, row, col - 1) &&
+               !this->game->isDangerousTo(this->player, row, col - 2)) {
                 return true;
             }
         }
