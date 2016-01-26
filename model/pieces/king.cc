@@ -1,5 +1,6 @@
 #include "king.h"
 #include "../player.h"
+#include "../game.h"
 
 King::King(char type, Player * const player, int row, int col, Game * game) :
     Piece(type, player, row, col, game) {
@@ -19,6 +20,19 @@ bool King::validMove(int row, int col) const {
     }
 
     // TODO: castling
+    // Check for right castling
+    if(row == this->row && col == this->col + 2) {
+        // Make sure the king and the rook have not moved
+        if(!this->moved && !this->game->isMoved(row, col + 2)) {
+            // Make sure the necessary positions are
+            // not currently in check
+            if(!this->game->isDangerousTo(this->player, row, col) &&
+               !this->game->isDangerousTo(this->player, row, col + 1) &&
+               !this->game->isDangerousTo(this->player, row, col + 2)) {
+                return true;
+            }
+        }
+    }
 
     return false;
 }

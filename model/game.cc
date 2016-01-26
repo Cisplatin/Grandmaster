@@ -280,6 +280,16 @@ bool Game::isEmpty(int row, int col) const {
     return (this->board[row][col] == NULL);
 }
 
+bool Game::isMoved(int row, int col) const {
+    // Returns true if the piece in the given position
+    // has not moved yet. Let's empty spaces be moved
+    if(!this->isEmpty(row, col)) {
+        return this->board[row][col]->moved;
+    } else {
+        return true;
+    }
+}
+
 int Game::enPassent() const {
     // Returns -1 if the last move was not an en passent, else returns
     // the row in which an en passent occured.
