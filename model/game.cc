@@ -239,15 +239,21 @@ bool Game::validMove(int row_1, int col_1, int row_2, int col_2, bool mute) {
     return 1;
 }
 
-void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
-    // Moves a piece from row/col_1 to row/col_2
-    char captured = this->getType(row_2, col_2);
+void Game::forceMovePiece(int row_1, int col_1, int row_2, int col_2) {
+    // Forces the piece to move, regardless of any special circumstances.
+    // Simply updates the position and the view
     delete this->board[row_2][col_2];
     this->board[row_2][col_2] = this->board[row_1][col_1];
     this->board[row_1][col_1] = NULL;
     this->updateAdd(this->board[row_2][col_2]->getType(), row_2, col_2);
     this->updateRem(row_1, col_1);
     this->board[row_2][col_2]->updateMove(row_2, col_2);
+}
+
+void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
+    // Moves a piece from row/col_1 to row/col_2
+    char captured = this->getType(row_2, col_2);
+    this->forceMovePiece(row_1, col_1, row_2, col_2);
 
     // Check if a king was moved
     char type = this->board[row_2][col_2]->getType();
@@ -268,6 +274,16 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
         delete this->board[row_1][col_2];
         this->updateRem(row_1, col_2);
         enPassentOccured = true;
+    }
+
+    // Check if a castling occurred
+    if(type == 'K' || type == 'k') {
+        // Check for a right castling
+        if(row_2 == row_1 + 2) {
+            // TODO move the right rook
+        } else if(row_2 == row_1 - 2) {
+            // TODO move the left rook
+        }
     }
 
     // Push the new move onto the stack
@@ -333,10 +349,7 @@ int Game::undo() {
     int col_2 = lastMove->col_2;
 
     // Moves the piece back to its original position, update the piece
-    Piece * piece = this->board[row_2][col_2];
-    this->board[row_1][col_1] = piece;
-    this->board[row_2][col_2] = NULL;
-    piece->updateMove(row_1, col_1);
+    this->forceMovePiece(row_1, col_1, row_2, col_2);
     
     // Check if a king was moved
     char type = this->board[row_1][col_1]->getType();
@@ -347,10 +360,6 @@ int Game::undo() {
 
     // Undoes the move made and the undo itself (two moves)
     piece->moved -= 2;
-
-    // Updates the view
-    this->updateAdd(piece->getType(), row_1, col_1);
-    this->updateRem(row_2, col_2);
 
     // Replace any captured pieces (check if en-passent!)
     if(lastMove->captured != 0) {

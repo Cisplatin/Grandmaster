@@ -33,6 +33,7 @@ class Game {
         void switchTurns();
     	bool validMove(int, int, int, int, bool);
         void movePiece(int, int, int, int);
+        void forceMovePiece(int, int, int, int);
         Player * getPlayer(int, int) const;
         char getType(int, int) const;
 
