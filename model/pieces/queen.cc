@@ -6,10 +6,6 @@ Queen::Queen(char type, Player * const player, int row, int col, Game * game) :
     Piece(type, player, row, col, game) {
 }
 
-// TODO remove
-#include <iostream>
-using namespace std;
-
 bool Queen::validMove(int row, int col) const {
     // Returns true if a valid relative position is given
 

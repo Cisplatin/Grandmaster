@@ -279,10 +279,10 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
     // Check if a castling occurred
     if(type == 'K' || type == 'k') {
         // Check for a right castling
-        if(row_2 == row_1 + 2) {
-            // TODO move the right rook
-        } else if(row_2 == row_1 - 2) {
-            // TODO move the left rook
+        if(col_2 == col_1 + 2) {
+            this->forceMovePiece(row_2, col_2 + 2, row_2, col_2 - 1);
+        } else if(col_2 == col_1 - 2) {
+            this->forceMovePiece(row_2, col_2 - 1, row_2, col_2 + 1);
         }
     }
 
@@ -340,7 +340,6 @@ int Game::undo() {
     }
     Move * lastMove = this->moves.top();
 
-    // TODO: account for castling
     // TODO: account for promotion
     // Variables declared for readability sake
     int row_1 = lastMove->row_1;
@@ -373,6 +372,15 @@ int Game::undo() {
                                                        player, row_2, col_2, this);
             this->board[row_2][col_2] = regenerated;
             this->updateAdd(lastMove->captured, row_2, col_2);
+    }
+
+    // Undo any castling that was done
+    if(type == 'k' || type == 'K') {
+        if(col_2 == col_1 + 2) {
+            this->forceMovePiece(row_2, col_2 - 1, row_2, col_2 + 2);
+        } else if(col_2 == col_1 - 2) {
+            this->forceMovePiece(row_2, col_2 + 1, row_2, col_2 - 1);
+        }
     }
 
     // Changes the turn, deletes the last move
