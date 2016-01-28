@@ -13,8 +13,7 @@ undo               # Returns the game to the state before the last move
 resign             # Resigns from the current game
 ```
 
-## To-do:
-- A more comprehensive Makefile
+## Features To-do:
 - Ability to load/save games in .PGN format
 - Ability to load/save players (with ELO rating)
 - Ability to promote pawns
@@ -22,3 +21,7 @@ resign             # Resigns from the current game
 - Artificial intelligence to play against
 - Graphical interface
 
+## Internal To-do:
+- A more comprehensive Makefile
+- Constant representations of the pieces
+- Various TODOs spread in the code
