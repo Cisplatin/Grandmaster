@@ -31,3 +31,19 @@ void Move::convertToPGN(std::string * PGN) const {
     if(this->captured) *PGN = 'x' + *PGN;
     if(PGN_piece != 0) *PGN = PGN_piece + *PGN;
 }
+
+bool Move::validPosition(int row, int col) {                                       
+    // Checks if the given position is within the board                            
+    return (0 <= row && row < Move::BOARD_LEN                                      
+         && 0 <= col && col < Move::BOARD_LEN);                                    
+}                                                                                  
+                                                                                   
+bool Move::validPosition(string position) {                                        
+    // Checks if the given position is within the board                            
+    if(position.length() != 2) {                                                   
+        return false;                                                           
+    }                                                                           
+    int row, col;                                                               
+    Game::convertPosToInt(position, &row, &col);                                
+    return Move::validPosition(row, col);                                       
+}   

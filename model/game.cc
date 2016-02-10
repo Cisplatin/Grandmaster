@@ -84,22 +84,6 @@ void Game::updateRem(int row, int col) {
     this->control->notifyRem(row, col);
 }
 
-bool Game::validPosition(int row, int col) {
-    // Checks if the given position is within the board
-    return (0 <= row && row < Game::BOARD_LEN 
-         && 0 <= col && col < Game::BOARD_LEN);
-}
-
-bool Game::validPosition(string position) {
-    // Checks if the given position is within the board
-    if(position.length() != 2) {
-        return false;
-    }
-    int row, col;
-    Game::convertPosToInt(position, &row, &col);
-    return Game::validPosition(row, col);
-}
-
 void Game::convertPosToInt(string pos, int * row, int * col) {
     // Converts the given position into a row/col position,
     // setting the given pointers to the correct numbers. Assumes
@@ -159,7 +143,7 @@ string Game::getPrevColor() const {
 
 bool Game::move(string pos_1, string pos_2) {
     // Make sure the given positions are valid
-    if(!Game::validPosition(pos_1) || !Game::validPosition(pos_2)) {
+    if(!Move::validPosition(pos_1) || !Move::validPosition(pos_2)) {
         this->control->error("Invalid position given.");
         return 0;
     }

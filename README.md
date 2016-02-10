@@ -24,3 +24,7 @@ resign             # Resigns from the current game
 ## Internal To-do:
 - A more comprehensive Makefile
 - Various TODOs spread in the code
+- Finish move class PGN conversion
+- Clean game class
+- - Move conversion methods from Game to Move
+- Add a constants file for BOARD_LEN, etc.

@@ -15,18 +15,15 @@ class Move;
 */
 class Game {
     private:
-        const static int BOARD_LEN = 8;
         Controller * control;
 
+        const static int BOARD_LEN = 8;
         Piece * board[Game::BOARD_LEN][Game::BOARD_LEN];
 
         void updateAdd(char, int, int);
         void updateRem(int, int);
         void loadStandard();
         void clearBoard();
-
-        static bool validPosition(int, int);
-        static bool validPosition(std::string);
 
         Player * next; 
         void switchTurns();
