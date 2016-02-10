@@ -287,7 +287,8 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
     }
 
     // Push the new move onto the stack
-    Move * move = new Move(row_1, col_1, row_2, col_2, captured, enPassentOccured);
+    Move * move = new Move(row_1, col_1, row_2, col_2, 
+                           type, captured, enPassentOccured);
     this->moves.push(move);
 }
 
