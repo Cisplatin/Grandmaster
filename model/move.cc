@@ -11,17 +11,34 @@ Move::Move(int row_1, int col_1, int row_2, int col_2,
 
 void Move::convertToPGN(std::string * PGN) const {
     // TODO: account for ambiguous moves (i.e. two knights)
-    // TODO: account for promotion and castling
+    // TODO: account for promotion
     // TODO: account for checking and checkmate
-    // TODO: pawn captures append the column
+
+    // Check for castling first
+    if(this->moved == Piece::WHITE_KING || this->moved == Piece::BLACK_KING) {
+        // Check for left castling
+        if(col_2 == col_1 - 2) {
+            *PGN = "O-O-O";
+            return;
+        } else if(col_2 == col_1 + 2) {
+            *PGN = "O-O";
+            return;
+        }
+    }
+
     // Returns the PGN string representing the move
     Move::convertIntToPos(this->row_2, this->col_2, PGN);
 
     // Get the type of piece as per the PGN format
     char PGN_piece;
     if(this->moved == Piece::WHITE_PAWN || this->moved == Piece::BLACK_PAWN) {
-        // Pawn movements do not have the piece appended
-        PGN_piece = 0;
+        // Pawn movements do not have the piece appended. Unless a capture
+        // occured, in which case the column is appended
+        if(this->captured) {
+            PGN_piece = 'a' + this->col_1;
+        } else {
+            PGN_piece = 0;
+        }
     } else {
         // If its a black piece, we need to make it upper case
         PGN_piece = this->moved - (this->moved > 'a' ? 'a' - 'A' : 0);
