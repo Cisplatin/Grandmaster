@@ -262,10 +262,14 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
         }
     }
 
+    // Check if the other player's king is in check
+    bool otherInCheck = this->inCheck(this->getNext());
+
     // Push the new move onto the stack
     Move * move = new Move(row_1, col_1, row_2, col_2, type);
     if(enPassentOccured) move->setEnpassent(true);
     if(captured != 0)    move->setCaptured(captured);
+    if(otherInCheck)     move->setCheck(true);
     this->moves.push(move);
 }
 

@@ -20,6 +20,11 @@ void Move::setEnpassent(bool enpassent) {
     this->enpassent = enpassent;
 }
 
+void Move::setCheck(bool inCheck) {
+    // Sets the inCheck field
+    this->check = inCheck;
+}
+
 void Move::convertToPGN(std::string * PGN) const {
     // TODO: account for ambiguous moves (i.e. two knights)
     // TODO: account for promotion
