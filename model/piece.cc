@@ -65,13 +65,3 @@ Piece * Piece::generatePiece(const char type, Player * const player,
     // An invalid piece was given, return no piece
     return 0;
 }
-
-bool Piece::isPawn() const {
-    // Returns true if the piece is a pawn
-    return this->type == Piece::WHITE_PAWN || this->type == Piece::BLACK_PAWN;
-}
-
-bool Piece::isKing() const {
-    // Returns true if the piece is a king
-    return this->type == Piece::WHITE_KING || this->type == Piece::BLACK_KING;
-}

@@ -23,9 +23,6 @@ class Piece {
         void updateMove(int, int);
         static Piece * generatePiece(char, Player * const, int, int, Game *);
 
-        bool isPawn() const;
-        bool isKing() const;
-
         // Constants related to the pieces. In other parts of the code,
         // white pieces are assumed to be capital, as part of the PGN
         // standard. Changes will break PGN related code and piece generation
