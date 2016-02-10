@@ -8,10 +8,6 @@
 */
 
 class Text_View : public View {
-    private:
-        // The character to print for empty squares
-        const static char WHITE_SQUARE = '_';
-        const static char BLACK_SQUARE = ' ';
     public:
         void print() const;
 };

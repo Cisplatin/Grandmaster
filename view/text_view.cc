@@ -11,9 +11,9 @@ void Text_View::print() const {
             if(this->board[i][j] != 0) {
                 std::cout << this->board[i][j];
             } else if((i + j) % 2 != 0) {
-                std::cout << this->BLACK_SQUARE;
+                std::cout << Constants::BLACK_SQUARE;
             } else {
-                std::cout << this->WHITE_SQUARE;
+                std::cout << Constants::WHITE_SQUARE;
             }
 
             // Print a space after each piece so it looks more spaced, except
