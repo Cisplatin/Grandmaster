@@ -3,10 +3,21 @@
 #include "game.h"
 using namespace std;
 
-Move::Move(int row_1, int col_1, int row_2, int col_2, 
-           char moved, char captured, bool enpassent) :
-          row_1(row_1), row_2(row_2), col_1(col_1), col_2(col_2),
-          moved(moved), captured(captured), enpassent(enpassent) {
+Move::Move(int row_1, int col_1, int row_2, int col_2, char moved) :
+          row_1(row_1), row_2(row_2), col_1(col_1), col_2(col_2) {
+    this->moved = moved;
+    this->captured = 0;
+    this->enpassent = false;
+}
+
+void Move::setCaptured(char captured) {
+    // Sets the captured field
+    this->captured = captured;
+}
+
+void Move::setEnpassent(bool enpassent) {
+    // Sets the enpassent field
+    this->enpassent = enpassent;
 }
 
 void Move::convertToPGN(std::string * PGN) const {

@@ -26,3 +26,4 @@ resign             # Resigns from the current game
 - Various TODOs spread in the code
 - Finish move class PGN conversion
 - Add a constants file for BOARD_LEN, etc.
+- Make a MoveBuilder method

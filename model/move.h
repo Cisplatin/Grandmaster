@@ -9,12 +9,16 @@ class Move {
     public:
         const int row_1, row_2;
         const int col_1, col_2;
-        const char moved;     // The piece that was moved
-        const char captured;  // Equals 0 if no capture was made
-        const bool enpassent; // Equals 1 if an enpassent was done
+        char moved;     // The piece that was moved
+        char captured;  // Equals 0 if no capture was made
+        bool enpassent; // Equals 1 if an enpassent was done
 
-        Move(int, int, int, int, char, char, bool);
+        Move(int, int, int, int, char);
         void convertToPGN(std::string *) const; // Returns the PGN string
+
+        // Building methods for avoiding large constructors
+        void setCaptured(char);
+        void setEnpassent(bool);
 
         static bool validPosition(int, int);
         static bool validPosition(std::string);
