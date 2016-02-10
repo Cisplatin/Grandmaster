@@ -28,7 +28,7 @@ void Move::setCheck(bool inCheck) {
 void Move::convertToPGN(std::string * PGN) const {
     // TODO: account for ambiguous moves (i.e. two knights)
     // TODO: account for promotion
-    // TODO: account for checking and checkmate
+    // TODO: account for checkmate
 
     // Check for castling first
     if(this->moved == Piece::WHITE_KING || this->moved == Piece::BLACK_KING) {
@@ -63,6 +63,9 @@ void Move::convertToPGN(std::string * PGN) const {
     // Append an x if a capture is made
     if(this->captured) *PGN = 'x' + *PGN;
     if(PGN_piece != 0) *PGN = PGN_piece + *PGN;
+
+    // Append a plus if the other king is in check
+    if(this->check) *PGN += '+';
 }
 
 bool Move::validPosition(int row, int col) {                                       
