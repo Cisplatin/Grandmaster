@@ -1,3 +1,5 @@
+#include <string>
+
 /*
     Class to store moves, mostly for undos and tracking last moves.
 */
@@ -8,4 +10,5 @@ class Move {
         const char captured;  // Equals 0 if no capture was made
         const bool enpassent; // Equals 1 if an enpassent was done
         Move(int, int, int, int, char, bool);
+        std::string convertToPGN() const; // Returns the PGN string
 };
