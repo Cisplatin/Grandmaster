@@ -26,7 +26,8 @@ class Piece {
         static Piece * generatePiece(char, Player * const, int, int, Game *);
 
         // Constants related to the pieces. In other parts of the code,
-        // white pieces are assumed to be capital, so be wary of changes
+        // white pieces are assumed to be capital, as part of the PGN
+        // standard. Changes will break PGN related code and piece generation
         const static char WHITE_KING = 'K';
         const static char BLACK_KING = 'k';
         const static char WHITE_QUEEN = 'Q';
