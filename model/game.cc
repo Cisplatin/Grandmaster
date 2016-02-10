@@ -101,11 +101,19 @@ bool Game::validPosition(string position) {
 }
 
 void Game::convertPosToInt(string pos, int * row, int * col) {
-    // Convets the given position into a row/col position,
+    // Converts the given position into a row/col position,
     // setting the given pointers to the correct numbers. Assumes
     // that a valid position was given.
     *row = Game::BOARD_LEN - pos[1] + '1' - 1;
     *col = pos[0] - 'a';
+}
+
+void Game::convertIntToPos(int row, int col, string * pos) {
+    // Converts the given row/col into a string position. Assumes
+    // that a valid position was given.
+    *pos = "";
+    *pos += col + 'a';
+    *pos += Game::BOARD_LEN - row + '1' - 1;
 }
 
 void Game::switchTurns() {

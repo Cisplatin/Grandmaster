@@ -25,7 +25,8 @@ class Piece {
         int moved; // The number of times the piece has moved
         static Piece * generatePiece(char, Player * const, int, int, Game *);
 
-        // Constants related to the pieces
+        // Constants related to the pieces. In other parts of the code,
+        // white pieces are assumed to be capital, so be wary of changes
         const static char WHITE_KING = 'K';
         const static char BLACK_KING = 'k';
         const static char WHITE_QUEEN = 'Q';
