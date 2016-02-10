@@ -43,22 +43,22 @@ Piece * Piece::generatePiece(const char type, Player * const player,
                              int row, int col, Game * game) {
     Piece * new_piece;
     switch(type) {
-        case 'K': case 'k':
+        case Piece::WHITE_KING: case Piece::BLACK_KING:
             return new King(type, player, row, col, game);
         break;
-        case 'Q': case 'q':
+        case Piece::WHITE_QUEEN: case Piece::BLACK_QUEEN:
             return new Queen(type, player, row, col, game);
         break;
-        case 'R': case 'r':
+        case Piece::WHITE_ROOK: case Piece::BLACK_ROOK:
             return new Rook(type, player, row, col, game);
         break;
-        case 'B': case 'b':
+        case Piece::WHITE_BISHOP: case Piece::BLACK_BISHOP:
             return new Bishop(type, player, row, col, game);
         break;
-        case 'N': case 'n':
+        case Piece::WHITE_KNIGHT: case Piece::BLACK_KNIGHT:
             return new Knight(type, player, row, col, game);
         break;
-        case 'P': case 'p':
+        case Piece::WHITE_PAWN: case Piece::BLACK_PAWN:
             return new Pawn(type, player, row, col, game);
         break;
     }

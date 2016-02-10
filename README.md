@@ -23,5 +23,4 @@ resign             # Resigns from the current game
 
 ## Internal To-do:
 - A more comprehensive Makefile
-- Constant representations of the pieces
 - Various TODOs spread in the code
