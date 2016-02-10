@@ -15,8 +15,8 @@ Game::Game(Player * const player_1, Player * const player_2, Controller * c) :
     this->control = c;
     
     // Initialize the board with empty squares
-    for(int i = 0; i < Game::BOARD_LEN; i++) {
-        for(int j = 0; j < Game::BOARD_LEN; j++) {
+    for(int i = 0; i < Constants::BOARD_LEN; i++) {
+        for(int j = 0; j < Constants::BOARD_LEN; j++) {
             this->board[i][j] = NULL;
         }
     }
@@ -45,8 +45,8 @@ void Game::loadStandard() {
     
     // Load the board one piece at a time
     char piece;
-    for(int i = 0; i < Game::BOARD_LEN; i++) {
-        for(int j = 0; j < Game::BOARD_LEN; j++) {
+    for(int i = 0; i < Constants::BOARD_LEN; i++) {
+        for(int j = 0; j < Constants::BOARD_LEN; j++) {
             standard >> piece;
     
             // Determine which player this piece belongs to
@@ -67,8 +67,8 @@ void Game::loadStandard() {
 
 void Game::clearBoard() {
     // Clears all piece from the board
-    for(int i = 0; i < Game::BOARD_LEN; i++) {
-        for(int j = 0; j < Game::BOARD_LEN; j++) {
+    for(int i = 0; i < Constants::BOARD_LEN; i++) {
+        for(int j = 0; j < Constants::BOARD_LEN; j++) {
             delete this->board[i][j];
         }
     }
@@ -245,7 +245,7 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
        col_1 != col_2 &&
        this->enPassent() == col_2 &&
        ((row_1 - row_2 == 1 && row_1 == enPassentDist) ||
-        (row_2 - row_1 == 1 && row_1 == Game::BOARD_LEN - enPassentDist - 1))) {
+        (row_2 - row_1 == 1 && row_1 == Constants::BOARD_LEN - enPassentDist - 1))) {
         captured = this->getType(row_1, col_2);
         delete this->board[row_1][col_2];
         this->updateRem(row_1, col_2);
@@ -375,8 +375,8 @@ int Game::undo() {
 bool Game::isDangerousTo(Player * player, int row, int col) const {
     // Returns true if the given square is dangerous to the given player
     // TODO: make this more efficient by only checking certain positions
-    for(int i = 0; i < Game::BOARD_LEN; i++) {
-        for(int j = 0; j < Game::BOARD_LEN; j++) {
+    for(int i = 0; i < Constants::BOARD_LEN; i++) {
+        for(int j = 0; j < Constants::BOARD_LEN; j++) {
             if(this->getPlayer(i, j) != NULL &&
                this->getPlayer(i, j) != player &&
                this->board[i][j]->validMove(row, col)) {
@@ -401,10 +401,10 @@ bool Game::inCheck(Player * player) const {
 bool Game::noValidMove(Player * player) {
     // Returns true if the given player has no valid moves
     // TODO: make this more efficient
-    for(int i = 0; i < Game::BOARD_LEN; i++) {
-        for(int j = 0; j < Game::BOARD_LEN; j++) {
-            for(int k = 0; k < Game::BOARD_LEN; k++) {
-                for(int l = 0; l < Game::BOARD_LEN; l++) {
+    for(int i = 0; i < Constants::BOARD_LEN; i++) {
+        for(int j = 0; j < Constants::BOARD_LEN; j++) {
+            for(int k = 0; k < Constants::BOARD_LEN; k++) {
+                for(int l = 0; l < Constants::BOARD_LEN; l++) {
                     if(this->validMove(i, j, k, l, true)) {
                         return false;
                     }

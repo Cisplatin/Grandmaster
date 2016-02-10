@@ -9,6 +9,7 @@ class Move;
 
 #include <string>
 #include <stack>
+#include "../constants.h"
 
 /*
     Stores the information associated with the player and the board
@@ -17,8 +18,7 @@ class Game {
     private:
         Controller * control;
 
-        const static int BOARD_LEN = 8;
-        Piece * board[Game::BOARD_LEN][Game::BOARD_LEN];
+        Piece * board[Constants::BOARD_LEN][Constants::BOARD_LEN];
 
         void updateAdd(char, int, int);
         void updateRem(int, int);

@@ -1,13 +1,14 @@
 #ifndef VIEW_H
 #define VIEW_H
 
+#include "../constants.h"
+
 /*
     An abstract class for a view: can be used to generate both text-displays
     and graphic displays.
 */
 class View {
     protected:
-        const static int BOARD_LEN = 8;
         char **board; // A two-dimensional array of characters used to store
                       // where pieces are in the current display. If there is
                       // no piece, put a 0 instead.
