@@ -1,11 +1,10 @@
 #include <string>
+#include "../constants.h"
 
 /*
     Class to store moves, mostly for undos and tracking last moves.
 */
 class Move {
-    private:
-        const static int BOARD_LEN = 8;
     public:
         const int row_1, row_2;
         const int col_1, col_2;

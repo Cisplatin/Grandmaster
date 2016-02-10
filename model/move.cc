@@ -61,17 +61,17 @@ void Move::convertToPGN(std::string * PGN) const {
     }
     
     // Append an x if a capture is made
-    if(this->captured) *PGN = 'x' + *PGN;
+    if(this->captured) *PGN = Constants::PGN_CAPTURE + *PGN;
     if(PGN_piece != 0) *PGN = PGN_piece + *PGN;
 
     // Append a plus if the other king is in check
-    if(this->check) *PGN += '+';
+    if(this->check) *PGN += Constants::PGN_CHECK;
 }
 
 bool Move::validPosition(int row, int col) {                                       
     // Checks if the given position is within the board                            
-    return (0 <= row && row < Move::BOARD_LEN                                      
-         && 0 <= col && col < Move::BOARD_LEN);                                    
+    return (0 <= row && row < Constants::BOARD_LEN                                      
+         && 0 <= col && col < Constants::BOARD_LEN);                                    
 }                                                                                  
                                                                                    
 bool Move::validPosition(string position) {                                        
@@ -88,7 +88,7 @@ void Move::convertPosToInt(string pos, int * row, int * col) {
     // Converts the given position into a row/col position,
     // setting the given pointers to the correct numbers. Assumes
     // that a valid position was given.
-    *row = Move::BOARD_LEN - pos[1] + '1' - 1;
+    *row = Constants::BOARD_LEN - pos[1] + '1' - 1;
     *col = pos[0] - 'a';
 }
 
@@ -97,5 +97,5 @@ void Move::convertIntToPos(int row, int col, string * pos) {
     // that a valid position was given.
     *pos = "";
     *pos += col + 'a';
-    *pos += Move::BOARD_LEN - row + '1' - 1;
+    *pos += Constants::BOARD_LEN - row + '1' - 1;
 }
