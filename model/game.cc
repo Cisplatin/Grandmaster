@@ -57,7 +57,7 @@ void Game::loadStandard() {
                 this->updateAdd(piece, i, j);
                 
                 // Check if a king was created
-                if(piece == Piece::WHITE_KING || piece == Piece::BLACK_KING) {
+                if(piece == Constants::WHITE_KING || piece == Constants::BLACK_KING) {
                     player->setKingCoordinates(i, j);
                 }
             }
@@ -233,14 +233,14 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
 
     // Check if a king was moved
     char type = this->board[row_2][col_2]->getType();
-    if(type == Piece::WHITE_KING || type == Piece::BLACK_KING) {
+    if(type == Constants::WHITE_KING || type == Constants::BLACK_KING) {
         Player * player = this->board[row_2][col_2]->getPlayer();
         player->setKingCoordinates(row_2, col_2);
     }
 
     // Check if an en-passent occured
     bool enPassentOccured = false;
-    if((type == Piece::WHITE_PAWN || type == Piece::BLACK_PAWN) &&
+    if((type == Constants::WHITE_PAWN || type == Constants::BLACK_PAWN) &&
        col_1 != col_2 &&
        this->enPassent() == col_2 &&
        ((row_1 - row_2 == 1 && 
@@ -254,7 +254,7 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
     }
 
     // Check if a castling occurred
-    if(type == Piece::WHITE_KING || type == Piece::BLACK_KING) {
+    if(type == Constants::WHITE_KING || type == Constants::BLACK_KING) {
         // Check for a right castling
         if(col_2 == col_1 + 2) {
             this->forceMovePiece(row_2, col_2 + 2, row_2, col_2 - 1);
@@ -301,7 +301,7 @@ int Game::enPassent() const {
 
     // Check if it was a pawn that moved
     char type = this->getType(lastMove->row_2, lastMove->col_2);
-    if(type != Piece::WHITE_PAWN && type != Piece::BLACK_PAWN) {
+    if(type != Constants::WHITE_PAWN && type != Constants::BLACK_PAWN) {
         return -1;
     }
 
@@ -336,7 +336,7 @@ int Game::undo() {
     // Check if a king was moved
     Piece * piece = this->board[row_1][col_1];
     char type = this->board[row_1][col_1]->getType();
-    if(type == Piece::WHITE_KING || type == Piece::BLACK_KING) {
+    if(type == Constants::WHITE_KING || type == Constants::BLACK_KING) {
         Player * player = this->board[row_1][col_1]->getPlayer();
         player->setKingCoordinates(row_1, col_1);
     }
@@ -358,7 +358,7 @@ int Game::undo() {
     }
 
     // Undo any castling that was done
-    if(type == Piece::WHITE_KING || type == Piece::BLACK_KING) {
+    if(type == Constants::WHITE_KING || type == Constants::BLACK_KING) {
         if(col_2 == col_1 + 2) {
             this->forceMovePiece(row_2, col_2 - 1, row_2, col_2 + 2);
         } else if(col_2 == col_1 - 2) {
