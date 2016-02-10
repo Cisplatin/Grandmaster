@@ -16,14 +16,15 @@ class Piece {
         Piece(const char, Player * const player, int, int, Game *);
         virtual ~Piece();
 
-        // Functions for determining validity
+        int moved;
         virtual bool validMove(int, int) const = 0;
-
         char getType() const;
         Player * getPlayer() const;
         void updateMove(int, int);
-        int moved; // The number of times the piece has moved
         static Piece * generatePiece(char, Player * const, int, int, Game *);
+
+        bool isPawn() const;
+        bool isKing() const;
 
         // Constants related to the pieces. In other parts of the code,
         // white pieces are assumed to be capital, as part of the PGN

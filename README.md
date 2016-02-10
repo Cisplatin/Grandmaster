@@ -25,5 +25,4 @@ resign             # Resigns from the current game
 - A more comprehensive Makefile
 - Various TODOs spread in the code
 - Finish move class PGN conversion
-- Clean game class up
 - Add a constants file for BOARD_LEN, etc.
