@@ -15,7 +15,7 @@ void Move::convertToPGN(std::string * PGN) const {
     // TODO: account for checking and checkmate
     // TODO: pawn captures append the column
     // Returns the PGN string representing the move
-    Game::convertIntToPos(this->row_2, this->col_2, PGN);
+    Move::convertIntToPos(this->row_2, this->col_2, PGN);
 
     // Get the type of piece as per the PGN format
     char PGN_piece;
@@ -44,6 +44,22 @@ bool Move::validPosition(string position) {
         return false;                                                           
     }                                                                           
     int row, col;                                                               
-    Game::convertPosToInt(position, &row, &col);                                
+    Move::convertPosToInt(position, &row, &col);                                
     return Move::validPosition(row, col);                                       
 }   
+
+void Move::convertPosToInt(string pos, int * row, int * col) {
+    // Converts the given position into a row/col position,
+    // setting the given pointers to the correct numbers. Assumes
+    // that a valid position was given.
+    *row = Move::BOARD_LEN - pos[1] + '1' - 1;
+    *col = pos[0] - 'a';
+}
+
+void Move::convertIntToPos(int row, int col, string * pos) {
+    // Converts the given row/col into a string position. Assumes
+    // that a valid position was given.
+    *pos = "";
+    *pos += col + 'a';
+    *pos += Move::BOARD_LEN - row + '1' - 1;
+}

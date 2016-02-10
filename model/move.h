@@ -18,4 +18,6 @@ class Move {
 
         static bool validPosition(int, int);
         static bool validPosition(std::string);
+        static void convertPosToInt(std::string, int *, int *);
+        static void convertIntToPos(int, int, std::string *);        
 };

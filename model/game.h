@@ -44,8 +44,6 @@ class Game {
         Player * getPrev() const;
         std::string getPrevColor() const;
         std::string getNextColor() const;
-        static void convertPosToInt(std::string, int *, int *);
-        static void convertIntToPos(int, int, std::string *);        
 
         Player * const player_1;
         Player * const player_2;
