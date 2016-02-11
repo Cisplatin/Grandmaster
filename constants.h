@@ -33,6 +33,7 @@ class Constants {
         const static char PGN_CAPTURE = 'x';
         const static char PGN_CHECK = '+';
         const static char PGN_PROMOTION = '=';
+        const static char PGN_CHECKMATE = '#';
 
         // Text representation of colored squares
         const static char WHITE_SQUARE = '_';

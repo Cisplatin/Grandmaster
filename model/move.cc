@@ -40,7 +40,6 @@ void Move::setPromotion(char promotion) {
 
 void Move::convertToPGN(std::string * PGN) const {
     // TODO: account for ambiguous moves (i.e. two knights)
-    // TODO: account for checkmate
 
     // Check for castling first
     if(this->moved == Constants::WHITE_KING || this->moved == Constants::BLACK_KING) {
@@ -79,8 +78,9 @@ void Move::convertToPGN(std::string * PGN) const {
     // Append an =P if a promotion was made
     if(this->promotion) *PGN = *PGN + Constants::PGN_PROMOTION + this->promotion;
 
-    // Append a plus if the other king is in check
-    if(this->check) *PGN += Constants::PGN_CHECK;
+    // Append a plus if the other king is in check, or a hash if in checkmate
+    if(this->checkmate)  *PGN += Constants::PGN_CHECKMATE;
+    else if(this->check) *PGN += Constants::PGN_CHECK;
 }
 
 bool Move::validPosition(int row, int col) {                                       
