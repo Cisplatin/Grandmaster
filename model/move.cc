@@ -9,6 +9,8 @@ Move::Move(int row_1, int col_1, int row_2, int col_2, char moved) :
     this->captured = 0;
     this->promotion = 0;
     this->enpassent = false;
+    this->check = false;
+    this->checkmate = false;
 }
 
 void Move::setCaptured(char captured) {
@@ -24,6 +26,11 @@ void Move::setEnpassent(bool enpassent) {
 void Move::setCheck(bool inCheck) {
     // Sets the inCheck field
     this->check = inCheck;
+}
+
+void Move::setCheckmate(bool checkmate) {
+    // Sets the checkmate field
+    this->checkmate = checkmate;
 }
 
 void Move::setPromotion(char promotion) {

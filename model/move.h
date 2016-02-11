@@ -13,6 +13,7 @@ class Move {
         char promotion; // Equals the promoted piece if a promotion was made
         bool enpassent; // Equals 1 if an enpassent was done
         bool check;     // Equals 1 if the other player is in check
+        bool checkmate; // Equals 1 if the other player is in checkmate
 
         Move(int, int, int, int, char);
         void convertToPGN(std::string *) const; // Returns the PGN string
@@ -22,6 +23,7 @@ class Move {
         void setEnpassent(bool);
         void setCheck(bool);
         void setPromotion(char);
+        void setCheckmate(bool);
 
         static bool validPosition(int, int);
         static bool validPosition(std::string);
