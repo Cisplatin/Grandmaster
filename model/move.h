@@ -9,9 +9,10 @@ class Move {
         const int row_1, row_2;
         const int col_1, col_2;
         char moved;     // The piece that was moved
-        char captured;  // Equals 1 if a capture was made
+        char captured;  // Equals the captured piece if a capture was made
+        char promotion; // Equals the promoted piece if a promotion was made
         bool enpassent; // Equals 1 if an enpassent was done
-        bool check;   // Equals 1 if the other player is in check
+        bool check;     // Equals 1 if the other player is in check
 
         Move(int, int, int, int, char);
         void convertToPGN(std::string *) const; // Returns the PGN string
@@ -20,6 +21,7 @@ class Move {
         void setCaptured(char);
         void setEnpassent(bool);
         void setCheck(bool);
+        void setPromotion(char);
 
         static bool validPosition(int, int);
         static bool validPosition(std::string);

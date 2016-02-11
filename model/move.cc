@@ -7,6 +7,7 @@ Move::Move(int row_1, int col_1, int row_2, int col_2, char moved) :
           row_1(row_1), row_2(row_2), col_1(col_1), col_2(col_2) {
     this->moved = moved;
     this->captured = 0;
+    this->promotion = 0;
     this->enpassent = false;
 }
 
@@ -23,6 +24,11 @@ void Move::setEnpassent(bool enpassent) {
 void Move::setCheck(bool inCheck) {
     // Sets the inCheck field
     this->check = inCheck;
+}
+
+void Move::setPromotion(char promotion) {
+    // Set the promotion field
+    this->promotion = promotion;
 }
 
 void Move::convertToPGN(std::string * PGN) const {
