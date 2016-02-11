@@ -32,6 +32,7 @@ class Constants {
         // Constants as per PGN standards
         const static char PGN_CAPTURE = 'x';
         const static char PGN_CHECK = '+';
+        const static char PGN_PROMOTION = '=';
 
         // Text representation of colored squares
         const static char WHITE_SQUARE = '_';
