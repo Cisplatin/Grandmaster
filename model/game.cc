@@ -3,6 +3,7 @@
 #include "player.h"
 #include "piece.h"
 #include "move.h"
+#include "PGN.h"
 
 #include <fstream>
 #include <iostream>
