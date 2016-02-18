@@ -18,7 +18,7 @@ class View {
         virtual void print() const = 0;
 
         // Adds/removes the appropriate piece
-        void add(const char, const int, const int); 
+        void add(const char, const int, const int);
         void remove(const int, const int);
 };
 

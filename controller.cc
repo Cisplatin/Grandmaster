@@ -56,7 +56,7 @@ void Controller::remPlayer(string name) {
     // Make sure the player exists
     map<string, Player *>::iterator it = this->players->find(name);
     if(it == this->players->end()) {
-        this->error("Player '" + name + "' does not exist."); 
+        this->error("Player '" + name + "' does not exist.");
     } else {
         // Else, delete the player and all of his records
         delete it->second;
@@ -101,7 +101,7 @@ void Controller::playGame() {
                 // Get the move from standard input
                 string pos_1, pos_2;
                 if(!(input_ss >> pos_1 >> pos_2) || input_ss >> junk) {
-                    this->invalid(parser);   
+                    this->invalid(parser);
                 } else {
                     if(this->game->move(pos_1, pos_2)) {
                         // If the move is a success, print the board
@@ -143,7 +143,7 @@ void Controller::playGame() {
                     this->text_view->print();
                 }
             }
-    
+
         // An invalid command was given
         } else {
             this->error("Command '" + parser + "' not found.");

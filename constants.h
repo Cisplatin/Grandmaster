@@ -8,22 +8,22 @@ class Constants {
         // Make the class un-instantiable via a virtual destructor
         virtual ~Constants() = 0;
 
-        // Piece representation constants are per PGN standards and are 
+        // Piece representation constants are per PGN standards and are
         // assumed in later parts of code (i.e. checking if a piece is white
         // is done by checking for a capital letter). Changing these will
         // break the code in some areas.
-        const static char WHITE_KING = 'K';                                        
-        const static char BLACK_KING = 'k';                                        
-        const static char WHITE_QUEEN = 'Q';                                       
-        const static char BLACK_QUEEN = 'q';                                       
-        const static char WHITE_ROOK = 'R';                                        
-        const static char BLACK_ROOK = 'r';                                        
-        const static char WHITE_BISHOP = 'B';                                      
-        const static char BLACK_BISHOP = 'b';                                      
-        const static char WHITE_KNIGHT = 'N';                                      
-        const static char BLACK_KNIGHT = 'n';                                      
-        const static char WHITE_PAWN = 'P';                                        
-        const static char BLACK_PAWN = 'p';  
+        const static char WHITE_KING = 'K';
+        const static char BLACK_KING = 'k';
+        const static char WHITE_QUEEN = 'Q';
+        const static char BLACK_QUEEN = 'q';
+        const static char WHITE_ROOK = 'R';
+        const static char BLACK_ROOK = 'r';
+        const static char WHITE_BISHOP = 'B';
+        const static char BLACK_BISHOP = 'b';
+        const static char WHITE_KNIGHT = 'N';
+        const static char BLACK_KNIGHT = 'n';
+        const static char WHITE_PAWN = 'P';
+        const static char BLACK_PAWN = 'p';
 
         // Distances used on the board multiple times
         const static int BOARD_LEN = 8;

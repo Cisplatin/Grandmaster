@@ -26,7 +26,7 @@ class Controller {
         bool startGame(std::string, std::string);
         void playGame();
         void endGame();
-    
+
     public:
         Controller();
         ~Controller();

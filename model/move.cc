@@ -70,7 +70,7 @@ void Move::convertToPGN(std::string * PGN) const {
         // If its a black piece, we need to make it upper case
         PGN_piece = this->moved - (this->moved > 'a' ? 'a' - 'A' : 0);
     }
-    
+
     // Append an x if a capture is made
     if(this->captured) *PGN = Constants::PGN_CAPTURE + *PGN;
     if(PGN_piece != 0) *PGN = PGN_piece + *PGN;
@@ -83,21 +83,21 @@ void Move::convertToPGN(std::string * PGN) const {
     else if(this->check) *PGN += Constants::PGN_CHECK;
 }
 
-bool Move::validPosition(int row, int col) {                                       
-    // Checks if the given position is within the board                            
-    return (0 <= row && row < Constants::BOARD_LEN                                      
-         && 0 <= col && col < Constants::BOARD_LEN);                                    
-}                                                                                  
-                                                                                   
-bool Move::validPosition(string position) {                                        
-    // Checks if the given position is within the board                            
-    if(position.length() != Constants::POS_LENGTH) {                                                   
-        return false;                                                           
-    }                                                                           
-    int row, col;                                                               
-    Move::convertPosToInt(position, &row, &col);                                
-    return Move::validPosition(row, col);                                       
-}   
+bool Move::validPosition(int row, int col) {
+    // Checks if the given position is within the board
+    return (0 <= row && row < Constants::BOARD_LEN
+         && 0 <= col && col < Constants::BOARD_LEN);
+}
+
+bool Move::validPosition(string position) {
+    // Checks if the given position is within the board
+    if(position.length() != Constants::POS_LENGTH) {
+        return false;
+    }
+    int row, col;
+    Move::convertPosToInt(position, &row, &col);
+    return Move::validPosition(row, col);
+}
 
 void Move::convertPosToInt(string pos, int * row, int * col) {
     // Converts the given position into a row/col position,

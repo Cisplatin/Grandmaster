@@ -9,12 +9,12 @@
 #include <iostream>
 using namespace std;
 
-Game::Game(Player * const player_1, Player * const player_2, Controller * c) : 
+Game::Game(Player * const player_1, Player * const player_2, Controller * c) :
     player_1(player_1), player_2(player_2) {
 
     // Sets the players in the game to the given players
     this->control = c;
-    
+
     // Initialize the board with empty squares
     for(int i = 0; i < Constants::BOARD_LEN; i++) {
         for(int j = 0; j < Constants::BOARD_LEN; j++) {
@@ -24,7 +24,7 @@ Game::Game(Player * const player_1, Player * const player_2, Controller * c) :
 
     // Load up the standard board
     this->loadStandard();
-    
+
     // Make player one move first
     this->next = this->player_1;
 }
@@ -43,20 +43,20 @@ Game::~Game() {
 void Game::loadStandard() {
     // Loads the standard game setup
     ifstream standard("model/standard.txt");
-    
+
     // Load the board one piece at a time
     char piece;
     for(int i = 0; i < Constants::BOARD_LEN; i++) {
         for(int j = 0; j < Constants::BOARD_LEN; j++) {
             standard >> piece;
-    
+
             // Determine which player this piece belongs to
             Player * player;
             player = (piece < 'a') ? this->player_1 : this->player_2;
-            this->board[i][j] = Piece::generatePiece(piece, player, i, j, this); 
+            this->board[i][j] = Piece::generatePiece(piece, player, i, j, this);
             if(this->board[i][j] != NULL) {
                 this->updateAdd(piece, i, j);
-                
+
                 // Check if a king was created
                 if(piece == Constants::WHITE_KING || piece == Constants::BLACK_KING) {
                     player->setKingCoordinates(i, j);
@@ -145,7 +145,7 @@ bool Game::move(string pos_1, string pos_2) {
 
     // Move the piece
     this->movePiece(row_1, col_1, row_2, col_2);
-    this->switchTurns(); 
+    this->switchTurns();
 
     return 1;
 }
@@ -177,7 +177,7 @@ bool Game::validMove(int row_1, int col_1, int row_2, int col_2, bool mute) {
         if(!mute) this->control->error("There is no piece there.");
         return 0;
     }
-     
+
     // Make sure the position moving from belongs to the right player
     if(player != this->next) {
         if(!mute) this->control->error("Cannot move opponent's piece.");
@@ -245,9 +245,9 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
     if((type == Constants::WHITE_PAWN || type == Constants::BLACK_PAWN) &&
        col_1 != col_2 &&
        this->enPassent() == col_2 &&
-       ((row_1 - row_2 == 1 && 
+       ((row_1 - row_2 == 1 &&
          row_1 == Constants::ENPASSENT_DIST) ||
-        (row_2 - row_1 == 1 && 
+        (row_2 - row_1 == 1 &&
          row_1 == Constants::BOARD_LEN - Constants::ENPASSENT_DIST - 1))) {
         captured = this->getType(row_1, col_2);
         delete this->board[row_1][col_2];
@@ -297,7 +297,7 @@ bool Game::isMoved(int row, int col) const {
 int Game::enPassent() const {
     // Returns -1 if the last move was not an en passent, else returns
     // the row in which an en passent occured.
-        
+
     // Check if a move has even occured yet
     if(this->moves.empty()) {
         return -1;
@@ -337,7 +337,7 @@ int Game::undo() {
 
     // Moves the piece back to its original position, update the piece
     this->forceMovePiece(row_2, col_2, row_1, col_1);
-    
+
     // Check if a king was moved
     Piece * piece = this->board[row_1][col_1];
     char type = this->board[row_1][col_1]->getType();
@@ -351,12 +351,12 @@ int Game::undo() {
 
     // Replace any captured pieces (check if en-passent!)
     if(lastMove->captured != 0) {
-            Player * player = this->getPrev(); 
+            Player * player = this->getPrev();
             if(lastMove->enpassent) {
                 // If its an en passent, treat the row as the previous one
                 row_2 = row_1;
             }
-            Piece * regenerated = Piece::generatePiece(lastMove->captured, 
+            Piece * regenerated = Piece::generatePiece(lastMove->captured,
                                                        player, row_2, col_2, this);
             this->board[row_2][col_2] = regenerated;
             this->updateAdd(lastMove->captured, row_2, col_2);

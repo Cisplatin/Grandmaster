@@ -9,7 +9,7 @@
 #include "pieces/knight.h"
 #include "pieces/pawn.h"
 
-Piece::Piece(char type, Player * const player, int row, int col, Game * game) 
+Piece::Piece(char type, Player * const player, int row, int col, Game * game)
              : type(type), player(player) {
     // Sets the type of the piece and the player
     this->row = row;
@@ -39,7 +39,7 @@ void Piece::updateMove(int row, int col) {
     this->moved++;
 }
 
-Piece * Piece::generatePiece(const char type, Player * const player, 
+Piece * Piece::generatePiece(const char type, Player * const player,
                              int row, int col, Game * game) {
     Piece * new_piece;
     switch(type) {

@@ -25,7 +25,7 @@ class Game {
         void loadStandard();
         void clearBoard();
 
-        Player * next; 
+        Player * next;
         void switchTurns();
     	bool validMove(int, int, int, int, bool);
         void movePiece(int, int, int, int);
@@ -37,7 +37,7 @@ class Game {
 
         bool noValidMove(Player *);
     public:
-        Game(Player * const, Player * const, Controller *); 
+        Game(Player * const, Player * const, Controller *);
         ~Game();
 
         Player * getNext() const;
