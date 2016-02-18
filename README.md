@@ -27,5 +27,3 @@ resign             # Resigns from the current game
 - A more comprehensive Makefile
 - Various TODOs spread in the code
 - Finish move class PGN conversion
-- Fix PGN ambiguity segfault (**PRIORITY**)
-- Full valgrind inspection
