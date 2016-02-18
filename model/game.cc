@@ -280,6 +280,11 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
     if(otherInCheckmate) move->setCheckmate(true);
     if(ambiguity)        move->setAmbiguity(ambiguity);
     this->moves.push(move);
+
+    // TODO remove
+    string PGN;
+    move->convertToPGN(&PGN);
+    cout << PGN << endl;
 }
 
 bool Game::isEmpty(int row, int col) const {
