@@ -43,6 +43,9 @@ class Constants {
         const static int POS_FILE_INDEX = 0;
         const static int POS_RANK_INDEX = 1;
         const static int POS_LENGTH = 2;
+
+        // ELO constants
+        const static int DEFAULT_ELO = 1200;
 };
 
 #endif

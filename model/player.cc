@@ -5,6 +5,7 @@ Player::Player(const int level) : level(level) {
     this->wins = 0;
     this->loses = 0;
     this->ties = 0;
+    this->ELO_rating =  Constants::DEFAULT_ELO;
 }
 
 Player::~Player() {
