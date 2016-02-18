@@ -36,6 +36,11 @@ void Controller::error(string err) const {
     cout << "> Error: " << err << endl;
 }
 
+void Controller::invalid(string cmd) const {
+    // Prints out an appropriate invalid input message
+    this->error("Invalid input for '" + cmd + "' command.");
+}
+
 void Controller::addPlayer(string name) {
     // Check if the player already exists
     if(this->players->count(name) != 0) {
@@ -96,7 +101,7 @@ void Controller::playGame() {
                 // Get the move from standard input
                 string pos_1, pos_2;
                 if(!(input_ss >> pos_1 >> pos_2) || input_ss >> junk) {
-                    this->error("Invalid input for 'move' command.");   
+                    this->invalid(parser);   
                 } else {
                     if(this->game->move(pos_1, pos_2)) {
                         // If the move is a success, print the board
@@ -122,7 +127,7 @@ void Controller::playGame() {
         } else if(parser == "resign") {
             // Make sure no junk was given
             if(input_ss >> junk) {
-                this->error("Invalid input for 'resign' command.");
+                this->invalid(parser);
             } else {
                 this->endGame();
                 return;
@@ -132,13 +137,13 @@ void Controller::playGame() {
         } else if(parser == "undo") {
             // Make sure no junk was given
             if(input_ss >> junk) {
-                this->error("Invalid input for 'undo' command.");
+                this->invalid(parser);
             } else {
                 if(!this->game->undo()) {
                     this->text_view->print();
                 }
             }
-
+    
         // An invalid command was given
         } else {
             this->error("Command '" + parser + "' not found.");
@@ -183,7 +188,7 @@ void Controller::play() {
             string name;
             // Check for valid inputs with no extras
             if(!(input_ss >> name) || input_ss >> junk) {
-                this->error("Invalid input for 'add' command.");
+                this->invalid(parser);
             } else {
                 // Add the player
                 this->addPlayer(name);
@@ -195,7 +200,7 @@ void Controller::play() {
             string name;
             // Check for valid inputs with no extras
             if(!(input_ss >> name) || input_ss >> junk) {
-                this->error("Invalid input for 'remove' command.");
+                this->error(parser);
             } else {
                 this->remPlayer(name);
             }
@@ -207,7 +212,7 @@ void Controller::play() {
             // Check for valid inputs with no extras
             if(!(input_ss >> name_1 && input_ss >> name_2) ||
                 input_ss >> junk) {
-                this->error("Invalid input for 'game' command.");
+                this->error(parser);
             } else {
                 if(this->startGame(name_1, name_2)) {
                     this->playGame();

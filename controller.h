@@ -35,7 +35,9 @@ class Controller {
         // Notifications from the game to the view
         void notifyAdd(char, int, int);
         void notifyRem(int, int);
+
         void error(std::string) const;
+        void invalid(std::string) const;
 };
 
 #endif
