@@ -38,6 +38,11 @@ class Constants {
         // Text representation of colored squares
         const static char WHITE_SQUARE = '_';
         const static char BLACK_SQUARE = ' ';
+
+        // Constants related to position indexing
+        const static int POS_FILE_INDEX = 0;
+        const static int POS_RANK_INDEX = 1;
+        const static int POS_LENGTH = 2;
 };
 
 #endif
