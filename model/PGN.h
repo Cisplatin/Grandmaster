@@ -13,7 +13,7 @@ class PGN {
     public:
         virtual ~PGN() = 0;
     private:
-        static std::stack<Move *> reverseStack(std::stack<Move *>);
+        static std::stack<Move *> * reverseStack(std::stack<Move *> *);
 };
 
 #endif
