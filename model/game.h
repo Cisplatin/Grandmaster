@@ -34,6 +34,7 @@ class Game {
         char getType(int, int) const;
 
         std::stack<Move *> moves;
+        int isAmbiguous(Move *);
 
         bool noValidMove(Player *);
     public:
