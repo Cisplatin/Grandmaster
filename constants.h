@@ -38,12 +38,6 @@ class Constants {
         // Text representation of colored squares
         const static char WHITE_SQUARE = '_';
         const static char BLACK_SQUARE = ' ';
-
-        // Ambigousness constants
-        const static int NONE_AMBIGUOUS = 0;
-        const static int FILE_AMBIGUOUS = 1;
-        const static int RANK_AMBIGUOUS = 2;
-        const static int FULL_AMBIGUOUS = 3;
 };
 
 #endif

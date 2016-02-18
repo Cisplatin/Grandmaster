@@ -8,7 +8,6 @@ Move::Move(int row_1, int col_1, int row_2, int col_2, char moved) :
     this->moved = moved;
     this->captured = 0;
     this->promotion = 0;
-    this->ambiguity = 0;
     this->enpassent = false;
     this->check = false;
     this->checkmate = false;
@@ -37,11 +36,6 @@ void Move::setCheckmate(bool checkmate) {
 void Move::setPromotion(char promotion) {
     // Set the promotion field
     this->promotion = promotion;
-}
-
-void Move::setAmbiguity(int ambiguity) {
-    // Set the ambiguity field
-    this->ambiguity = ambiguity;
 }
 
 void Move::convertToPGN(std::string * PGN) const {
@@ -79,17 +73,6 @@ void Move::convertToPGN(std::string * PGN) const {
     
     // Append an x if a capture is made
     if(this->captured) *PGN = Constants::PGN_CAPTURE + *PGN;
-    
-    // Append any ambiguity corrections
-    // TODO set constants instead of 0 and 1 here
-    string start_position;
-    Move::convertIntToPos(this->row_1, this->col_1, &start_position);
-    if(this->ambiguity == Constants::FILE_AMBIGUOUS || this->ambiguity == Constants::FULL_AMBIGUOUS) {
-        *PGN = start_position[0] + *PGN;
-    }
-    if(this->ambiguity == Constants::RANK_AMBIGUOUS || this->ambiguity == Constants::FULL_AMBIGUOUS) {
-        *PGN = start_position[1] + *PGN;
-    }
     if(PGN_piece != 0) *PGN = PGN_piece + *PGN;
 
     // Append an =P if a promotion was made

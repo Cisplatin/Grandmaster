@@ -14,6 +14,7 @@ resign             # Resigns from the current game
 ```
 
 ## Features To-do:
+- An exit command
 - Ability to load/save games in .PGN format
 - Ability to load/save players (with ELO rating)
 - Ability to promote pawns

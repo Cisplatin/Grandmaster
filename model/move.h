@@ -11,7 +11,6 @@ class Move {
         char moved;     // The piece that was moved
         char captured;  // Equals the captured piece if a capture was made
         char promotion; // Equals the promoted piece if a promotion was made
-        int ambiguity;  // Equals the level of ambiguity the move has
         bool enpassent; // Equals 1 if an enpassent was done
         bool check;     // Equals 1 if the other player is in check
         bool checkmate; // Equals 1 if the other player is in checkmate
@@ -24,7 +23,6 @@ class Move {
         void setEnpassent(bool);
         void setCheck(bool);
         void setPromotion(char);
-        void setAmbiguity(int);
         void setCheckmate(bool);
 
         static bool validPosition(int, int);
