@@ -91,8 +91,7 @@ bool Move::validPosition(int row, int col) {
                                                                                    
 bool Move::validPosition(string position) {                                        
     // Checks if the given position is within the board                            
-    // TODO set length constant instead of 2 here
-    if(position.length() != 2) {                                                   
+    if(position.length() != Constants::POS_LENGTH) {                                                   
         return false;                                                           
     }                                                                           
     int row, col;                                                               
@@ -104,8 +103,8 @@ void Move::convertPosToInt(string pos, int * row, int * col) {
     // Converts the given position into a row/col position,
     // setting the given pointers to the correct numbers. Assumes
     // that a valid position was given.
-    *row = Constants::BOARD_LEN - pos[1] + '1' - 1;
-    *col = pos[0] - 'a';
+    *row = Constants::BOARD_LEN - pos[Constants::POS_RANK_INDEX] + '1' - 1;
+    *col = pos[Constants::POS_FILE_INDEX] - 'a';
 }
 
 void Move::convertIntToPos(int row, int col, string * pos) {
