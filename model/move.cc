@@ -8,6 +8,7 @@ Move::Move(int row_1, int col_1, int row_2, int col_2, char moved) :
     this->moved = moved;
     this->captured = 0;
     this->promotion = 0;
+    this->ambiguity = 0;
     this->enpassent = false;
     this->check = false;
     this->checkmate = false;
@@ -36,6 +37,11 @@ void Move::setCheckmate(bool checkmate) {
 void Move::setPromotion(char promotion) {
     // Set the promotion field
     this->promotion = promotion;
+}
+
+void Move::setAmbiguity(int ambiguity) {
+    // Set the ambiguity field
+    this->ambiguity = ambiguity;
 }
 
 void Move::convertToPGN(std::string * PGN) const {

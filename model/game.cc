@@ -230,10 +230,11 @@ void Game::forceMovePiece(int row_1, int col_1, int row_2, int col_2) {
 
 void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
     // Moves a piece from row/col_1 to row/col_2
-    char type     = this->getType(row_1, col_1);
+    char type = this->getType(row_1, col_1);
     char captured = this->getType(row_2, col_2);
     Move * move = new Move(row_1, col_1, row_2, col_2, type);
     int ambiguity = this->isAmbiguous(move);
+
     this->forceMovePiece(row_1, col_1, row_2, col_2);
 
     // Check if a king was moved
@@ -274,9 +275,10 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
     // Push the new move onto the stack
     // TODO: add promotion information to the move
     if(enPassentOccured) move->setEnpassent(true);
-    if(captured != 0)    move->setCaptured(captured);
+    if(captured)         move->setCaptured(captured);
     if(otherInCheck)     move->setCheck(true);
     if(otherInCheckmate) move->setCheckmate(true);
+    if(ambiguity)        move->setAmbiguity(ambiguity);
     this->moves.push(move);
 }
 
@@ -426,10 +428,10 @@ int Game::isAmbiguous(Move * move) {
     } 
     // Returns an "ambiguitity level": 0 is for no ambiguity, 1 for only file,
     // 2 for only rank, and 3 for both file and rank ambiguity
-    if     (!fileTaken && !rankTaken) return 0;
-    else if( fileTaken && !rankTaken) return 1;
-    else if(!fileTaken &&  rankTaken) return 2;
-    else                              return 3;
+    if     (!fileTaken && !rankTaken) return Constants::NONE_AMBIGUOUS;
+    else if( fileTaken && !rankTaken) return Constants::FILE_AMBIGUOUS;
+    else if(!fileTaken &&  rankTaken) return Constants::RANK_AMBIGUOUS;
+    else                              return Constants::FULL_AMBIGUOUS;
 }
 
 bool Game::noValidMove(Player * player) {
