@@ -11,11 +11,17 @@ Move::Move(int row_1, int col_1, int row_2, int col_2, char moved) :
     this->enpassent = false;
     this->check = false;
     this->checkmate = false;
+    this->sinceCapture = 0;
 }
 
 void Move::setCaptured(char captured) {
     // Sets the captured field
     this->captured = captured;
+}
+
+void Move::setSinceCapture(int sinceCapture) {
+    // Sets the moves since captured
+    this->sinceCapture = sinceCapture;
 }
 
 void Move::setEnpassent(bool enpassent) {

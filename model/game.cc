@@ -27,6 +27,7 @@ Game::Game(Player * const player_1, Player * const player_2, Controller * c) :
 
     // Make player one move first
     this->next = this->player_1;
+    this->movesSinceCapture = 0;
 }
 
 Game::~Game() {
@@ -276,6 +277,11 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
     if(captured)         move->setCaptured(captured);
     if(otherInCheck)     move->setCheck(true);
     if(otherInCheckmate) move->setCheckmate(true);
+
+    // Set the number of moves since capture
+    this->movesSinceCapture++;
+    if(!captured)        move->setSinceCapture(this->movesSinceCapture);
+    else                 this->movesSinceCapture = 0;
     this->moves.push(move);
 }
 
@@ -371,6 +377,9 @@ int Game::undo() {
         }
     }
 
+    // Sets the number of moves since last capture
+    this->movesSinceCapture = lastMove->sinceCapture;
+
     // Changes the turn, deletes the last move
     delete lastMove;
     this->moves.pop();
@@ -434,6 +443,9 @@ bool Game::checkmate() {
 bool Game::stalemate() {
     // Returns true if the game is a checkmate
     Player * player = this->getNext();
+    if(this->movesSinceCapture == Constants::NO_CAPTURE_STALEMATE) {
+        return true;
+    }
     if(!inCheck(player) && this->noValidMove(player)) {
         return true;
     } else {

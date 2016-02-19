@@ -36,6 +36,7 @@ class Game {
         std::stack<Move *> moves;
 
         bool noValidMove(Player *);
+        int movesSinceCapture;
     public:
         Game(Player * const, Player * const, Controller *);
         ~Game();

@@ -46,6 +46,9 @@ class Constants {
 
         // ELO constants
         const static int DEFAULT_ELO = 1200;
+
+        // Number of no capture moves before stalemate
+        const static int NO_CAPTURE_STALEMATE = 50;
 };
 
 #endif

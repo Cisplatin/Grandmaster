@@ -18,7 +18,8 @@ resign             # Resigns from the current game
 - Ability to load/save games in .PGN format
 - Ability to load/save players (with ELO rating)
 - Ability to promote pawns
-- Automatic stalemate if 40 moves with no capture are made
+- Automatic stalemate if moves are repeated enough
+- Option to not draw if 50 moves pass with no capture
 - ELO scoring for players
 - Artificial intelligence to play against
 - Graphical interface

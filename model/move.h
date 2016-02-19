@@ -14,6 +14,7 @@ class Move {
         bool enpassent; // Equals 1 if an enpassent was done
         bool check;     // Equals 1 if the other player is in check
         bool checkmate; // Equals 1 if the other player is in checkmate
+        int sinceCapture; // The number of moves since the last capture
 
         Move(int, int, int, int, char);
         void convertToPGN(std::string *) const; // Returns the PGN string
@@ -24,6 +25,7 @@ class Move {
         void setCheck(bool);
         void setPromotion(char);
         void setCheckmate(bool);
+        void setSinceCapture(int);
 
         static bool validPosition(int, int);
         static bool validPosition(std::string);
