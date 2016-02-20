@@ -57,7 +57,7 @@ class Constants {
         const static int KNIGHT_VALUE = 3;
         const static int ROOK_VALUE = 5;
         const static int QUEEN_VALUE = 10;
-        // const static int KING_VALUE = std::numeric_limits<int>::max();
+        const static int KING_VALUE = std::numeric_limits<int>::max();
 };
 
 #endif
