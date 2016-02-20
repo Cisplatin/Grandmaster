@@ -42,15 +42,18 @@ int Player::getKingCol() const {
 bool operator> (Player &player1, Player &player2) {
     return player1.ELO_rating > player2.ELO_rating;
 }
-
 bool operator< (Player &player1, Player &player2) {
     return player1.ELO_rating < player2.ELO_rating;
 }
-
 bool operator>= (Player &player1, Player &player2) {
     return player1.ELO_rating >= player2.ELO_rating;
 }
-
 bool operator<= (Player &player1, Player &player2) {
     return player1.ELO_rating <= player2.ELO_rating;
+}
+bool operator== (Player &player1, Player &player2) {
+    return player1.ELO_rating == player2.ELO_rating;
+}
+bool operator!= (Player &player1, Player &player2) {
+    return player1.ELO_rating != player2.ELO_rating;
 }

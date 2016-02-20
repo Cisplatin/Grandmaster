@@ -8,11 +8,11 @@ class Player {
         const int level; // The level of the player: if its a human, set to 0,
                          // else set the level from 1 - 10.
         int kingRow, kingCol;
+        int ELO_rating;
     public:
         Player(const int); // Creates a new player
         ~Player();
 
-        int ELO_rating;
         bool isHuman() const;
         int wins, loses, ties;
         int totalGames() const;
@@ -24,6 +24,8 @@ class Player {
         friend bool operator< (Player &player1, Player &player2);
         friend bool operator<= (Player &player1, Player &player2);
         friend bool operator>= (Player &player1, Player &player2);
+        friend bool operator== (Player &player1, Player &player2);
+        friend bool operator!= (Player &player1, Player &player2);
 };
 
 #endif
