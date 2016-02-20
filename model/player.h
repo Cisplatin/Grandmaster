@@ -20,8 +20,10 @@ class Player {
         int getKingRow() const;
         int getKingCol() const;
 
-        friend bool operator>(Player &player1, Player &player2);
-        friend bool operator<(Player &player1, Player &player2);
+        friend bool operator> (Player &player1, Player &player2);
+        friend bool operator< (Player &player1, Player &player2);
+        friend bool operator<= (Player &player1, Player &player2);
+        friend bool operator>= (Player &player1, Player &player2);
 };
 
 #endif
