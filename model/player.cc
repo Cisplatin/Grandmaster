@@ -34,3 +34,12 @@ int Player::getKingRow() const {
 int Player::getKingCol() const {
     return this->kingCol;
 }
+
+
+// The following few functions are definitions for the comparisons of different
+// players. Comparisons are defined by the ELO rating of the given players
+bool operator>(Player &player1, Player &player2) {
+    return player1.ELO_rating > player2.ELO_rating;
+}
+
+
