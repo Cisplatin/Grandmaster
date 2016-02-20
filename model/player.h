@@ -13,6 +13,7 @@ class Player {
         Player(const int); // Creates a new player
         ~Player();
 
+        // Functions related to the player itself
         bool isHuman() const;
         int wins, loses, ties;
         int totalGames() const;
@@ -20,6 +21,7 @@ class Player {
         int getKingRow() const;
         int getKingCol() const;
 
+        // Functions for player comparison
         friend bool operator> (Player &player1, Player &player2);
         friend bool operator< (Player &player1, Player &player2);
         friend bool operator<= (Player &player1, Player &player2);
