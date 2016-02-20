@@ -1,7 +1,7 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-#include <string>
+#include <limits>
 
 class Constants {
     public:
@@ -49,6 +49,15 @@ class Constants {
 
         // Number of no capture moves before stalemate
         const static int NO_CAPTURE_STALEMATE = 50;
+
+        // The value of various pieces. These values are based on
+        // Yevgeny Gik's modern interpretation of average mobility
+        const static int PAWN_VALUE = 1;
+        const static int BISHOP_VALUE = 3;
+        const static int KNIGHT_VALUE = 3;
+        const static int ROOK_VALUE = 5;
+        const static int QUEEN_VALUE = 10;
+        // const static int KING_VALUE = std::numeric_limits<int>::max();
 };
 
 #endif
