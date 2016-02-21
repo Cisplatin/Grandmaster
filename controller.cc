@@ -151,8 +151,7 @@ void Controller::playGame() {
             if(!(input_ss >> filename) || input_ss >> junk) {
                 this->invalid(parser);
             } else {
-                // TODO actually export the PGN file
-                this->error("PGN export is still a work in progress.");
+                this->game->PGN_export(filename);
             }
 
         // An invalid command was given

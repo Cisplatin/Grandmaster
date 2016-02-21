@@ -54,6 +54,8 @@ class Game {
         int enPassent() const;
         int undo();
 
+        void PGN_export(std::string) const;
+
         bool checkmate();
         bool stalemate();
         bool inCheck(Player *) const;
