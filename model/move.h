@@ -27,6 +27,7 @@ class Move {
         void setCheckmate(bool);
         void setSinceCapture(int);
 
+        // General move validation and conversions
         static bool validPosition(int, int);
         static bool validPosition(std::string);
         static void convertPosToInt(std::string, int *, int *);

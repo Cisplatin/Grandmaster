@@ -22,12 +22,12 @@ class Player {
         int getKingCol() const;
 
         // Functions for player comparison
-        friend bool operator> (Player &player1, Player &player2);
-        friend bool operator< (Player &player1, Player &player2);
-        friend bool operator<= (Player &player1, Player &player2);
-        friend bool operator>= (Player &player1, Player &player2);
-        friend bool operator== (Player &player1, Player &player2);
-        friend bool operator!= (Player &player1, Player &player2);
+        friend bool operator> (Player&, Player&);
+        friend bool operator< (Player&, Player&);
+        friend bool operator<= (Player&, Player&);
+        friend bool operator>= (Player&, Player&);
+        friend bool operator== (Player&, Player&);
+        friend bool operator!= (Player&, Player&);
 };
 
 #endif
