@@ -279,9 +279,12 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
     if(otherInCheckmate) move->setCheckmate(true);
 
     // Set the number of moves since capture
-    this->movesSinceCapture++;
-    if(!captured)        move->setSinceCapture(this->movesSinceCapture);
-    else                 this->movesSinceCapture = 0;
+    if(!captured && type != Constants::WHITE_PAWN && type != Constants::BLACK_PAWN) {
+        this->movesSinceCapture++;
+        move->setSinceCapture(this->movesSinceCapture);
+    } else {
+        this->movesSinceCapture = 0;
+    }
     this->moves.push(move);
 }
 
