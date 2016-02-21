@@ -14,9 +14,9 @@ View::View() {
 View::~View() {
     // Delete all heap-allocated memory
     for(int i = 0; i < Constants::BOARD_LEN; i++) {
-        delete this->board[i];
+        delete[] this->board[i];
     }
-    delete this->board;
+    delete[] this->board;
 }
 
 void View::add(const char piece, const int i, const int j) {

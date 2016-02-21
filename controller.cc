@@ -172,7 +172,9 @@ void Controller::endGame() {
 
     // Frees memory associated with the game
     delete this->game;
+    this->game = NULL;
     delete this->text_view;
+    this->text_view = NULL;
 }
 
 void Controller::play() {
