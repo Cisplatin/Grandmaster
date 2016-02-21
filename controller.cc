@@ -202,7 +202,7 @@ void Controller::play() {
             string name;
             // Check for valid inputs with no extras
             if(!(input_ss >> name) || input_ss >> junk) {
-                this->error(parser);
+                this->invalid(parser);
             } else {
                 this->remPlayer(name);
             }
@@ -214,7 +214,7 @@ void Controller::play() {
             // Check for valid inputs with no extras
             if(!(input_ss >> name_1 && input_ss >> name_2) ||
                 input_ss >> junk) {
-                this->error(parser);
+                this->invalid(parser);
             } else {
                 if(this->startGame(name_1, name_2)) {
                     this->playGame();
