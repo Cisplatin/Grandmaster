@@ -17,12 +17,14 @@ game <name> <name> # Starts a game between the two given players
 move <pos> <pos>   # Moves the piece at the given position
 undo               # Returns the game to the state before the last move
 resign             # Resigns from the current game
+export <file>      # Writes the PGN-ified game to the given file
 ```
 
 ## Features To-do:
 - Ability to load/save games in .PGN format
 - Ability to load/save players (with ELO rating)
 - Ability to promote pawns
+- Ability to move with standard PGN notation
 - Stalemate if moves are repeated enough
 - Method to allow for draw control
 - ELO scoring for players

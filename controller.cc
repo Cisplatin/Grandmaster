@@ -144,6 +144,17 @@ void Controller::playGame() {
                 }
             }
 
+        // An export was called for
+        } else if(parser == "export") {
+            // Get the file to export to
+            string filename;
+            if(!(input_ss >> filename) || input_ss >> junk) {
+                this->invalid(parser);
+            } else {
+                // TODO actually export the PGN file
+                this->error("PGN export is still a work in progress.");
+            }
+
         // An invalid command was given
         } else {
             this->error("Command '" + parser + "' not found.");
