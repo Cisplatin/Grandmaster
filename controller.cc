@@ -221,6 +221,15 @@ void Controller::play() {
                 }
             }
 
+        // Exits the game
+        } else if(parser == "exit") {
+            // Check for valid inputs with no extras
+            if(input_ss >> junk) {
+                this->invalid(parser);
+            } else {
+                return;
+            }
+
         // Invalid command given
         } else {
             this->error("Command '" + parser + "' not found.");
