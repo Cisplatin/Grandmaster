@@ -32,4 +32,8 @@ class Move {
         static bool validPosition(std::string);
         static void convertPosToInt(std::string, int *, int *);
         static void convertIntToPos(int, int, std::string *);
+
+        // Operator overloads
+        friend bool operator== (Move&, Move&);
+        friend bool operator!= (Move&, Move&);
 };

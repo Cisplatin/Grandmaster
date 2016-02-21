@@ -120,3 +120,16 @@ void Move::convertIntToPos(int row, int col, string * pos) {
     *pos += col + 'a';
     *pos += Constants::BOARD_LEN - row + '1' - 1;
 }
+
+bool operator== (Move &move1, Move &move2) {
+    // True if the moves are equivalent pieces and positions
+    return (move1.row_1 == move2.row_1) &&
+           (move1.row_2 == move2.row_2) &&
+           (move1.col_1 == move2.col_1) &&
+           (move1.col_2 == move2.col_2) &&
+           (move1.moved == move2.moved);
+}
+
+bool operator!= (Move &move1, Move &move2) {
+    return !(move1 == move2);
+}
