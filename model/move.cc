@@ -48,7 +48,7 @@ void Move::convertToPGN(std::string * PGN) const {
     // TODO: account for ambiguous moves (i.e. two knights)
 
     // Check for castling first
-    if(this->moved == Constants::WHITE_KING || this->moved == Constants::BLACK_KING) {
+    if(Piece::isKing(this->moved)) {
         // Check for left castling
         if(col_2 == col_1 - 2) {
             *PGN = "O-O-O";
@@ -64,7 +64,7 @@ void Move::convertToPGN(std::string * PGN) const {
 
     // Get the type of piece as per the PGN format
     char PGN_piece;
-    if(this->moved == Constants::WHITE_PAWN || this->moved == Constants::BLACK_PAWN) {
+    if(Piece::isPawn(this->moved)) {
         // Pawn movements do not have the piece appended. Unless a capture
         // occured, in which case the column is appended
         if(this->captured) {
