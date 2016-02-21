@@ -6,6 +6,9 @@ Bishop::Bishop(char type, Player * const player, int row, int col, Game * game) 
     Piece(type, player, row, col, game) {
 }
 
+Bishop::Bishop(const Bishop& other) : Piece(other) {
+}
+
 bool Bishop::validMove(int row, int col) const {
     // Check for diagonal movement
     if((row - this->row == col - this->col) ||

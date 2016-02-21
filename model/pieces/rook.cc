@@ -6,6 +6,9 @@ Rook::Rook(char type, Player * const player, int row, int col, Game * game) :
     Piece(type, player, row, col, game) {
 }
 
+Rook::Rook(const Rook& other) : Piece(other) {
+}
+
 bool Rook::validMove(int row, int col) const {
     // Returns true if given a valid relative position
     bool row_move;

@@ -6,6 +6,9 @@ Pawn::Pawn(char type, Player * const player, int row, int col, Game * game) :
     Piece(type, player, row, col, game) {
 }
 
+Pawn::Pawn(const Pawn& other) : Piece(other) {
+}
+
 bool Pawn::validMove(int row, int col) const {
     int allowed = (this->player == this->game->player_1) ? -1 : 1;
     if(this->game->isEmpty(row, col)) {
