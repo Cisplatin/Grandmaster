@@ -456,6 +456,6 @@ bool Game::stalemate() {
     }
 }
 
-void Game::PGN_export(string filename) const {
+void Game::PGN_export(string filename) {
     // TODO: actually export the game
 }

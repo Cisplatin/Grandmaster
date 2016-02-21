@@ -14,6 +14,7 @@ class Piece {
         Game * game;
     public:
         Piece(const char, Player * const player, int, int, Game *);
+        Piece(const Piece&);
         virtual ~Piece();
         int moved;
 
