@@ -203,7 +203,8 @@ bool Game::validMove(int row_1, int col_1, int row_2, int col_2, bool mute, stri
         return 0;
     }
 
-    // TODO Make sure the promotion is only there if appropriate
+    // TODO Make sure the promotion is only there if appropriate (and
+    //      that it is called for when necessary!)
     // TODO Make sure the promotion is valid piece
 
     // Make sure the move does not put them into check. We do this
