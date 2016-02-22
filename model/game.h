@@ -27,7 +27,7 @@ class Game {
 
         Player * next;
         void switchTurns();
-    	bool validMove(int, int, int, int, bool);
+    	bool validMove(int, int, int, int, bool, std::string);
         void movePiece(int, int, int, int);
         void forceMovePiece(int, int, int, int);
         Player * getPlayer(int, int) const;
@@ -48,7 +48,7 @@ class Game {
 
         Player * const player_1;
         Player * const player_2;
-        bool move(std::string, std::string);
+        bool move(std::string, std::string, std::string);
         bool isEmpty(int, int) const;
         bool isMoved(int, int) const;
         int enPassent() const;

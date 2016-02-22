@@ -99,11 +99,11 @@ void Controller::playGame() {
             // Check if the player is human, in which case, fetch the move
             if(this->game->getNext()->isHuman()) {
                 // Get the move from standard input
-                string pos_1, pos_2;
-                if(!(input_ss >> pos_1 >> pos_2) || input_ss >> junk) {
+                string pos_1, pos_2, promotion;
+                if(!(input_ss >> pos_1 >> pos_2 && (input_ss >> promotion || true)) || input_ss >> junk) {
                     this->invalid(parser);
                 } else {
-                    if(this->game->move(pos_1, pos_2)) {
+                    if(this->game->move(pos_1, pos_2, promotion)) {
                         // If the move is a success, print the board
                         this->text_view->print();
 

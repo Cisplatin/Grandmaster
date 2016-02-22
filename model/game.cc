@@ -127,7 +127,7 @@ string Game::getPrevColor() const {
     }
 }
 
-bool Game::move(string pos_1, string pos_2) {
+bool Game::move(string pos_1, string pos_2, string promotion) {
     // Make sure the given positions are valid
     if(!Move::validPosition(pos_1) || !Move::validPosition(pos_2)) {
         this->control->error("Invalid position given.");
@@ -140,7 +140,7 @@ bool Game::move(string pos_1, string pos_2) {
     Move::convertPosToInt(pos_2, &row_2, &col_2);
 
     // Check if its a valid move
-    if(!this->validMove(row_1, col_1, row_2, col_2, false)) {
+    if(!this->validMove(row_1, col_1, row_2, col_2, false, promotion)) {
         return 0;
     }
 
@@ -169,7 +169,7 @@ char Game::getType(int row, int col) const {
     }
 }
 
-bool Game::validMove(int row_1, int col_1, int row_2, int col_2, bool mute) {
+bool Game::validMove(int row_1, int col_1, int row_2, int col_2, bool mute, string promotion) {
     // Returns true if the given move is valid
     Player * player = this->getPlayer(row_1, col_1);
 
@@ -202,6 +202,9 @@ bool Game::validMove(int row_1, int col_1, int row_2, int col_2, bool mute) {
         if(!mute) this->control->error("Cannot capture your own piece.");
         return 0;
     }
+
+    // TODO Make sure the promotion is only there if appropriate
+    // TODO Make sure the promotion is valid piece
 
     // Make sure the move does not put them into check. We do this
     // by doing the actual move and checking if the king is in check.
@@ -423,7 +426,7 @@ bool Game::noValidMove(Player * player) {
         for(int j = 0; j < Constants::BOARD_LEN; j++) {
             for(int k = 0; k < Constants::BOARD_LEN; k++) {
                 for(int l = 0; l < Constants::BOARD_LEN; l++) {
-                    if(this->validMove(i, j, k, l, true)) {
+                    if(this->validMove(i, j, k, l, true, "")) {
                         return false;
                     }
                 }
