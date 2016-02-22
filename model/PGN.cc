@@ -1,7 +1,22 @@
 #include "PGN.h"
+#include "move.h"
 using namespace std;
 
-stack<Move *> * reverseStack(stack<Move *> * current) {
+stack<Move *> * PGN::copyStack(stack<Move *> * current) {
+    // Returns a deep copy of the given stack without changing this one
+    stack<Move *> * tmp = PGN::reverseStack(current);
+    stack<Move *> * new_stack = new stack<Move *>();
+    while(!tmp->empty()) {
+        Move * new_move = new Move(*tmp->top());
+        new_stack->push(new_move);
+        current->push(tmp->top());
+        tmp->pop();
+    }
+    delete tmp;
+    return new_stack;
+}
+
+stack<Move *> * PGN::reverseStack(stack<Move *> * current) {
     // Returns a reversed stack of the given one. This destroys
     // the inputted stack.
     stack<Move *> * reversed = new stack<Move *>();
