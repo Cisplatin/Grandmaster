@@ -17,6 +17,7 @@ class Move {
         int sinceCapture; // The number of moves since the last capture
 
         Move(int, int, int, int, char);
+        Move(const Move&);
         void convertToPGN(std::string *) const; // Returns the PGN string
 
         // Building methods for avoiding large constructors

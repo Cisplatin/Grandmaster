@@ -14,6 +14,17 @@ Move::Move(int row_1, int col_1, int row_2, int col_2, char moved) :
     this->sinceCapture = 0;
 }
 
+Move::Move(const Move &other) : row_1(other.row_1), row_2(other.row_2),
+                                col_1(other.col_1), col_2(other.col_2) {
+    this->moved = other.moved;
+    this->captured = other.captured;
+    this->promotion = other.promotion;
+    this->enpassent = other.enpassent;
+    this->check = other.check;
+    this->checkmate = other.checkmate;
+    this->sinceCapture = other.sinceCapture;
+}
+
 void Move::setCaptured(char captured) {
     // Sets the captured field
     this->captured = captured;
