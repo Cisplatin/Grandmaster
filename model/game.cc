@@ -457,5 +457,6 @@ bool Game::stalemate() {
 }
 
 void Game::PGN_export(string filename) {
-    // TODO: actually export the game
+    // Send the stack and the filename to PGN for processing
+    PGN::PGN_export(filename, &this->moves);
 }

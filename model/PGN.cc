@@ -2,6 +2,11 @@
 #include "move.h"
 using namespace std;
 
+void PGN::PGN_export(string filename, stack<Move *> * moves) {
+    // Exports the PGN game to the given file
+    int a = 3;
+}
+
 stack<Move *> * PGN::copyStack(stack<Move *> * current) {
     // Returns a deep copy of the given stack without changing this one
     stack<Move *> * tmp = PGN::reverseStack(current);

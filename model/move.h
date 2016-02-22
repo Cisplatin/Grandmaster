@@ -18,7 +18,9 @@ class Move {
 
         Move(int, int, int, int, char);
         Move(const Move&);
-        void convertToPGN(std::string *) const; // Returns the PGN string
+
+        // PGN related methods
+        void convertToPGN(std::string *) const;
 
         // Building methods for avoiding large constructors
         void setCaptured(char);

@@ -142,5 +142,6 @@ bool operator== (Move &move1, Move &move2) {
 }
 
 bool operator!= (Move &move1, Move &move2) {
+    // True if the moves are not equivalnet
     return !(move1 == move2);
 }
