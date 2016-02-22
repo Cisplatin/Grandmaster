@@ -5,6 +5,7 @@
 class Move;
 
 #include <stack>
+#include <fstream>
 
 /*
     An abstract class for generating and reading PGN files
