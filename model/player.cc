@@ -5,7 +5,8 @@ Player::Player(const int level) : level(level) {
     this->wins = 0;
     this->loses = 0;
     this->ties = 0;
-    this->ELO_rating =  Constants::DEFAULT_ELO;
+    this->ELO_rating = Constants::DEFAULT_ELO;
+    this->highestELO = Constants::DEFAULT_ELO;
 }
 
 Player::~Player() {
@@ -18,7 +19,7 @@ bool Player::isHuman() const {
 
 int Player::totalGames() const {
     // Returns the total number of games played by this player
-    return this->wins + this->loses;
+    return this->wins + this->loses + this->ties;
 }
 
 void Player::winGame(Player * winner, Player * loser) {
@@ -71,4 +72,16 @@ bool operator== (Player &player1, Player &player2) {
 }
 bool operator!= (Player &player1, Player &player2) {
     return player1.ELO_rating != player2.ELO_rating;
+}
+
+int Player::calculateKFactor() const {
+    // Returns the K-factor for ELO ratings of the given player
+    if(this->totalGames() < Constants::THRESHOLD_MATCHES) {
+        return Constants::ELO_K_TIER_1;
+    // TODO actually update highestELO
+    } else if(this->highestELO < Constants::THRESHOLD_SCORE) {
+        return Constants::ELO_K_TIER_2;
+    } else {
+        return Constants::ELO_K_TIER_3;
+    }
 }

@@ -10,6 +10,9 @@ class Player {
         int kingRow, kingCol;
         int wins, loses, ties;
         int ELO_rating;
+        int highestELO;
+
+        int calculateKFactor() const;
     public:
         Player(const int);
         ~Player();

@@ -46,6 +46,11 @@ class Constants {
 
         // ELO constants
         const static int DEFAULT_ELO = 1200;
+        const static int THRESHOLD_MATCHES = 30;
+        const static int THRESHOLD_SCORE = 2400;
+        const static int ELO_K_TIER_1 = 40;
+        const static int ELO_K_TIER_2 = 20;
+        const static int ELO_K_TIER_3 = 10;
 
         // Number of no capture moves before stalemate
         const static int NO_CAPTURE_STALEMATE = 50;
