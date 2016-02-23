@@ -173,11 +173,9 @@ void Controller::endGame() {
 
     // Ends the game
     if(this->game->stalemate()) {
-        this->game->getPrev()->ties++;
-        this->game->getNext()->ties++;
+        Player::tieGame(this->game->getPrev(), this->game->getNext());
     } else {
-        this->game->getPrev()->wins++;
-        this->game->getNext()->loses++;
+        Player::winGame(this->game->getPrev(), this->game->getNext());
     }
 
     // Frees memory associated with the game

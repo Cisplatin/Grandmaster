@@ -21,6 +21,18 @@ int Player::totalGames() const {
     return this->wins + this->loses;
 }
 
+void Player::winGame(Player * winner, Player * loser) {
+    // The first player has beat the second player
+    winner->wins++;
+    loser->loses++;
+}
+
+void Player::tieGame(Player * player_1, Player * player_2) {
+    // The two players have just tied
+    player_1->ties++;
+    player_2->ties++;
+}
+
 void Player::setKingCoordinates(int row, int col) {
     // Sets the co-ordinates of the king
     this->kingRow = row;
