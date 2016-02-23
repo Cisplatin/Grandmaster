@@ -414,6 +414,15 @@ int Game::undo() {
         }
     }
 
+    // Undo any promotions that were done
+    if(lastMove->promotion) {
+        Player * player = this->board[row_1][col_1]->getPlayer();
+        delete this->board[row_1][col_1];
+        char type = (player == this->player_1) ? Constants::WHITE_PAWN : Constants::BLACK_PAWN;
+        this->board[row_1][col_1] = Piece::generatePiece(type, player, row_1, col_1, this);
+        this->updateAdd(type, row_1, col_1);
+    }
+
     // Sets the number of moves since last capture
     this->movesSinceCapture = lastMove->sinceCapture;
 

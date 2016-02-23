@@ -20,8 +20,7 @@ export <file>         # Writes the PGN-ified game to the given file
 
 ## Features To-do:
 - Load games in .PGN format
-- Load/save players
-- Promote pawns
+- Option to load/save players
 - Move with standard PGN notation
 - Stalemate if moves are repeated enough
 - Method to allow for draw control
