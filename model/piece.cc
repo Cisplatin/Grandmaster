@@ -55,6 +55,16 @@ bool Piece::isValidType(char type) {
     return validType;
 }
 
+bool Piece::isWhiteType(char type) {
+    // Returns true if the given piece is a white piece
+    return (type == Constants::WHITE_PAWN ||
+            type == Constants::WHITE_KNIGHT ||
+            type == Constants::WHITE_BISHOP || 
+            type == Constants::WHITE_ROOK ||
+            type == Constants::WHITE_QUEEN ||
+            type == Constants::WHITE_KING);
+}
+
 Piece * Piece::generatePiece(const char type, Player * const player,
                              int row, int col, Game * game) {
     Piece * new_piece;

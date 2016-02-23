@@ -52,8 +52,7 @@ void Game::loadStandard() {
             standard >> piece;
 
             // Determine which player this piece belongs to
-            Player * player;
-            player = (piece < 'a') ? this->player_1 : this->player_2;
+            Player * player = (Piece::isWhiteType(piece)) ? this->player_1 : this->player_2;
             this->board[i][j] = Piece::generatePiece(piece, player, i, j, this);
             if(this->board[i][j] != NULL) {
                 this->updateAdd(piece, i, j);
@@ -221,7 +220,7 @@ bool Game::validMove(int row_1, int col_1, int row_2, int col_2, bool mute, stri
             if(!mute) this->control->error("Invalid promotion given.");
             return 0;
         // Check if the promoted piece belongs to the correct played by FIDE rules
-        } else if((promotion[0] < 'a') ^ (this->next == this->player_1)) {
+        } else if(Piece::isWhiteType(promotion[0]) ^ (this->next == this->player_1)) {
             if(!mute) this->control->error("Cannot promote to opponent's piece.");
             return 0;
         }

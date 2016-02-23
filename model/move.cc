@@ -85,7 +85,7 @@ void Move::convertToPGN(std::string * PGN) const {
         }
     } else {
         // If its a black piece, we need to make it upper case
-        PGN_piece = this->moved - (this->moved > 'a' ? 'a' - 'A' : 0);
+        PGN_piece = this->moved - (!Piece::isWhiteType(this->moved) ? 'a' - 'A' : 0);
     }
 
     // Append an x if a capture is made

@@ -24,6 +24,7 @@ void Text_View::print() const {
         }
         std::cout << std::endl;
     }
+
     // Print out the bottom legend
     std::cout << "  ";
     for(int i = 0; i < Constants::BOARD_LEN; i++) {

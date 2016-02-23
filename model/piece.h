@@ -27,6 +27,7 @@ class Piece {
 
         // General piece related methods
         static bool isValidType(char);
+        static bool isWhiteType(char);
         static Piece * generatePiece(char, Player * const, int, int, Game *);
         static bool isPawn(char);
         static bool isKing(char);
