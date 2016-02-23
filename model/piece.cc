@@ -47,6 +47,14 @@ void Piece::updateMove(int row, int col) {
     this->moved++;
 }
 
+bool Piece::isValidType(char type) {
+    // Returns true if the given piece is a valid type
+    Piece * test_piece = Piece::generatePiece(type, NULL, 0, 0, NULL);
+    bool validType = (test_piece != 0);
+    delete test_piece;
+    return validType;
+}
+
 Piece * Piece::generatePiece(const char type, Player * const player,
                              int row, int col, Game * game) {
     Piece * new_piece;

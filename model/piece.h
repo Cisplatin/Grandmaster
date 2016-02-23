@@ -26,6 +26,7 @@ class Piece {
         void updateMove(int, int);
 
         // General piece related methods
+        static bool isValidType(char);
         static Piece * generatePiece(char, Player * const, int, int, Game *);
         static bool isPawn(char);
         static bool isKing(char);

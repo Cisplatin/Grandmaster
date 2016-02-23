@@ -203,9 +203,25 @@ bool Game::validMove(int row_1, int col_1, int row_2, int col_2, bool mute, stri
         return 0;
     }
 
-    // TODO Make sure the promotion is only there if appropriate (and
-    //      that it is called for when necessary!)
-    // TODO Make sure the promotion is valid piece
+    // Check for promotions
+    char type = this->board[row_1][col_1]->getType();
+    if(Piece::isPawn(type) && (row_2 == Constants::BOARD_LEN || row_2 == 0)) {
+        // Make sure a valid promotion was given (valid piece, length)
+        if(promotion.length() == 0) {
+            if(!mute) this->control->error("Must give a piece to promote to.");
+            return 0;
+        // TODO Check if the piece belongs to the proper player
+        } else if(promotion.length() != 1 || !Piece::isValidType(promotion[0])) {
+            if(!mute) this->control->error("Invalid promotion given.");
+            return 0;
+        }
+    } else if(promotion.length() != 0) {
+        // Make sure no promotion was given
+        if(promotion.length() != 0) {
+            if(!mute) this->control->error("No promotion is to be made.");
+            return 0;
+        }
+    }
 
     // Make sure the move does not put them into check. We do this
     // by doing the actual move and checking if the king is in check.
