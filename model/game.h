@@ -28,7 +28,7 @@ class Game {
         Player * next;
         void switchTurns();
     	bool validMove(int, int, int, int, bool, std::string);
-        void movePiece(int, int, int, int);
+        void movePiece(int, int, int, int, char);
         void forceMovePiece(int, int, int, int);
         Player * getPlayer(int, int) const;
         char getType(int, int) const;

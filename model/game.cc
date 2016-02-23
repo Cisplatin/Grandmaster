@@ -144,8 +144,14 @@ bool Game::move(string pos_1, string pos_2, string promotion) {
         return 0;
     }
 
+    // Extract the promotion
+    char promotionType = 0;
+    if(promotion.length() > 0) {
+        promotionType = promotion[0];
+    }
+
     // Move the piece
-    this->movePiece(row_1, col_1, row_2, col_2);
+    this->movePiece(row_1, col_1, row_2, col_2, promotionType);
     this->switchTurns();
 
     return 1;
@@ -225,7 +231,7 @@ bool Game::validMove(int row_1, int col_1, int row_2, int col_2, bool mute, stri
 
     // Make sure the move does not put them into check. We do this
     // by doing the actual move and checking if the king is in check.
-    this->movePiece(row_1, col_1, row_2, col_2);
+    this->movePiece(row_1, col_1, row_2, col_2, 0);
     bool check = this->inCheck(this->board[row_2][col_2]->getPlayer());
     this->undo();        // Undo switches turns, so we switch again
     this->switchTurns(); // to make up for the fake move
@@ -249,15 +255,15 @@ void Game::forceMovePiece(int row_1, int col_1, int row_2, int col_2) {
     this->board[row_2][col_2]->updateMove(row_2, col_2);
 }
 
-void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
+void Game::movePiece(int row_1, int col_1, int row_2, int col_2, char promotion) {
     // Moves a piece from row/col_1 to row/col_2
     char type = this->getType(row_1, col_1);
     char captured = this->getType(row_2, col_2);
     this->forceMovePiece(row_1, col_1, row_2, col_2);
+    Player * player = this->board[row_2][col_2]->getPlayer();
 
     // Check if a king was moved
     if(Piece::isKing(type)) {
-        Player * player = this->board[row_2][col_2]->getPlayer();
         player->setKingCoordinates(row_2, col_2);
     }
 
@@ -286,17 +292,25 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2) {
         }
     }
 
+    // Check if a promotion occurred
+    if(promotion) {
+        // Replace the given piece with the proper promotion
+        delete this->board[row_2][col_2];
+        this->board[row_2][col_2] = Piece::generatePiece(promotion, player, row_2, col_2, this);
+        this->updateAdd(promotion, row_2, col_2);
+    }
+
     // Get additional information about the move
     bool otherInCheck = this->inCheck(this->getNext());
     bool otherInCheckmate = this->checkmate();
 
     // Push the new move onto the stack
-    // TODO: add promotion information to the move
     Move * move = new Move(row_1, col_1, row_2, col_2, type);
     if(enPassentOccured) move->setEnpassent(true);
     if(captured)         move->setCaptured(captured);
     if(otherInCheck)     move->setCheck(true);
     if(otherInCheckmate) move->setCheckmate(true);
+    if(promotion)        move->setPromotion(promotion);
 
     // Set the number of moves since capture
     if(!captured && !Piece::isPawn(type)) {
