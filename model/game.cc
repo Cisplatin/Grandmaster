@@ -216,9 +216,13 @@ bool Game::validMove(int row_1, int col_1, int row_2, int col_2, bool mute, stri
         if(promotion.length() == 0) {
             if(!mute) this->control->error("Must give a piece to promote to.");
             return 0;
-        // TODO Check if the piece belongs to the proper player
+        // Check if the promotion given is a valid one
         } else if(promotion.length() != 1 || !Piece::isValidType(promotion[0])) {
             if(!mute) this->control->error("Invalid promotion given.");
+            return 0;
+        // Check if the promoted piece belongs to the correct played by FIDE rules
+        } else if((promotion[0] < 'a') ^ (this->next == this->player_1)) {
+            if(!mute) this->control->error("Cannot promote to opponent's piece.");
             return 0;
         }
     } else if(promotion.length() != 0) {
