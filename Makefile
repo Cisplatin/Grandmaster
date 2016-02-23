@@ -1,2 +1,6 @@
-all:
-		 g++ *.cc */*.cc */*/*.cc -o Grandmaster -std=c++11
+CC=g++
+SOURCES=*.cc */*.cc */*/*.cc
+EXEC=Grandmaster
+CFLAGS=-std=c++11
+all: 
+		$(CC) $(SOURCES) -o $(EXEC) $(CFLAGS)
