@@ -11,12 +11,13 @@ class Player {
         int wins, loses, ties;
         int ELO_rating;
     public:
-        Player(const int); // Creates a new player
+        Player(const int);
         ~Player();
 
         // Getters
         int getKingRow() const;
         int getKingCol() const;
+        int getELOrating() const;
         bool isHuman() const;
 
         // End-game functions for the player

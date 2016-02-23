@@ -16,8 +16,8 @@ class Piece {
         Piece(const char, Player * const player, int, int, Game *);
         Piece(const Piece&);
         virtual ~Piece();
-        int moved;
 
+        int moved;
         virtual bool validMove(int, int) const = 0;
 
         // Getters and setters
@@ -25,7 +25,7 @@ class Piece {
         Player * getPlayer() const;
         void updateMove(int, int);
 
-        // General piece related methods
+        // Piece-related static methods
         static bool isValidType(char);
         static bool isWhiteType(char);
         static Piece * generatePiece(char, Player * const, int, int, Game *);

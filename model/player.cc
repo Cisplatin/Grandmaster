@@ -47,6 +47,9 @@ int Player::getKingCol() const {
     return this->kingCol;
 }
 
+int Player::getELOrating() const {
+    return this->ELO_rating;
+}
 
 // The following few functions are definitions for the comparisons of different
 // players. Comparisons are defined by the ELO rating of the given players
