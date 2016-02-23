@@ -28,7 +28,4 @@ export <file>         # Writes the PGN-ified game to the given file
 - ELO scoring for players
 - Artificial intelligence to play against
 - Graphical interface
-
-## Internal To-do:
-- A more comprehensive Makefile
-- Various TODOs spread in the code
+- Various TODOs spread throughout the code
