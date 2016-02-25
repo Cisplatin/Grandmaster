@@ -86,11 +86,15 @@ int Player::calculateKFactor() const {
     }
 }
 
-int Player::calculateNewRating(int other, double status) const {
+void Player::calculateNewRating(int other, double status) {
     // Calculates the new rating of the player based on a <status> end-game
     // with a plyer of ELO rating <other>
     double result = status - this->expectedScoreAgainst(other);
-    return this->ELO_rating + this->calculateKFactor() * result;
+    result = this->ELO_rating + this->calculateKFactor() * result;
+    this->ELO_rating = (int)(result);
+    if(this->ELO_rating > this->highestELO) {
+        this->highestELO = this->ELO_rating;
+    }
 }
 
 double Player::expectedScoreAgainst(int other) const {
