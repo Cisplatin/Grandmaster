@@ -37,6 +37,12 @@ void Player::winGame(Player * winner, Player * loser) {
 
 void Player::tieGame(Player * player_1, Player * player_2) {
     // The two players have just tied 
+    // Calculate the new ratings
+    int old_tie_rating = player_1->ELO_rating;
+    player_1->calculateNewRating(player_2->ELO_rating, Constants::PLAYER_TIE);
+    player_2->calculateNewRating(old_tie_rating, Constants::PLAYER_TIE);
+
+    // Update the game counts
     player_1->ties++;
     player_2->ties++;
 }
