@@ -25,7 +25,6 @@ export <file>         # Writes the PGN-ified game to the given file
 - Stalemate if moves are repeated enough
 - Method to allow for draw control
 - PGN export after a game has finished
-- ELO scoring for players
 - Artificial intelligence to play against
 - Graphical interface
 - Various TODOs spread throughout the code
