@@ -25,12 +25,18 @@ int Player::totalGames() const {
 
 void Player::winGame(Player * winner, Player * loser) {
     // The first player has beat the second player
+    // Calculate the new ratings
+    int old_winner_rating = winner->ELO_rating;
+    winner->calculateNewRating(loser->ELO_rating, Constants::PLAYER_WIN);
+    loser->calculateNewRating(old_winner_rating, Constants::PLAYER_LOSE);
+
+    // Update the game counts
     winner->wins++;
     loser->loses++;
 }
 
 void Player::tieGame(Player * player_1, Player * player_2) {
-    // The two players have just tied
+    // The two players have just tied 
     player_1->ties++;
     player_2->ties++;
 }
