@@ -53,6 +53,11 @@ class Constants {
         const static int ELO_K_TIER_3 = 10;
         const static int MAX_DIFFERENCE = 400;
 
+        // Relative measures of win/lose/tie
+        const static double PLAYER_WIN = 1;
+        const static double PLAYER_TIE = 0.5;
+        const static double PLAYER_LOSE = 0;
+
         // Number of no capture moves before stalemate
         const static int NO_CAPTURE_STALEMATE = 50;
 
