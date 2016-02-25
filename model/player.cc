@@ -1,4 +1,5 @@
 #include "player.h"
+using namespace std;
 
 Player::Player(const int level) : level(level) {
     // Sets the level of the new player
@@ -54,7 +55,6 @@ int Player::getELOrating() const {
 
 // The following few functions are definitions for the comparisons of different
 // players. Comparisons are defined by the ELO rating of the given players
-
 bool operator> (Player &player1, Player &player2) {
     return player1.ELO_rating > player2.ELO_rating;
 }
@@ -84,4 +84,10 @@ int Player::calculateKFactor() const {
     } else {
         return Constants::ELO_K_TIER_3;
     }
+}
+
+double Player::expectedScoreAgainst(int other) const {
+    // Returns the expected score against the given player
+    double ratio = (double)(other - this->ELO_rating) / Constants::MAX_DIFFERENCE;
+    return 1 / (1 + pow(10, ratio));
 }

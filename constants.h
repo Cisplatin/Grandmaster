@@ -51,6 +51,7 @@ class Constants {
         const static int ELO_K_TIER_1 = 40;
         const static int ELO_K_TIER_2 = 20;
         const static int ELO_K_TIER_3 = 10;
+        const static int MAX_DIFFERENCE = 400;
 
         // Number of no capture moves before stalemate
         const static int NO_CAPTURE_STALEMATE = 50;

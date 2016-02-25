@@ -1,6 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <math.h>
 #include "../constants.h"
 
 class Player {
@@ -13,6 +14,7 @@ class Player {
         int highestELO;
 
         int calculateKFactor() const;
+        double expectedScoreAgainst(int) const;
     public:
         Player(const int);
         ~Player();
