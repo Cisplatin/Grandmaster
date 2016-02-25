@@ -86,6 +86,13 @@ int Player::calculateKFactor() const {
     }
 }
 
+int Player::calculateNewRating(int other, double status) const {
+    // Calculates the new rating of the player based on a <status> end-game
+    // with a plyer of ELO rating <other>
+    double result = status - this->expectedScoreAgainst(other);
+    return this->ELO_rating + this->calculateKFactor() * result;
+}
+
 double Player::expectedScoreAgainst(int other) const {
     // Returns the expected score against the given player
     double ratio = (double)(other - this->ELO_rating) / Constants::MAX_DIFFERENCE;

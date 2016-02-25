@@ -14,6 +14,7 @@ class Player {
         int highestELO;
 
         int calculateKFactor() const;
+        int calculateNewRating(int, double) const;
         double expectedScoreAgainst(int) const;
     public:
         Player(const int);
