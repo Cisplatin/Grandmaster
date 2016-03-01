@@ -75,9 +75,15 @@ void Controller::loadPlayers() {
             istringstream input_ss(line);
             string name;
             int level, ELO_rating, highestELO, wins, loses, ties;
+
+            // Make sure proper input has been given, and no player already exists
             if(input_ss >> name >> level >> ELO_rating >> highestELO >> wins >> loses >> ties 
-               && !(input_ss >> junk)) {
-                // TODO create a player and save him in the map
+               && !(input_ss >> junk)
+               && this->players->count(name) == 0) {
+
+                // Create and save the new player
+                Player * new_player = new Player(name, level, ELO_rating, highestELO, wins, loses, ties);
+                this->players->insert(pair<string, Player *>(name, new_player));
             } else {
                 this->error("Player data is corrupt. Failed to load all players.");
                 return;

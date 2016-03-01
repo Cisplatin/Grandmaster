@@ -20,7 +20,6 @@ export <file>         # Writes the PGN-ified game to the given file
 
 ## Features To-do:
 - Load games in .PGN format
-- Option to load players
 - Move with standard PGN notation
 - Stalemate if moves are repeated enough
 - Method to allow for draw control
