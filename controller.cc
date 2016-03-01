@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <fstream>
 
 using namespace std;
 
@@ -39,6 +40,14 @@ void Controller::error(string err) const {
 void Controller::invalid(string cmd) const {
     // Prints out an appropriate invalid input message
     this->error("Invalid input for '" + cmd + "' command.");
+}
+
+void Controller::savePlayers() const {
+    // Saves the players in the game
+    ofstream file;
+    file.open("players.dat");
+    file << "This is a test";
+    file.close();
 }
 
 void Controller::addPlayer(string name) {
