@@ -25,7 +25,7 @@
 # Executables
 *.exe
 *.out
+*.app
 
 # Data objects
 *.dat
-*.app
