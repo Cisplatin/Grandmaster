@@ -2,7 +2,7 @@
 
 Grandmaster is a chess application written in C++. Still a work in progress.
 
-## Features:
+## Features
 
 ```Bash
 # Main commands:
@@ -18,7 +18,16 @@ resign                # Resigns from the current game
 export <file>         # Writes the PGN-ified game to the given file
 ```
 
-## Features To-do:
+## Common errors
+
+```
+Error: Player data is corrupt. Failed to load all players.
+```
+
+Someone has messed around with your saved data, and so not all players could be loaded. To fix the issue, either revert made changes to player.dat or delete the file. Grandmaster will generate a new save file, but you will lose all current players.
+
+## Features to-do
+
 - Load games in .PGN format
 - Move with standard PGN notation
 - Stalemate if moves are repeated enough
