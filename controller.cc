@@ -15,8 +15,9 @@ Controller::Controller() {
     this->game = 0;
     this->text_view = 0;
 
-    // Construct a new game
+    // Construct a new game, load players from memory
     this->players = new map<string, Player *>();
+    this->loadPlayers();
 }
 
 Controller::~Controller() {
@@ -63,6 +64,11 @@ void Controller::savePlayers() const {
         file << '\n';
     }
     file.close();
+}
+
+void Controller::loadPlayers() const {
+    // Loads players from memory
+    // TODO write the function
 }
 
 void Controller::addPlayer(string name) {
