@@ -66,7 +66,7 @@ void Controller::savePlayers() const {
     file.close();
 }
 
-void Controller::loadPlayers() const {
+void Controller::loadPlayers() {
     // Loads players from memory
     // TODO write the function
 }
