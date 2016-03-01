@@ -244,7 +244,6 @@ bool Game::validMove(int row_1, int col_1, int row_2, int col_2, bool mute, stri
 }
 
 void Game::forceMovePiece(int row_1, int col_1, int row_2, int col_2) {
-    // TODO pass in a move as a parameter instead
     // Forces the piece to move, regardless of any special circumstances.
     // Simply updates the position and the view
     delete this->board[row_2][col_2];
