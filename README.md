@@ -26,6 +26,16 @@ Error: Player data is corrupt. Failed to load all players.
 
 Someone has messed around with your saved data, and so not all players could be loaded. To fix the issue, either revert made changes to player.dat or delete the file. Grandmaster will generate a new save file, but you will lose all current players.
 
+## Compiling Grandmaster
+
+To run Grandmaster, run the following code:
+
+```Bash
+git clone https://www.github.com/Xenonstory/Grandmaster
+cd Grandmaster && make
+./Grandmaster
+```
+
 ## Features to-do
 
 - Load games in .PGN format
