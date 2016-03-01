@@ -23,14 +23,20 @@ class Player {
         // Getters
         int getKingRow() const;
         int getKingCol() const;
+
+        int getHighestELO() const;
         int getELOrating() const;
+
         int getWins() const;
         int getLoses() const;
         int getTies() const;
+
+        int getLevel() const;
         bool isHuman() const;
 
         // End-game functions for the player
         static void winGame(Player *, Player *);
+
         static void tieGame(Player *, Player *);
 
         // Functions related to the player itself

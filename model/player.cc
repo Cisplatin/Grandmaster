@@ -62,6 +62,11 @@ int Player::getTies() const {
     return this->ties;
 }
 
+int Player::getLevel() const {
+    // Returns the player's level
+    return this->level;
+}
+
 void Player::setKingCoordinates(int row, int col) {
     // Sets the co-ordinates of the king
     this->kingRow = row;
@@ -78,6 +83,10 @@ int Player::getKingCol() const {
 
 int Player::getELOrating() const {
     return this->ELO_rating;
+}
+
+int Player::getHighestELO() const {
+    return this->highestELO;
 }
 
 // The following few functions are definitions for the comparisons of different
