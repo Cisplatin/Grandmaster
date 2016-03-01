@@ -71,7 +71,7 @@ class Constants {
         const static int KING_VALUE = std::numeric_limits<int>::max();
 
         // Values for data serialization
-        const static int DAT_DELIMITER = '\t';
+        const static char DAT_DELIMITER = '\t';
 };
 
 #endif
