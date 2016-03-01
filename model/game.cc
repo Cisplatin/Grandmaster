@@ -35,10 +35,7 @@ Game::~Game() {
     this->clearBoard();
 
     // Deletes all stored moves
-    while(!this->moves.empty()) {
-        delete this->moves.top();
-        this->moves.pop();
-    }
+    PGN::deleteStack(&this->moves);
 }
 
 void Game::loadStandard() {

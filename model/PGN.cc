@@ -27,6 +27,14 @@ void PGN::PGN_export(string filename, stack<Move *> * moves) {
     delete reversed;
 }
 
+void PGN::deleteStack(stack<Move *> * current) {
+    // Deletes the given move stack
+    while(!current->empty()) {
+        delete current->top();
+        current->pop();
+    }
+}
+
 stack<Move *> * PGN::copyStack(stack<Move *> * current) {
     // Returns a deep copy of the given stack without changing this one
     stack<Move *> * tmp = PGN::reverseStack(current);
