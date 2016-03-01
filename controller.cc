@@ -2,12 +2,6 @@
 #include "model/game.h"
 #include "model/player.h"
 #include "view/text_view.h"
-
-#include <iostream>
-#include <string>
-#include <sstream>
-#include <fstream>
-
 using namespace std;
 
 Controller::Controller() {

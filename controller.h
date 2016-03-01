@@ -3,6 +3,9 @@
 
 #include <map>
 #include <string>
+#include <sstream>
+#include <fstream>
+#include <iostream>
 
 // Forward declarations of general classes
 class Game;
