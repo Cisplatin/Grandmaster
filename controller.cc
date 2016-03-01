@@ -24,7 +24,8 @@ Controller::~Controller() {
     delete this->game;
     delete this->text_view;
 
-    // Delete all players
+    // Delete all players (after saving them)
+    this->savePlayers();
     map<string, Player *>::iterator it = this->players->begin();
     for(; it != this->players->end(); it++) {
         delete it->second;
@@ -46,7 +47,16 @@ void Controller::savePlayers() const {
     // Saves the players in the game
     ofstream file;
     file.open("players.dat");
-    file << "This is a test";
+
+    // Go through all the current players and write their ELO and level
+    map<string, Player *>::iterator it = this->players->begin();
+    for(; it != this->players->end(); it++) {
+        // Write all the player info. The current format to be saved in is:
+        // <name> <ELO>
+        file << it->first << " ";
+        file << it->second->getELOrating() << " ";
+        file << '\n';
+    }
     file.close();
 }
 
