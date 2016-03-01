@@ -53,7 +53,7 @@ void Controller::savePlayers() const {
     for(; it != this->players->end(); it++) {
         // Write all the player info. The current format to be saved in is:
         // <name> <level> <ELO> <highest_ELO> <wins> <loses> <ties>
-        file << it->first                   << Constants::DAT_DELIMITER;
+        file << it->second->getName()       << Constants::DAT_DELIMITER;
         file << it->second->getLevel()      << Constants::DAT_DELIMITER;
         file << it->second->getELOrating()  << Constants::DAT_DELIMITER;
         file << it->second->getHighestELO() << Constants::DAT_DELIMITER;

@@ -63,6 +63,11 @@ int Player::getTies() const {
     return this->ties;
 }
 
+string Player::getName() const {
+    // Returns the name of the player
+    return this->name;
+}
+
 int Player::getLevel() const {
     // Returns the player's level
     return this->level;

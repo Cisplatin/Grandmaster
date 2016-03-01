@@ -33,6 +33,7 @@ class Player {
         int getLoses() const;
         int getTies() const;
 
+        std::string getName() const;
         int getLevel() const;
         bool isHuman() const;
 
