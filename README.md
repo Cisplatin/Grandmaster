@@ -1,8 +1,8 @@
 # Grandmaster
 
-Grandmaster is a chess application written in C++. Still a work in progress.
+Grandmaster is a chess application written in C++. This implementation includes features such as exporting the PGN of a game, and saving players and their ELO rating. Grandmaster is currently a work in progress.
 
-## Features
+## Commands
 
 ```Bash
 # Main commands:
