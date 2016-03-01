@@ -36,7 +36,7 @@ cd Grandmaster && make
 ./Grandmaster
 ```
 
-## Features to-do
+## Upcoming features
 
 - Load games in .PGN format
 - Move with standard PGN notation
