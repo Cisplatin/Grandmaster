@@ -1,13 +1,14 @@
 #include "player.h"
 using namespace std;
 
-Player::Player(const int level) : level(level) {
+Player::Player(const int level, const string name) : level(level) {
     // Sets the level of the new player
     this->wins = 0;
     this->loses = 0;
     this->ties = 0;
     this->ELO_rating = Constants::DEFAULT_ELO;
     this->highestELO = Constants::DEFAULT_ELO;
+    this->name = name;
 }
 
 Player::~Player() {

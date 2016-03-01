@@ -71,7 +71,7 @@ void Controller::addPlayer(string name) {
         this->error("Player '" + name + "' already exists.");
     } else {
         // TODO: add a way to set the level of the player to computer
-        Player * new_player = new Player(0);
+        Player * new_player = new Player(0, name);
         this->players->insert(pair<string, Player *>(name, new_player));
     }
 }

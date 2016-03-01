@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include <math.h>
+#include <string>
 #include "../constants.h"
 
 class Player {
@@ -12,12 +13,13 @@ class Player {
         int wins, loses, ties;
         int ELO_rating;
         int highestELO;
+        std::string name;
 
         int calculateKFactor() const;
         void calculateNewRating(int, double);
         double expectedScoreAgainst(int) const;
     public:
-        Player(const int);
+        Player(const int, const std::string);
         ~Player();
 
         // Getters
