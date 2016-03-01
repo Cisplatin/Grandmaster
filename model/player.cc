@@ -47,6 +47,21 @@ void Player::tieGame(Player * player_1, Player * player_2) {
     player_2->ties++;
 }
 
+int Player::getWins() const {
+    // Returns the number of wins
+    return this->wins;
+}
+
+int Player::getLoses() const {
+    // Returns the number of loses
+    return this->loses;
+}
+
+int Player::getTies() const {
+    // Returns the number of ties
+    return this->ties;
+}
+
 void Player::setKingCoordinates(int row, int col) {
     // Sets the co-ordinates of the king
     this->kingRow = row;

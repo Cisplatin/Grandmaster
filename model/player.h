@@ -24,6 +24,9 @@ class Player {
         int getKingRow() const;
         int getKingCol() const;
         int getELOrating() const;
+        int getWins() const;
+        int getLoses() const;
+        int getTies() const;
         bool isHuman() const;
 
         // End-game functions for the player
