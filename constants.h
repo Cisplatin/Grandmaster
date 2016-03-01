@@ -69,6 +69,9 @@ class Constants {
         const static int ROOK_VALUE = 5;
         const static int QUEEN_VALUE = 10;
         const static int KING_VALUE = std::numeric_limits<int>::max();
+
+        // Values for data serialization
+        const static int DAT_DELIMITER = '\t';
 };
 
 #endif
