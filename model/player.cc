@@ -11,6 +11,17 @@ Player::Player(const int level, const string name) : level(level) {
     this->name = name;
 }
 
+Player::Player(string name, int level, int ELO_rating, int highestELO,
+               int wins, int loses, int ties) : level(level) {
+    // Constructor for loading players from memory
+    this->wins = wins;
+    this->loses = loses;
+    this->ties = ties;
+    this->ELO_rating = ELO_rating;
+    this->highestELO = highestELO;
+    this->name = name;
+}
+
 Player::~Player() {
 }
 

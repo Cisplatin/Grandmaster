@@ -20,6 +20,7 @@ class Player {
         double expectedScoreAgainst(int) const;
     public:
         Player(const int, const std::string);
+        Player(std::string, int, int, int, int, int, int);
         ~Player();
 
         // Getters
