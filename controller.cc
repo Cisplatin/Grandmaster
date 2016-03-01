@@ -52,9 +52,14 @@ void Controller::savePlayers() const {
     map<string, Player *>::iterator it = this->players->begin();
     for(; it != this->players->end(); it++) {
         // Write all the player info. The current format to be saved in is:
-        // <name> <ELO>
+        // <name> <level> <ELO> <highest_ELO> <wins> <loses> <ties>
         file << it->first << " ";
+        file << it->second->getLevel() << " ";
         file << it->second->getELOrating() << " ";
+        file << it->second->getHighestELO() << " ";
+        file << it->second->getWins() << " ";
+        file << it->second->getLoses() << " ";
+        file << it->second->getTies() <<  " ";
         file << '\n';
     }
     file.close();
