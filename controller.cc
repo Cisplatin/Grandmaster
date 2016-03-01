@@ -46,8 +46,7 @@ void Controller::invalid(string cmd) const {
 
 void Controller::savePlayers() const {
     // Saves the players in the game
-    ofstream file;
-    file.open("players.dat");
+    ofstream file ("players.dat");
 
     // Go through all the current players and write their ELO and level
     map<string, Player *>::iterator it = this->players->begin();
@@ -68,7 +67,10 @@ void Controller::savePlayers() const {
 
 void Controller::loadPlayers() {
     // Loads players from memory
-    // TODO write the function
+    ifstream file ("players.dat");
+    if(file.is_open()) {
+        // TODO add players one by one
+    }
 }
 
 void Controller::addPlayer(string name) {
