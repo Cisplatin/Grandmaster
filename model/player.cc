@@ -131,7 +131,6 @@ int Player::calculateKFactor() const {
     // Returns the K-factor for ELO ratings of the given player
     if(this->totalGames() < Constants::THRESHOLD_MATCHES) {
         return Constants::ELO_K_TIER_1;
-    // TODO actually update highestELO
     } else if(this->highestELO < Constants::THRESHOLD_SCORE) {
         return Constants::ELO_K_TIER_2;
     } else {

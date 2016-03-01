@@ -371,7 +371,6 @@ int Game::undo() {
     }
     Move * lastMove = this->moves.top();
 
-    // TODO: account for promotion
     // Variables declared for readability sake
     int row_1 = lastMove->row_1;
     int row_2 = lastMove->row_2;
