@@ -52,7 +52,7 @@ void Controller::savePlayers() const {
     map<string, Player *>::iterator it = this->players->begin();
     for(; it != this->players->end(); it++) {
         // Write all the player info. The current format to be saved in is:
-        // <name> <level> <ELO> <highest_ELO> <wins> <loses> <ties>
+        // <name> <level> <ELO_rating> <highest_ELO> <wins> <loses> <ties>
         file << it->second->getName()       << Constants::DAT_DELIMITER;
         file << it->second->getLevel()      << Constants::DAT_DELIMITER;
         file << it->second->getELOrating()  << Constants::DAT_DELIMITER;
@@ -69,7 +69,21 @@ void Controller::loadPlayers() {
     // Loads players from memory
     ifstream file ("players.dat");
     if(file.is_open()) {
-        // TODO add players one by one
+        // Add players line by line
+        string line, junk;
+        while(getline(file, line)) {
+            istringstream input_ss(line);
+            string name;
+            int level, ELO_rating, highestELO, wins, loses, ties;
+            if(input_ss >> name >> level >> ELO_rating >> highestELO >> wins >> loses >> ties 
+               && !(input_ss >> junk)) {
+                // TODO create a player and save him in the map
+            } else {
+                this->error("Player data is corrupt. Failed to load all players.");
+                return;
+            }
+        }
+        file.close();
     }
 }
 
