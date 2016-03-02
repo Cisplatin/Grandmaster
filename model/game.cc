@@ -487,14 +487,15 @@ bool Game::checkmate() {
 bool Game::stalemate() {
     // Returns true if the game is a checkmate
     Player * player = this->getNext();
-    if(this->movesSinceCapture == Constants::NO_CAPTURE_STALEMATE) {
-        return true;
-    }
     if(!inCheck(player) && this->noValidMove(player)) {
         return true;
     } else {
         return false;
     }
+}
+
+bool Game::drawManyNoncaptures() const {
+    return this->movesSinceCapture >= Constants::NO_CAPTURE_STALEMATE;
 }
 
 void Game::PGN_export(string filename) {

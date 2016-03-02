@@ -35,6 +35,7 @@ class Game {
 
         bool noValidMove(Player *);
         int movesSinceCapture;
+        bool drawManyNoncaptures() const;
     public:
         Game(Player * const, Player * const, Controller *);
         ~Game();
