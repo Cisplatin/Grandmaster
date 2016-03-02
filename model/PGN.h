@@ -16,8 +16,8 @@ class PGN {
 
         static void PGN_export(std::string, std::stack<Move *> *);
         static void deleteStack(std::stack<Move *> *);
-    private:
         static std::stack<Move *> * copyStack(std::stack<Move *> *);
+    private:
         static std::stack<Move *> * reverseStack(std::stack<Move *> *);
 };
 

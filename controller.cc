@@ -8,8 +8,9 @@ using namespace std;
 
 Controller::Controller() {
     // Arbitrarily set current game/view pointers
-    this->game = 0;
-    this->text_view = 0;
+    this->game = NULL;
+    this->text_view = NULL;
+    this->lastGame = NULL;
 
     // Construct a new game, load players from memory
     this->players = new map<string, Player *>();
@@ -30,7 +31,8 @@ Controller::~Controller() {
     delete this->players;
 
     // Delete the last game
-    PGN::deleteStack(&this->lastGame);
+    PGN::deleteStack(this->lastGame);
+    delete this->lastGame; 
 }
 
 void Controller::error(string err) const {

@@ -33,8 +33,6 @@ class Game {
         Player * getPlayer(int, int) const;
         char getType(int, int) const;
 
-        std::stack<Move *> moves;
-
         bool noValidMove(Player *);
         int movesSinceCapture;
     public:
@@ -55,6 +53,7 @@ class Game {
         int undo();
 
         void PGN_export(std::string);
+        std::stack<Move *> moves;
 
         bool checkmate();
         bool stalemate();

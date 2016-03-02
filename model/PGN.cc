@@ -29,6 +29,9 @@ void PGN::PGN_export(string filename, stack<Move *> * moves) {
 
 void PGN::deleteStack(stack<Move *> * current) {
     // Deletes the given move stack
+    if(current == NULL) {
+        return;
+    }
     while(!current->empty()) {
         delete current->top();
         current->pop();
