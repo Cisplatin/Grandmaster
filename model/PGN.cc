@@ -1,8 +1,9 @@
 #include "PGN.h"
 #include "move.h"
+#include "../constants.h"
 using namespace std;
 
-void PGN::PGN_export(string filename, stack<Move *> * moves) {
+void PGN::PGN_export(string filename, stack<Move *> * moves, int state) {
     // Exports the PGN game to the given file
     stack<Move *> * moves_cpy = PGN::copyStack(moves);
     stack<Move *> * reversed = PGN::reverseStack(moves_cpy);
@@ -21,6 +22,16 @@ void PGN::PGN_export(string filename, stack<Move *> * moves) {
         output_stream << next_move << " ";
         reversed->pop();
     }
+
+    // Write the game state
+    switch(state) {
+        case Constants::WHITE_WINS:  output_stream << "1-0";     break;
+        case Constants::BLACK_WINS:  output_stream << "0-1";     break;
+        case Constants::TIE_GAME:    output_stream << "1/2-1/2"; break;
+        case Constants::IN_PROGRESS: output_stream << "*";       break;
+    }
+
+    output_stream.close();
 
     // Garbage collection
     delete moves_cpy;
