@@ -1,6 +1,8 @@
 #include "controller.h"
 #include "model/game.h"
 #include "model/player.h"
+#include "model/move.h"
+#include "model/PGN.h"
 #include "view/text_view.h"
 using namespace std;
 
@@ -26,6 +28,9 @@ Controller::~Controller() {
         delete it->second;
     }
     delete this->players;
+
+    // Delete the last game
+    PGN::deleteStack(&this->lastGame);
 }
 
 void Controller::error(string err) const {

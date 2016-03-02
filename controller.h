@@ -3,6 +3,7 @@
 
 #include <map>
 #include <string>
+#include <stack>
 #include <sstream>
 #include <fstream>
 #include <iostream>
@@ -12,6 +13,7 @@ class Game;
 class Player;
 class View;
 class Text_View;
+class Move;
 
 /*
     The main controller for Grandmaster. Co-ordinates the view with the game,
@@ -31,6 +33,7 @@ class Controller {
         bool startGame(std::string, std::string);
         void playGame();
         void endGame();
+        std::stack<Move *> lastGame;
 
     public:
         Controller();
