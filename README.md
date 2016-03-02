@@ -42,7 +42,6 @@ cd Grandmaster && make
 - Move with standard PGN notation
 - Stalemate if moves are repeated enough
 - Method to allow for draw control
-- PGN export after a game has finished
 - Artificial intelligence to play against
 - Graphical interface
 - Various TODOs spread throughout the code
