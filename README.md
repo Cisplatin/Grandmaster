@@ -8,6 +8,7 @@ Grandmaster is a chess application written in C++. This implementation includes 
 # Main commands:
 add <name>            # Adds new player with name <name>
 remove <name>         # Removes the player with name <name>
+export <filename>     # Write the PGN-ified last game to the given file
 exit                  # Exits from the game
 
 # Game commands:
@@ -15,7 +16,7 @@ game <name> <name>    # Starts a game between the two given players
 move <pos> <pos> <P>  # Moves the piece at the given position (only use P for promotions)
 undo                  # Returns the game to the state before the last move
 resign                # Resigns from the current game
-export <file>         # Writes the PGN-ified game to the given file
+export <filename>     # Writes the PGN-ified current game to the given file
 ```
 
 ## Common errors
