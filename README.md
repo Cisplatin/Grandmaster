@@ -40,6 +40,7 @@ cd Grandmaster && make
 ## Upcoming features
 
 - Load games in .PGN format
+- Export games in FEN format
 - Move with standard PGN notation
 - Stalemate if moves are repeated enough
 - Method to allow for draw control
