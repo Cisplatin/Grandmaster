@@ -33,8 +33,9 @@ class Controller {
         bool startGame(std::string, std::string);
         void playGame();
         void endGame();
-        std::stack<Move *> * lastGame;
 
+        int lastGameState;
+        std::stack<Move *> * lastGame;
     public:
         Controller();
         ~Controller();

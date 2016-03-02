@@ -227,8 +227,14 @@ void Controller::endGame() {
     // Ends the game
     if(this->game->stalemate()) {
         Player::tieGame(this->game->getPrev(), this->game->getNext());
+        this->lastGameState = Constants::TIE_GAME;
     } else {
         Player::winGame(this->game->getPrev(), this->game->getNext());
+        if(this->game->getPrev() == this->game->player_1) {
+            this->lastGameState = Constants::WHITE_WINS;
+        } else {
+            this->lastGameState = Constants::BLACK_WINS;
+        }
     }
 
     // Replace the old last game with the newly completed one
