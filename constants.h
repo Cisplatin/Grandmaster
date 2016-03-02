@@ -78,10 +78,6 @@ class Constants {
         const static int BLACK_WINS = 1;
         const static int TIE_GAME = 2;
         const static int IN_PROGRESS = 3;
-
-        // Values for representing flipped/non-flipped boards
-        const static int NORMAL_BOARD = 0;
-        const static int FLIPPED_BOARD = 1;
 };
 
 #endif

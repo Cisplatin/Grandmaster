@@ -9,7 +9,6 @@
 
 class Text_View : public View {
     public:
-        Text_View(const int);
         void print() const;
 };
 

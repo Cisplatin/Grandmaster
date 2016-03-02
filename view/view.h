@@ -12,9 +12,8 @@ class View {
         char **board; // A two-dimensional array of characters used to store
                       // where pieces are in the current display. If there is
                       // no piece, put a 0 instead.
-        const int orientation; // Orientation of the piece
     public:
-        View(int);
+        View();
         virtual ~View();
         virtual void print() const = 0;
 

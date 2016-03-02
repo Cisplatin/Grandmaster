@@ -1,9 +1,6 @@
 #include <iostream>
 #include "text_view.h"
 
-Text_View::Text_View(const int orientation) : View(orientation) {
-}
-
 void Text_View::print() const {
     for(int i = 0; i < Constants::BOARD_LEN; i++) {
         // Print the side-legend
