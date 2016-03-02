@@ -231,6 +231,11 @@ void Controller::endGame() {
         Player::winGame(this->game->getPrev(), this->game->getNext());
     }
 
+    // Replace the old last game with the newly completed one
+    PGN::deleteStack(this->lastGame);
+    delete this->lastGame;
+    this->lastGame = PGN::copyStack(&this->game->moves);
+
     // Frees memory associated with the game
     delete this->game;
     this->game = NULL;
