@@ -1,6 +1,6 @@
 #include "view.h"
 
-View::View(int orientation) {
+View::View(int orientation) : orientation(orientation) {
     // Allocate memory to the board, initialize each square to 0.
     this->board = new char * [Constants::BOARD_LEN];
     for(int i = 0; i < Constants::BOARD_LEN; i++) {
