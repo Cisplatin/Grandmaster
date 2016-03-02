@@ -72,6 +72,12 @@ class Constants {
 
         // Values for data serialization
         const static char DAT_DELIMITER = '\t';
+
+        // Values for representing game-progress results
+        const static int WHITE_WINS = 0;
+        const static int BLACK_WINS = 1;
+        const static int TIE_GAME = 2;
+        const static int IN_PROGRESS = 3;
 };
 
 #endif
