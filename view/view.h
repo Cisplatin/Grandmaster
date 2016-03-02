@@ -13,7 +13,7 @@ class View {
                       // where pieces are in the current display. If there is
                       // no piece, put a 0 instead.
     public:
-        View();
+        View(int);
         virtual ~View();
         virtual void print() const = 0;
 

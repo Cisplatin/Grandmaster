@@ -134,7 +134,7 @@ bool Controller::startGame(string name_1, string name_2) {
         return 0;
     }
 
-    this->text_view = new Text_View();
+    this->text_view = new Text_View(Constants::NORMAL_BOARD);
     this->game = new Game(it1->second, it2->second, this);
     return 1;
 }
