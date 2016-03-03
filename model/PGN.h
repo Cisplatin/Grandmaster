@@ -23,6 +23,7 @@ class PGN {
         static std::stack<Move *> * copyStack(std::stack<Move *> *);
     private:
         static std::stack<Move *> * reverseStack(std::stack<Move *> *);
+        static void FEN_writerow(Piece *[Constants::BOARD_LEN]);
 };
 
 #endif

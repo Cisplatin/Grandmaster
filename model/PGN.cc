@@ -8,6 +8,12 @@ void PGN::FEN_export(string filename, Piece * board[Constants::BOARD_LEN][Consta
     return;
 }
 
+void PGN::FEN_writerow(Piece * row[Constants::BOARD_LEN]) {
+    // Returns a stringstream of the given FEN row
+    // TODO: Write FEN_writerow
+    return;
+}
+
 void PGN::PGN_export(string filename, stack<Move *> * moves, int state) {
     // Exports the PGN game to the given file
     stack<Move *> * moves_cpy = PGN::copyStack(moves);
