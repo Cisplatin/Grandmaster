@@ -3,6 +3,7 @@
 
 // Forward decalartions of general classes
 class Move;
+class Piece;
 
 #include <stack>
 #include <fstream>
@@ -15,6 +16,7 @@ class PGN {
         virtual ~PGN() = 0;
 
         static void PGN_export(std::string, std::stack<Move *> *, int);
+        static void FEN_export(Piece *);
         static void deleteStack(std::stack<Move *> *);
         static std::stack<Move *> * copyStack(std::stack<Move *> *);
     private:

@@ -22,8 +22,6 @@ bool King::validMove(int row, int col) const {
         return true;
     }
 
-    // TODO: add a check to make sure the piece is a rook, just for
-    //       future expansion's sake
     // Check for right castling
     if(row == this->row && col == this->col + 2) {
         // Make sure the king and the rook have not moved
