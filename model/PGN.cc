@@ -1,7 +1,12 @@
 #include "PGN.h"
 #include "move.h"
-#include "../constants.h"
 using namespace std;
+
+void PGN::FEN_export(string filename, Piece * board[Constants::BOARD_LEN][Constants::BOARD_LEN]) {
+    // Exports the FEN game to the given file
+    // TODO
+    return;
+}
 
 void PGN::PGN_export(string filename, stack<Move *> * moves, int state) {
     // Exports the PGN game to the given file
