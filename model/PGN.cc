@@ -4,7 +4,7 @@ using namespace std;
 
 void PGN::FEN_export(string filename, Piece * board[Constants::BOARD_LEN][Constants::BOARD_LEN]) {
     // Exports the FEN game to the given file
-    // TODO
+    // TODO: Write FEN_export
     return;
 }
 

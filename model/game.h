@@ -53,6 +53,7 @@ class Game {
         int enPassent() const;
         int undo();
 
+        void FEN_export(std::string);
         void PGN_export(std::string);
         std::stack<Move *> moves;
 

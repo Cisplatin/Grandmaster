@@ -200,11 +200,15 @@ void Controller::playGame() {
         // An export was called for
         } else if(parser == "export") {
             // Get the file to export to
-            string filename;
-            if(!(input_ss >> filename) || input_ss >> junk) {
+            string filename, type;
+            if(!(input_ss >> type >> filename) || input_ss >> junk) {
                 this->invalid(parser);
-            } else {
+            } else if(type == "PGN") {
                 this->game->PGN_export(filename);
+            } else if(type == "FEN") {
+                this->game->FEN_export(filename);
+            } else {
+                this->error("Invalid export type was given.");
             }
 
         // An invalid command was given
@@ -294,6 +298,7 @@ void Controller::play() {
             }
 
         // An export was called for
+        // TODO Support FEN exporting
         } else if(parser == "export") {
             // Get the file to export to
             string filename;

@@ -502,3 +502,8 @@ void Game::PGN_export(string filename) {
     // Send the stack and the filename to PGN for processing
     PGN::PGN_export(filename, &this->moves, Constants::IN_PROGRESS);
 }
+
+void Game::FEN_export(string filename) {
+    // Send the board and the filename to FEN for processing
+    PGN::FEN_export(filename, this->board);
+}
