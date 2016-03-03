@@ -298,18 +298,20 @@ void Controller::play() {
             }
 
         // An export was called for
-        // TODO Support FEN exporting
         } else if(parser == "export") {
             // Get the file to export to
-            string filename;
-            if(!(input_ss >> filename) || input_ss >> junk) {
+            string type, filename;
+            if(!(input_ss >> type >> filename) || input_ss >> junk) {
                 this->invalid(parser);
+            } else if(this->lastGame == NULL) {
+                this->error("There is no recently played game to export.");
+            } else if(type == "PGN") {
+                PGN::PGN_export(filename, this->lastGame, this->lastGameState);
+            } else if(type == "FEN") {
+                // TODO: Support post-game FEN generation
+                this->error("Sorry, Grandmaster doesn't support post-game FEN generation.");
             } else {
-                if(this->lastGame == NULL) {
-                    this->error("There is no recently played game to export.");
-                } else {
-                    PGN::PGN_export(filename, this->lastGame, this->lastGameState);
-                }
+                this->error("Invalid export type given.");
             }
 
         // Exits the game
