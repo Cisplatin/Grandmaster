@@ -27,19 +27,17 @@ string PGN::FEN_writerow(Piece * row[Constants::BOARD_LEN]) {
     string FEN_row = "";
     int whitespace = 0;
     for(int i = 0; i < Constants::BOARD_LEN; i++) {
-        if(row[i] == NULL) {
-            whitespace++;
-        } else {
+        if(row[i] == NULL) whitespace++;
+        else {
+            // Assure that whitespace is properly appended
             if(whitespace != 0) {
                 FEN_row += ((char)whitespace + '0');
                 whitespace = 0;
-            }
-            FEN_row += row[i]->getType();
+            } else FEN_row += row[i]->getType();
         }
     }
-    if(whitespace != 0) {
-        FEN_row += ((char)whitespace + '0');
-    }
+    // Stream any remaining whitespace
+    if(whitespace != 0) FEN_row += ((char)whitespace + '0');
     return FEN_row;
 }
 
