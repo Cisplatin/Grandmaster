@@ -1,5 +1,6 @@
 #include "PGN.h"
 #include "move.h"
+#include "piece.h"
 using namespace std;
 
 void PGN::FEN_export(string filename, Piece * board[Constants::BOARD_LEN][Constants::BOARD_LEN]) {
@@ -12,6 +13,9 @@ void PGN::FEN_export(string filename, Piece * board[Constants::BOARD_LEN][Consta
     // Start by writing the positions of the pieces
     for(int i = 0; i < Constants::BOARD_LEN; i++) {
         output_stream << PGN::FEN_writerow(board[i]);
+        if(i != Constants::BOARD_LEN - 1) {
+            output_stream << Constants::FEN_DELIM;
+        }
     }
 
     // TODO: Write the extra details about the FEN
@@ -20,8 +24,23 @@ void PGN::FEN_export(string filename, Piece * board[Constants::BOARD_LEN][Consta
 
 string PGN::FEN_writerow(Piece * row[Constants::BOARD_LEN]) {
     // Writes the given row to the given output stream in FEN format
-    // TODO: Write FEN_writerow
-    return "/";
+    string FEN_row = "";
+    int whitespace = 0;
+    for(int i = 0; i < Constants::BOARD_LEN; i++) {
+        if(row[i] == NULL) {
+            whitespace++;
+        } else {
+            if(whitespace != 0) {
+                FEN_row += ((char)whitespace + '0');
+                whitespace = 0;
+            }
+            FEN_row += row[i]->getType();
+        }
+    }
+    if(whitespace != 0) {
+        FEN_row += ((char)whitespace + '0');
+    }
+    return FEN_row;
 }
 
 void PGN::PGN_export(string filename, stack<Move *> * moves, int state) {

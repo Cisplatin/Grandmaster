@@ -35,6 +35,9 @@ class Constants {
         const static char PGN_PROMOTION = '=';
         const static char PGN_CHECKMATE = '#';
 
+        // Constants as per FEN standards
+        const static char FEN_DELIM = '/';
+
         // Text representation of colored squares
         const static char WHITE_SQUARE = '_';
         const static char BLACK_SQUARE = ' ';
