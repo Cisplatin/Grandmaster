@@ -4,14 +4,24 @@ using namespace std;
 
 void PGN::FEN_export(string filename, Piece * board[Constants::BOARD_LEN][Constants::BOARD_LEN]) {
     // Exports the FEN game to the given file
-    // TODO: Write FEN_export
-    return;
+
+    // We open a new output stream to save the FEN to
+    ofstream output_stream;
+    output_stream.open(filename, ofstream::out | ofstream::app);
+
+    // Start by writing the positions of the pieces
+    for(int i = 0; i < Constants::BOARD_LEN; i++) {
+        output_stream << PGN::FEN_writerow(board[i]);
+    }
+
+    // TODO: Write the extra details about the FEN
+    output_stream.close();
 }
 
-void PGN::FEN_writerow(Piece * row[Constants::BOARD_LEN]) {
-    // Returns a stringstream of the given FEN row
+string PGN::FEN_writerow(Piece * row[Constants::BOARD_LEN]) {
+    // Writes the given row to the given output stream in FEN format
     // TODO: Write FEN_writerow
-    return;
+    return "/";
 }
 
 void PGN::PGN_export(string filename, stack<Move *> * moves, int state) {
