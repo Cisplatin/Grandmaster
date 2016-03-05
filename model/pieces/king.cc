@@ -11,6 +11,7 @@ King::King(const King& other) : Piece(other) {
 }
 
 vector<pair<int, int>> King::generateMoves() const {                             
+    // TODO: Write the function  
     return vector<pair<int, int>>();                                               
 }   
 

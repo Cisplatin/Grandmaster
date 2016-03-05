@@ -11,6 +11,7 @@ Bishop::Bishop(const Bishop& other) : Piece(other) {
 }
 
 vector<pair<int, int>> Bishop::generateMoves() const {
+    // TODO: Write the function  
     return vector<pair<int, int>>();
 }
 

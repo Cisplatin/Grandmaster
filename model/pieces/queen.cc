@@ -11,6 +11,7 @@ Queen::Queen(const Queen& other) : Piece(other) {
 }
 
 vector<pair<int, int>> Queen::generateMoves() const {                             
+    // TODO: Write the function  
     return vector<pair<int, int>>();                                               
 }   
 

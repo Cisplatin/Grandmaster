@@ -10,6 +10,7 @@ Knight::Knight(const Knight& other) : Piece(other) {
 }
 
 vector<pair<int, int>> Knight::generateMoves() const {                             
+    // TODO: Write the function  
     return vector<pair<int, int>>();                                               
 }   
 

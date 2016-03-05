@@ -11,6 +11,7 @@ Rook::Rook(const Rook& other) : Piece(other) {
 }
 
 vector<pair<int, int>> Rook::generateMoves() const {                             
+    // TODO: Write the function  
     return vector<pair<int, int>>();                                               
 }   
 
