@@ -1,6 +1,7 @@
 #include "rook.h"
 #include "../game.h"
 #include "../player.h"
+using namespace std;
 
 Rook::Rook(char type, Player * const player, int row, int col, Game * game) :
     Piece(type, player, row, col, game) {
@@ -8,6 +9,10 @@ Rook::Rook(char type, Player * const player, int row, int col, Game * game) :
 
 Rook::Rook(const Rook& other) : Piece(other) {
 }
+
+vector<pair<int, int>> Rook::generateMoves() const {                             
+    return vector<pair<int, int>>();                                               
+}   
 
 bool Rook::validMove(int row, int col) const {
     // Returns true if given a valid relative position

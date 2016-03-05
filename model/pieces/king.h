@@ -7,4 +7,5 @@ class King : public Piece {
         King(char, Player * const, int, int, Game *);
         King(const King&);
         bool validMove(int, int) const;
+        std::vector<std::pair<int, int>> generateMoves() const;
 };

@@ -1,6 +1,7 @@
 #include "queen.h"
 #include "../game.h"
 #include "../player.h"
+using namespace std;
 
 Queen::Queen(char type, Player * const player, int row, int col, Game * game) :
     Piece(type, player, row, col, game) {
@@ -8,6 +9,10 @@ Queen::Queen(char type, Player * const player, int row, int col, Game * game) :
 
 Queen::Queen(const Queen& other) : Piece(other) {
 }
+
+vector<pair<int, int>> Queen::generateMoves() const {                             
+    return vector<pair<int, int>>();                                               
+}   
 
 bool Queen::validMove(int row, int col) const {
     // Returns true if a valid relative position is given

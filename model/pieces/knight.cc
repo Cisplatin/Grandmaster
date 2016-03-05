@@ -1,5 +1,6 @@
 #include "knight.h"
 #include "../player.h"
+using namespace std;
 
 Knight::Knight(char type, Player * const player, int row, int col, Game * game) :
     Piece(type, player, row, col, game) {
@@ -7,6 +8,10 @@ Knight::Knight(char type, Player * const player, int row, int col, Game * game) 
 
 Knight::Knight(const Knight& other) : Piece(other) {
 }
+
+vector<pair<int, int>> Knight::generateMoves() const {                             
+    return vector<pair<int, int>>();                                               
+}   
 
 bool Knight::validMove(int row, int col) const {
     // Returns true if the relative position is valid

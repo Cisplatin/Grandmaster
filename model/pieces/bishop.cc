@@ -1,12 +1,17 @@
 #include "bishop.h"
 #include "../game.h"
 #include "../player.h"
+using namespace std;
 
 Bishop::Bishop(char type, Player * const player, int row, int col, Game * game) :
     Piece(type, player, row, col, game) {
 }
 
 Bishop::Bishop(const Bishop& other) : Piece(other) {
+}
+
+vector<pair<int, int>> Bishop::generateMoves() const {
+    return vector<pair<int, int>>();
 }
 
 bool Bishop::validMove(int row, int col) const {

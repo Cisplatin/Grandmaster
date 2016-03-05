@@ -7,4 +7,5 @@ class Pawn : public Piece {
         Pawn(char, Player * const, int, int, Game *);
         Pawn(const Pawn&);
         bool validMove(int, int) const;
+        std::vector<std::pair<int, int>> generateMoves() const;
 };

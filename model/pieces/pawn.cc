@@ -1,6 +1,7 @@
 #include "pawn.h"
 #include "../player.h"
 #include "../game.h"
+using namespace std;
 
 Pawn::Pawn(char type, Player * const player, int row, int col, Game * game) :
     Piece(type, player, row, col, game) {
@@ -8,6 +9,10 @@ Pawn::Pawn(char type, Player * const player, int row, int col, Game * game) :
 
 Pawn::Pawn(const Pawn& other) : Piece(other) {
 }
+
+vector<pair<int, int>> Pawn::generateMoves() const {                             
+    return vector<pair<int, int>>();                                               
+}   
 
 bool Pawn::validMove(int row, int col) const {
     int allowed = (this->player == this->game->player_1) ? -1 : 1;

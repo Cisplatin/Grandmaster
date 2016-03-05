@@ -4,6 +4,7 @@
 class Player;
 class Game;
 
+#include <vector>
 #include "../constants.h"
 
 class Piece {
@@ -19,6 +20,7 @@ class Piece {
 
         int moved;
         virtual bool validMove(int, int) const = 0;
+        virtual std::vector<std::pair<int, int>> generateMoves() const = 0;
 
         // Getters and setters
         char getType() const;
