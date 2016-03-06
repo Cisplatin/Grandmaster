@@ -17,16 +17,15 @@ vector<pair<int, int>> King::generateMoves() const {
     // Add standard one-steps
     for(int i = -1; i <= 1; i++) {
         for(int j = -1; j <= 1; j++) {
-            moves.push_back(make_pair(row + i, col + j));
+            moves.push_back(make_pair(this->row + i, this->col + j));
         }
     }
     // Add castling    
-    moves.push_back(make_pair(row, col + 2));
-    moves.push_back(make_pair(row, col - 2));
+    moves.push_back(make_pair(this->row, this->col + 2));
+    moves.push_back(make_pair(this->row, this->col - 2));
     
     // Filter out moves that aren't valid
     this->erase_invalid(&moves);
-
     return moves;
 }   
 

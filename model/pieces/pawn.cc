@@ -15,20 +15,19 @@ vector<pair<int, int>> Pawn::generateMoves() const {
     vector<pair<int, int>> moves = vector<pair<int, int>>();
 
     // Add standard one-steps
-    moves.push_back(make_pair(row + 1, col));
-    moves.push_back(make_pair(row - 1, col));
+    moves.push_back(make_pair(this->row + 1, this->col));
+    moves.push_back(make_pair(this->row - 1, this->col));
     // Add standard two-steps
-    moves.push_back(make_pair(row + 2, col));
-    moves.push_back(make_pair(row - 2, col));
+    moves.push_back(make_pair(this->row + 2, this->col));
+    moves.push_back(make_pair(this->row - 2, this->col));
     // Add diagonal movements
-    moves.push_back(make_pair(row + 1, col + 1));
-    moves.push_back(make_pair(row - 1, col + 1));
-    moves.push_back(make_pair(row + 1, col - 1));
-    moves.push_back(make_pair(row - 1, col - 1));
+    moves.push_back(make_pair(this->row + 1, this->col + 1));
+    moves.push_back(make_pair(this->row - 1, this->col + 1));
+    moves.push_back(make_pair(this->row + 1, this->col - 1));
+    moves.push_back(make_pair(this->row - 1, this->col - 1));
 
     // Filter out moves that aren't valid
     this->erase_invalid(&moves);
-
     return moves;                                              
 }   
 

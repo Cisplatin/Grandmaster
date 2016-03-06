@@ -14,18 +14,17 @@ vector<pair<int, int>> Knight::generateMoves() const {
     vector<pair<int, int>> moves = vector<pair<int, int>>();
     
     // Adds all the standard L-moves
-    moves.push_back(make_pair(row + 2, col + 1));
-    moves.push_back(make_pair(row + 2, col - 1));
-    moves.push_back(make_pair(row - 2, col + 1));
-    moves.push_back(make_pair(row - 2, col - 1));
-    moves.push_back(make_pair(row + 1, col + 2));
-    moves.push_back(make_pair(row + 1, col - 2));
-    moves.push_back(make_pair(row - 1, col + 2));
-    moves.push_back(make_pair(row - 1, col - 2));
+    moves.push_back(make_pair(this->row + 2, this->col + 1));
+    moves.push_back(make_pair(this->row + 2, this->col - 1));
+    moves.push_back(make_pair(this->row - 2, this->col + 1));
+    moves.push_back(make_pair(this->row - 2, this->col - 1));
+    moves.push_back(make_pair(this->row + 1, this->col + 2));
+    moves.push_back(make_pair(this->row + 1, this->col - 2));
+    moves.push_back(make_pair(this->row - 1, this->col + 2));
+    moves.push_back(make_pair(this->row - 1, this->col - 2));
 
     // Filter out moves that aren't valid
     this->erase_invalid(&moves);
-
     return moves;
 }   
 
