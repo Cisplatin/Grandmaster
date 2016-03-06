@@ -172,6 +172,12 @@ char Game::getType(int row, int col) const {
 }
 
 bool Game::validMove(int row_1, int col_1, int row_2, int col_2, bool mute, string promotion) {
+    // Check if a valid position was given
+    if(!Move::validPosition(row_1, col_1) || !Move::validPosition(row_2, col_2)) {
+        if(!mute) this->control->error("Invalid position given.");
+        return 0;
+    }
+
     // Returns true if the given move is valid
     Player * player = this->getPlayer(row_1, col_1);
 
