@@ -11,8 +11,24 @@ Queen::Queen(const Queen& other) : Piece(other) {
 }
 
 vector<pair<int, int>> Queen::generateMoves() const {                             
-    // TODO: Write the function  
-    return vector<pair<int, int>>();                                               
+    // Returns a list of moves for which validMove is true
+    vector<pair<int, int>> moves =  vector<pair<int, int>>();                         
+    
+    // Adds all straight/diagonal movements
+    for(int i = 0; i < Constants::BOARD_LEN; i++) {                                
+        // Diagonal movement
+        moves.push_back(make_pair(this->row + i, this->col + i));                  
+        moves.push_back(make_pair(this->row - i, this->col - i));                  
+        moves.push_back(make_pair(this->row + i, this->col - i));                  
+        moves.push_back(make_pair(this->row - i, this->col + i));                  
+        // Straight movement
+        moves.push_back(make_pair(this->row, i));                                  
+        moves.push_back(make_pair(i, this->col));                                  
+    }  
+
+    // Filter out invalid moves
+    this->erase_invalid(&moves);
+    return moves;
 }   
 
 bool Queen::validMove(int row, int col) const {

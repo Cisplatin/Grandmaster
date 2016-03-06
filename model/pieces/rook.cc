@@ -14,13 +14,10 @@ vector<pair<int, int>> Rook::generateMoves() const {
     // Returns a list of moves for which validMove is true
     vector<pair<int, int>> moves = vector<pair<int, int>>();
     
-    // Add standard column movement
+    // Add standard column/row movement
     for(int i = 0; i < Constants::BOARD_LEN; i++) {
         moves.push_back(make_pair(this->row, i));   
-    }
-    // Add standard row movement
-    for(int i = 0; i < Constants::BOARD_LEN; i++) {
-        moves.push_back(make_pair(this->col, i));   
+        moves.push_back(make_pair(i, this->col));
     }
 
     // Filter out invalid moves
