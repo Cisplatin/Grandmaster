@@ -11,8 +11,27 @@ Pawn::Pawn(const Pawn& other) : Piece(other) {
 }
 
 vector<pair<int, int>> Pawn::generateMoves() const {                             
-    // TODO: Write the function
-    return vector<pair<int, int>>();                                               
+    // Returns a list of moves for which validMove is true
+    vector<pair<int, int>> moves = vector<pair<int, int>>();
+
+    /*
+    // Add standard one-steps
+    moves.push_back(make_pair(row + 1, col));
+    moves.push_back(make_pair(row - 1, col));
+    // Add standard two-steps
+    moves.push_back(make_pair(row + 2, col));
+    moves.push_back(make_pair(row - 2, col));
+    // Add diagonal movements
+    moves.push_back(make_pair(row + 1, col + 1));
+    moves.push_back(make_pair(row - 1, col + 1));
+    moves.push_back(make_pair(row + 1, col - 1));
+    moves.push_back(make_pair(row - 1, col - 1));
+
+    // Filter out moves that aren't valid
+    moves = remove_if(moves.begin(), moves.end(), &this->validMove);
+    */
+
+    return moves;                                              
 }   
 
 bool Pawn::validMove(int row, int col) const {
