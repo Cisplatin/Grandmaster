@@ -21,6 +21,7 @@ class Piece {
         int moved;
         virtual bool validMove(int, int) const = 0;
         virtual std::vector<std::pair<int, int>> generateMoves() const = 0;
+        void erase_invalid(std::vector<std::pair<int, int>> *) const;
 
         // Getters and setters
         char getType() const;

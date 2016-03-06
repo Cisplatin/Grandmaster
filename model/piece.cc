@@ -8,6 +8,7 @@
 #include "pieces/bishop.h"
 #include "pieces/knight.h"
 #include "pieces/pawn.h"
+using namespace std;
 
 Piece::Piece(char type, Player * const player, int row, int col, Game * game)
              : type(type), player(player) {
@@ -100,4 +101,14 @@ bool Piece::isPawn(char type) {
 bool Piece::isKing(char type) {
     // Returns true if the given type is a king
     return type == Constants::WHITE_KING || type == Constants::BLACK_KING;
+}
+
+void Piece::erase_invalid(vector<pair<int, int>> * moves) const {
+    // Erases the moves that are invalid from the given vector
+    vector<pair<int, int>>::iterator it = moves->begin();
+    for(; it != moves->end(); it++) {
+        if(!this->validMove(it->first, it->second)) {
+            moves->erase(it);
+        }
+    }
 }
