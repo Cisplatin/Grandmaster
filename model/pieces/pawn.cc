@@ -14,7 +14,6 @@ vector<pair<int, int>> Pawn::generateMoves() const {
     // Returns a list of moves for which validMove is true
     vector<pair<int, int>> moves = vector<pair<int, int>>();
 
-    /*
     // Add standard one-steps
     moves.push_back(make_pair(row + 1, col));
     moves.push_back(make_pair(row - 1, col));
@@ -28,8 +27,7 @@ vector<pair<int, int>> Pawn::generateMoves() const {
     moves.push_back(make_pair(row - 1, col - 1));
 
     // Filter out moves that aren't valid
-    moves = remove_if(moves.begin(), moves.end(), &this->validMove);
-    */
+    this->erase_invalid(&moves);
 
     return moves;                                              
 }   
