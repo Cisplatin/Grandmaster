@@ -15,14 +15,11 @@ vector<pair<int, int>> King::generateMoves() const {
     vector<pair<int, int>> moves = vector<pair<int, int>>();
     
     // Add standard one-steps
-    moves.push_back(make_pair(row + 1, col + 1));
-    moves.push_back(make_pair(row - 1, col + 1));
-    moves.push_back(make_pair(row + 1, col - 1));
-    moves.push_back(make_pair(row - 1, col - 1));
-    moves.push_back(make_pair(row + 1, col));
-    moves.push_back(make_pair(row - 1, col));
-    moves.push_back(make_pair(row, col + 1));
-    moves.push_back(make_pair(row, col - 1));
+    for(int i = -1; i <= 1; i++) {
+        for(int j = -1; j <= 1; j++) {
+            moves.push_back(make_pair(row + i, col + j));
+        }
+    }
     // Add castling    
     moves.push_back(make_pair(row, col + 2));
     moves.push_back(make_pair(row, col - 2));
