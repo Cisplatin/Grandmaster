@@ -11,8 +11,20 @@ Bishop::Bishop(const Bishop& other) : Piece(other) {
 }
 
 vector<pair<int, int>> Bishop::generateMoves() const {
-    // TODO: Write the function  
-    return vector<pair<int, int>>();
+    // Returns a list of moves for which validMove is true
+    vector<pair<int, int>> moves = vector<pair<int, int>>();
+
+    // Adds all diagonal movements
+    for(int i = 0; i < Constants::BOARD_LEN; i++) {
+        moves.push_back(make_pair(this->row + i, this->col + i));
+        moves.push_back(make_pair(this->row - i, this->col - i));
+        moves.push_back(make_pair(this->row + i, this->col - i));
+        moves.push_back(make_pair(this->row - i, this->col + i));
+    }
+
+    // Filter out moves that aren't valid
+    this->erase_invalid(&moves);
+    return moves;
 }
 
 bool Bishop::validMove(int row, int col) const {
