@@ -11,8 +11,26 @@ King::King(const King& other) : Piece(other) {
 }
 
 vector<pair<int, int>> King::generateMoves() const {                             
-    // TODO: Write the function  
-    return vector<pair<int, int>>();                                               
+    // Returns a list of moves for which validMove is true
+    vector<pair<int, int>> moves = vector<pair<int, int>>();
+    
+    // Add standard one-steps
+    moves.push_back(make_pair(row + 1, col + 1));
+    moves.push_back(make_pair(row - 1, col + 1));
+    moves.push_back(make_pair(row + 1, col - 1));
+    moves.push_back(make_pair(row - 1, col - 1));
+    moves.push_back(make_pair(row + 1, col));
+    moves.push_back(make_pair(row - 1, col));
+    moves.push_back(make_pair(row, col + 1));
+    moves.push_back(make_pair(row, col - 1));
+    // Add castling    
+    moves.push_back(make_pair(row, col + 2));
+    moves.push_back(make_pair(row, col - 2));
+    
+    // Filter out moves that aren't valid
+    this->erase_invalid(&moves);
+
+    return moves;
 }   
 
 bool King::validMove(int row, int col) const {
