@@ -439,7 +439,6 @@ int Game::undo() {
 
 bool Game::isDangerousTo(Player * player, int row, int col) const {
     // Returns true if the given square is dangerous to the given player
-    // TODO: make this more efficient by only checking certain positions
     for(int i = 0; i < Constants::BOARD_LEN; i++) {
         for(int j = 0; j < Constants::BOARD_LEN; j++) {
             if(this->getPlayer(i, j) != NULL &&
