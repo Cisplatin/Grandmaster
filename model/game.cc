@@ -459,14 +459,14 @@ bool Game::inCheck(Player * player) const {
 
 bool Game::noValidMove(Player * player) {
     // Returns true if the given player has no valid moves
-    // TODO: make this more efficient
     for(int i = 0; i < Constants::BOARD_LEN; i++) {
         for(int j = 0; j < Constants::BOARD_LEN; j++) {
-            for(int k = 0; k < Constants::BOARD_LEN; k++) {
-                for(int l = 0; l < Constants::BOARD_LEN; l++) {
-                    if(this->validMove(i, j, k, l, true, "")) {
-                        return false;
-                    }
+            // Find pieces that belong to the player
+            if(this->getPlayer(i, j) == player) {
+                // Generate all moves that piece can make
+                vector<pair<int, int>> moves = this->board[i][j]->generateMoves();
+                if(!moves.empty()) {
+                    return false;
                 }
             }
         }
