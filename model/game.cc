@@ -147,7 +147,7 @@ bool Game::move(string pos_1, string pos_2, string promotion) {
     }
 
     // Move the piece
-    this->movePiece(row_1, col_1, row_2, col_2, promotionType);
+    this->movePiece(row_1, col_1, row_2, col_2, promotionType, true);
     this->switchTurns();
 
     return 1;
@@ -237,7 +237,7 @@ bool Game::validMove(int row_1, int col_1, int row_2, int col_2, bool mute, stri
 
     // Make sure the move does not put them into check. We do this
     // by doing the actual move and checking if the king is in check.
-    this->movePiece(row_1, col_1, row_2, col_2, 0);
+    this->movePiece(row_1, col_1, row_2, col_2, 0, false);
     bool check = this->inCheck(this->board[row_2][col_2]->getPlayer());
     this->undo();        // Undo switches turns, so we switch again
     this->switchTurns(); // to make up for the fake move
@@ -260,7 +260,7 @@ void Game::forceMovePiece(int row_1, int col_1, int row_2, int col_2) {
     this->board[row_2][col_2]->updateMove(row_2, col_2);
 }
 
-void Game::movePiece(int row_1, int col_1, int row_2, int col_2, char promotion) {
+void Game::movePiece(int row_1, int col_1, int row_2, int col_2, char promotion, bool recursion) {
     // Moves a piece from row/col_1 to row/col_2
     char type = this->getType(row_1, col_1);
     char captured = this->getType(row_2, col_2);
@@ -306,8 +306,8 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2, char promotion)
     }
 
     // Get additional information about the move
-    bool otherInCheck = this->inCheck(this->getNext());
-    bool otherInCheckmate = this->checkmate();
+    bool otherInCheck = recursion && this->inCheck(this->getNext());
+    bool otherInCheckmate = recursion && this->checkmate();
 
     // Push the new move onto the stack
     Move * move = new Move(row_1, col_1, row_2, col_2, type);

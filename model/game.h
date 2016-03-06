@@ -27,7 +27,7 @@ class Game {
 
         Player * next;
         void switchTurns();
-        void movePiece(int, int, int, int, char);
+        void movePiece(int, int, int, int, char, bool);
         void forceMovePiece(int, int, int, int);
         Player * getPlayer(int, int) const;
         char getType(int, int) const;

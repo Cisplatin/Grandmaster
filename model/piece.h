@@ -5,6 +5,7 @@ class Player;
 class Game;
 
 #include <vector>
+#include <iostream>
 #include "../constants.h"
 
 class Piece {
