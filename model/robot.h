@@ -4,6 +4,8 @@
 class Game;
 class Player;
 
+#include <vector>
+
 /*
     A class for AI move generation. We make this seperate from player for
     organizational reasons, but really a robot is part of a player.

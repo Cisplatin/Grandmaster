@@ -264,6 +264,7 @@ void Game::forceMovePiece(int row_1, int col_1, int row_2, int col_2) {
 }
 
 void Game::movePiece(int row_1, int col_1, int row_2, int col_2, char promotion, bool recursion) {
+    // TODO Make a generate move function based on rows and cols
     // Moves a piece from row/col_1 to row/col_2
     char type = this->getType(row_1, col_1);
     char captured = this->getType(row_2, col_2);
