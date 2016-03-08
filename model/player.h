@@ -1,14 +1,15 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+class Robot;
+
 #include <math.h>
 #include <string>
 #include "../constants.h"
 
 class Player {
     private:
-        const int level; // The level of the player: if its a human, set to 0,
-                         // else set the level from 1 - 10.
+        Robot * AI; // The robot corresponding to the player
         int kingRow, kingCol;
         int wins, loses, ties;
         int ELO_rating;
