@@ -29,6 +29,17 @@ Player::~Player() {
     delete this->robot;
 }
 
+void Player::robotMove() {
+    // Generates and runs a move using the robot
+    if(this->isHuman()) {
+        // If the function ever gets here, something went very wrong. This
+        // player was detected by the controller as a player but for some
+        // is a human.
+        return;
+    }
+    // TODO Write the function
+}
+
 bool Player::isHuman() const {
     // Returns true if this player is a human
     return (this->robot->level == 0);

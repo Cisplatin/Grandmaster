@@ -24,6 +24,9 @@ class Player {
         Player(std::string, int, int, int, int, int, int);
         ~Player();
 
+        // A function for the controller to call for a move generation
+        void robotMove();
+
         // Getters
         int getKingRow() const;
         int getKingCol() const;
