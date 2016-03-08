@@ -1,10 +1,11 @@
 #include "player.h"
 #include "robot.h"
+#include "game.h"
 using namespace std;
 
-Player::Player(const int level, const string name) {
+Player::Player(const int level, const string name) : level(level) {
     // Sets the level of the new player
-    this->robot = new Robot(level);
+    this->robot = NULL;
     this->wins = 0;
     this->loses = 0;
     this->ties = 0;
@@ -14,9 +15,9 @@ Player::Player(const int level, const string name) {
 }
 
 Player::Player(string name, int level, int ELO_rating, int highestELO,
-               int wins, int loses, int ties) {
+               int wins, int loses, int ties) : level(level) {
     // Constructor for loading players from memory
-    this->robot = new Robot(level);
+    this->robot = NULL;
     this->wins = wins;
     this->loses = loses;
     this->ties = ties;
@@ -27,6 +28,12 @@ Player::Player(string name, int level, int ELO_rating, int highestELO,
 
 Player::~Player() {
     delete this->robot;
+}
+
+void Player::startGame(Game * game) {
+    // Starts a new game for the player. This sets up a new robot for the game
+    delete this->robot;
+    this->robot = new Robot(this->level, game);
 }
 
 void Player::robotMove() {

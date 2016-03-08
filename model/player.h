@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 class Robot;
+class Game;
 
 #include <math.h>
 #include <string>
@@ -9,7 +10,8 @@ class Robot;
 
 class Player {
     private:
-        Robot * robot; // The robot corresponding to the player
+        Robot * robot; 
+        const int level;
         int kingRow, kingCol;
         int wins, loses, ties;
         int ELO_rating;
@@ -24,7 +26,8 @@ class Player {
         Player(std::string, int, int, int, int, int, int);
         ~Player();
 
-        // A function for the controller to call for a move generation
+        // Robot related functions
+        void startGame(Game *);
         void robotMove();
 
         // Getters
