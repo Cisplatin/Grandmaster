@@ -29,6 +29,8 @@ class Game {
         void forceMovePiece(int, int, int, int);
         Player * getPlayer(int, int) const;
         char getType(int, int) const;
+        void movePiece(int, int, int, int, char, bool);
+        void switchTurns();
 
         bool noValidMove(Player *);
         int movesSinceCapture;
@@ -45,9 +47,8 @@ class Game {
         Player * const player_1;
         Player * const player_2;
 
+        void robotMove(int, int, int, int);
         bool move(std::string, std::string, std::string);
-        void movePiece(int, int, int, int, char, bool);
-        void switchTurns();
 
     	bool validMove(int, int, int, int, bool, std::string);
         bool isEmpty(int, int) const;

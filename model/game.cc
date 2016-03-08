@@ -123,6 +123,13 @@ string Game::getPrevColor() const {
     }
 }
 
+void Game::robotMove(int row_1, int col_1, int row_2, int col_2) {
+    // The move function for robots to call. Assumes a valid move
+    // TODO Account for promotions
+    this->movePiece(row_1, col_1, row_2, col_2, 0, true);
+    this->switchTurns();
+}
+
 bool Game::move(string pos_1, string pos_2, string promotion) {
     // Make sure the given positions are valid
     if(!Move::validPosition(pos_1) || !Move::validPosition(pos_2)) {
