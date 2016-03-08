@@ -68,7 +68,6 @@ bool Piece::isWhiteType(char type) {
 
 Piece * Piece::generatePiece(const char type, Player * const player,
                              int row, int col, Game * game) {
-    Piece * new_piece;
     switch(type) {
         case Constants::WHITE_KING: case Constants::BLACK_KING:
             return new King(type, player, row, col, game);
