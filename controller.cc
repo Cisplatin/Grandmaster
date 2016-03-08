@@ -282,7 +282,7 @@ void Controller::play() {
             // Fetch the new player's name and level
             string name, level;
             // Check for valid inputs with no extras
-            if(!(input_ss >> name >> level) || input_ss >> junk) {
+            if(!(input_ss >> level >> name) || input_ss >> junk) {
                 this->invalid(parser);
             } else {
                 // Add the player
