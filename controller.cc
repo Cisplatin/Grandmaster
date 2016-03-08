@@ -158,27 +158,14 @@ void Controller::playGame() {
         // A move was made
         if(parser == "move") {
             // Check if the player is human, in which case, fetch the move
+            bool success = true;
             if(this->game->getNext()->isHuman()) {
                 // Get the move from standard input
                 string pos_1, pos_2, promotion;
                 if(!(input_ss >> pos_1 >> pos_2 && (input_ss >> promotion || true)) || input_ss >> junk) {
                     this->invalid(parser);
                 } else {
-                    if(this->game->move(pos_1, pos_2, promotion)) {
-                        // If the move is a success, print the board
-                        this->text_view->print();
-
-                        // Check for end-game possibilities
-                        if(this->game->checkmate() || this->game->stalemate()) {
-                            this->endGame();
-                            return;
-                        }
-
-                        // See if the player is now in check
-                        if(this->game->inCheck(this->game->getNext())) {
-                            cout << this->game->getNextColor() << " is in check!" << endl;
-                        }
-                    }
+                    success = this->game->move(pos_1, pos_2, promotion);
                 }
             } else {
                 // Make sure no junk was given
@@ -187,21 +174,22 @@ void Controller::playGame() {
                 }
                 // Request the next robot to make a move
                 this->game->getNext()->robotMove();
-
-                // TODO Make this into its own function
-                // If the move is a success, print the board
-                this->text_view->print();
-
-                // Check for end-game possibilities
+            }
+            // If the move was successful, we re-print the board and check for mates
+            if(success) {
+                // If the move is a success, print the board               
+                this->text_view->print();                                  
+                                                                                   
+                // Check for end-game possibilities                        
                 if(this->game->checkmate() || this->game->stalemate()) {
-                    this->endGame();
-                    return;
-                }
-
-                // See if the player is now in check
-                if(this->game->inCheck(this->game->getNext())) {
-                    cout << this->game->getNextColor() << " is in check!" << endl;
-                }
+                   this->endGame();                                       
+                   return;                                                
+                }                                                          
+                                                                                   
+                // See if the player is now in check                       
+                if(this->game->inCheck(this->game->getNext())) {           
+                   cout << this->game->getNextColor() << " is in check!" << endl;
+                }  
             }
 
         // A resign was called
