@@ -7,7 +7,8 @@ class Game;
 
 /*
     Level 1 Robot
-    TODO Add a description of the robot
+    
+    This robot will simply choose a random legal move.
 */
 class Robot_1 : public Robot {
     public:
