@@ -9,7 +9,7 @@ class Robot;
 
 class Player {
     private:
-        Robot * AI; // The robot corresponding to the player
+        Robot * robot; // The robot corresponding to the player
         int kingRow, kingCol;
         int wins, loses, ties;
         int ELO_rating;

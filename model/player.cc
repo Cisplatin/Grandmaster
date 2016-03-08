@@ -4,7 +4,7 @@ using namespace std;
 
 Player::Player(const int level, const string name) {
     // Sets the level of the new player
-    this->AI = new Robot(level);
+    this->robot = new Robot(level);
     this->wins = 0;
     this->loses = 0;
     this->ties = 0;
@@ -16,7 +16,7 @@ Player::Player(const int level, const string name) {
 Player::Player(string name, int level, int ELO_rating, int highestELO,
                int wins, int loses, int ties) {
     // Constructor for loading players from memory
-    this->AI = new Robot(level);
+    this->robot = new Robot(level);
     this->wins = wins;
     this->loses = loses;
     this->ties = ties;
@@ -26,12 +26,12 @@ Player::Player(string name, int level, int ELO_rating, int highestELO,
 }
 
 Player::~Player() {
-    delete this->AI;
+    delete this->robot;
 }
 
 bool Player::isHuman() const {
     // Returns true if this player is a human
-    return (this->AI->level == 0);
+    return (this->robot->level == 0);
 }
 
 int Player::totalGames() const {
@@ -85,7 +85,7 @@ string Player::getName() const {
 
 int Player::getLevel() const {
     // Returns the player's level
-    return this->AI->level;
+    return this->robot->level;
 }
 
 void Player::setKingCoordinates(int row, int col) {
