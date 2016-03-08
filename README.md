@@ -6,7 +6,7 @@ Grandmaster is a chess application written in C++. This implementation includes 
 
 ```Bash
 # Main commands:
-add <name>            # Adds new player with name <name>
+add <name> <level>    # Adds new player. <level> can be either "human" or "computer_1"
 remove <name>         # Removes the player with name <name>
 export <type> <file>  # Write the <type>-ified last game to the given file. Type can be PGN or FEN.
 exit                  # Exits from the game

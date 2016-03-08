@@ -25,7 +25,7 @@ class Controller {
         View * text_view;
         std::map<std::string, Player *> * players;
 
-        void addPlayer(std::string);
+        void addPlayer(std::string, std::string);
         void remPlayer(std::string);
         void savePlayers() const;
         void loadPlayers();
@@ -36,6 +36,7 @@ class Controller {
 
         int lastGameState;
         std::stack<Move *> * lastGame;
+        bool validLevel(std::string) const;
     public:
         Controller();
         ~Controller();

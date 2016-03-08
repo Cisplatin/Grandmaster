@@ -94,13 +94,18 @@ void Controller::loadPlayers() {
     }
 }
 
-void Controller::addPlayer(string name) {
+bool Controller::validLevel(string name) const {
+    // Returns true if the given name is a valid level
+    return name == "human" || name == "computer_1";
+}
+
+void Controller::addPlayer(string name, string level) {
     // Check if the player already exists
     if(this->players->count(name) != 0) {
         this->error("Player '" + name + "' already exists.");
+    } else if(!this->validLevel(level)) {
+        this->error("'" + level + "' is not a valid level.");
     } else {
-        // TODO: add a way to set the level of the player to computer
-        //       Make sure to check that its a currently existing robot
         Player * new_player = new Player(0, name);
         this->players->insert(pair<string, Player *>(name, new_player));
     }
@@ -265,14 +270,14 @@ void Controller::play() {
 
         // A new player is to be added:
         if(parser == "add") {
-            // Fetch the new player's name
-            string name;
+            // Fetch the new player's name and level
+            string name, level;
             // Check for valid inputs with no extras
-            if(!(input_ss >> name) || input_ss >> junk) {
+            if(!(input_ss >> name >> level) || input_ss >> junk) {
                 this->invalid(parser);
             } else {
                 // Add the player
-                this->addPlayer(name);
+                this->addPlayer(name, level);
             }
 
         // An old player is to be deleted:
