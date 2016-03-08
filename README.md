@@ -6,9 +6,9 @@ Grandmaster is a chess application written in C++. This implementation includes 
 
 ```Bash
 # Main commands:
-add <name> <level>    # Adds new player. <level> can be either "human" or "computer_1"
+add <name> <robot>    # Adds new player. <robot> must be a valid robot
 remove <name>         # Removes the player with name <name>
-export <type> <file>  # Write the <type>-ified last game to the given file. Type can be PGN or FEN.
+export <type> <file>  # Write the <type>-ified last game to the given file. Type can be PGN or FEN
 exit                  # Exits from the game
 
 # Game commands:
@@ -16,8 +16,20 @@ game <name> <name>    # Starts a game between the two given players
 move <pos> <pos> <P>  # Moves the piece at the given position (only use P for promotions)
 undo                  # Returns the game to the state before the last move
 resign                # Resigns from the current game
-export <type> <file>  # Writes the <type>-ified current game to the given file. Type can be PGN.
+export <type> <file>  # Writes the <type>-ified current game to the given file. Type can be PGN
 ```
+
+## Robots
+
+There are various types of "robots" - these are the players that can play the game. The availible robots are:
+
+### human
+
+The most basic of the robots - you can control where the robot moves.
+
+### random
+
+This robot moves a random legal move each game. If you can't beat him, please delete Grandmaster from your computer.
 
 ## Common errors
 

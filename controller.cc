@@ -96,7 +96,7 @@ void Controller::loadPlayers() {
 
 bool Controller::validLevel(string name) const {
     // Returns true if the given name is a valid level
-    return name == "human" || name == "computer_1";
+    return name == "human" || name == "random";
 }
 
 void Controller::addPlayer(string name, string level) {
