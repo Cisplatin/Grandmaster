@@ -181,7 +181,27 @@ void Controller::playGame() {
                     }
                 }
             } else {
-                // TODO: generate a computer move
+                // Make sure no junk was given
+                if(input_ss >> junk) {
+                    this->invalid(parser);
+                }
+                // Request the next robot to make a move
+                this->game->getNext()->robotMove();
+
+                // TODO Make this into its own function
+                // If the move is a success, print the board
+                this->text_view->print();
+
+                // Check for end-game possibilities
+                if(this->game->checkmate() || this->game->stalemate()) {
+                    this->endGame();
+                    return;
+                }
+
+                // See if the player is now in check
+                if(this->game->inCheck(this->game->getNext())) {
+                    cout << this->game->getNextColor() << " is in check!" << endl;
+                }
             }
 
         // A resign was called

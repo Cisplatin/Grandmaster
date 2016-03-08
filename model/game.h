@@ -26,7 +26,6 @@ class Game {
         void clearBoard();
 
         Player * next;
-        void switchTurns();
         void forceMovePiece(int, int, int, int);
         Player * getPlayer(int, int) const;
         char getType(int, int) const;
@@ -48,6 +47,7 @@ class Game {
 
         bool move(std::string, std::string, std::string);
         void movePiece(int, int, int, int, char, bool);
+        void switchTurns();
 
     	bool validMove(int, int, int, int, bool, std::string);
         bool isEmpty(int, int) const;
