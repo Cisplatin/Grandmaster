@@ -17,6 +17,7 @@ class Robot {
         virtual ~Robot();
 
         virtual void robotMove() = 0;
+        void submitMove(int, int, int, int);
 };
 
 #endif
