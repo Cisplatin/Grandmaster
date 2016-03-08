@@ -19,7 +19,7 @@ Piece::Piece(char type, Player * const player, int row, int col, Game * game)
     this->moved = 0;
 }
 
-Piece::Piece(const Piece &other) : type(other.type), player(other.player) {
+Piece::Piece(const Piece &other) : player(other.player), type(other.type) {
     // Sets the type of the piece to the other's
     this->row = other.row;
     this->col = other.col;
