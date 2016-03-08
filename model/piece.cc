@@ -11,7 +11,7 @@
 using namespace std;
 
 Piece::Piece(char type, Player * const player, int row, int col, Game * game)
-             : type(type), player(player) {
+             : player(player), type(type) {
     // Sets the type of the piece and the player
     this->row = row;
     this->col = col;
