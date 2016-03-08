@@ -301,7 +301,7 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2, char promotion,
     }
 
     // Check if a promotion occurred
-    if(promotion) {
+    if(Piece::isPawn(type) && (row_2 == Constants::BOARD_LEN || row_2 == 0)) {
         // Replace the given piece with the proper promotion
         delete this->board[row_2][col_2];
         // If no promotion was specified, use a queen
