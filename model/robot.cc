@@ -1,7 +1,7 @@
 #include "robot.h"
 #include "game.h"
 
-Robot::Robot(Game * game) : game(game) {
+Robot::Robot(Game * game, Player * player) : game(game), player(player) {
 }
 
 Robot::~Robot() {

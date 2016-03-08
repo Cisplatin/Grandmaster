@@ -2,6 +2,7 @@
 #define ROBOT_H
 
 class Game;
+class Player;
 
 /*
     A class for AI move generation. We make this seperate from player for
@@ -10,8 +11,9 @@ class Game;
 class Robot {
     private:
         Game * game;
+        Player * player;
     public:
-        Robot(Game *);
+        Robot(Game *, Player *);
         virtual ~Robot();
 
         virtual void robotMove() = 0;

@@ -42,7 +42,7 @@ void Player::startGame(Game * game) {
     if(this->level == "human") {
         this->robot = NULL;
     } else if(this->level == "random") {
-        this->robot = new Robot_Random(game);
+        this->robot = new Robot_Random(game, this);
     } 
 }
 
