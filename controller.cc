@@ -100,6 +100,7 @@ void Controller::addPlayer(string name) {
         this->error("Player '" + name + "' already exists.");
     } else {
         // TODO: add a way to set the level of the player to computer
+        //       Make sure to check that its a currently existing robot
         Player * new_player = new Player(0, name);
         this->players->insert(pair<string, Player *>(name, new_player));
     }
