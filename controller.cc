@@ -80,7 +80,8 @@ void Controller::loadPlayers() {
             // Make sure proper input has been given, and no player already exists
             if(input_ss >> name >> level >> ELO_rating >> highestELO >> wins >> loses >> ties 
                && !(input_ss >> junk)
-               && this->players->count(name) == 0) {
+               && this->players->count(name) == 0
+               && this->validLevel(level)) {
 
                 // Create and save the new player
                 Player * new_player = new Player(name, level, ELO_rating, highestELO, wins, loses, ties);

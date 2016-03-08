@@ -21,8 +21,6 @@ export <type> <file>  # Writes the <type>-ified current game to the given file. 
 
 ## Robots
 
-There are various types of "robots" - these are the players that can play the game. The availible robots are:
-
 #### human
 
 The most basic of the robots - you can control where the robot moves.

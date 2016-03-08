@@ -38,13 +38,11 @@ Player::~Player() {
 void Player::startGame(Game * game) {
     // Starts a new game for the player. This sets up a new robot for the game
     // TODO Find a way to use constant strings
-    // TODO Throw an exception if an incorrect bot was found
     delete this->robot;
     if(this->level == "human") {
         this->robot = NULL;
     } else if(this->level == "random") {
-        // TODO No need to pass in the level to the robot
-        this->robot = new Robot_Random(1, game);
+        this->robot = new Robot_Random(game);
     } 
 }
 

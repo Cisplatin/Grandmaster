@@ -11,9 +11,7 @@ class Robot {
     private:
         Game * game;
     public:
-        const int level;
-
-        Robot(const int, Game *);
+        Robot(Game *);
         virtual ~Robot();
 
         virtual void robotMove() = 0;
