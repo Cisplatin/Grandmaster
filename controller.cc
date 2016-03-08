@@ -74,8 +74,8 @@ void Controller::loadPlayers() {
         string line, junk;
         while(getline(file, line)) {
             istringstream input_ss(line);
-            string name;
-            int level, ELO_rating, highestELO, wins, loses, ties;
+            string name, level;
+            int ELO_rating, highestELO, wins, loses, ties;
 
             // Make sure proper input has been given, and no player already exists
             if(input_ss >> name >> level >> ELO_rating >> highestELO >> wins >> loses >> ties 
@@ -106,7 +106,7 @@ void Controller::addPlayer(string name, string level) {
     } else if(!this->validLevel(level)) {
         this->error("'" + level + "' is not a valid level.");
     } else {
-        Player * new_player = new Player(0, name);
+        Player * new_player = new Player(level, name);
         this->players->insert(pair<string, Player *>(name, new_player));
     }
 }

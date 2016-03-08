@@ -11,7 +11,7 @@ class Game;
 class Player {
     private:
         Robot * robot; 
-        const int level;
+        std::string level;
         int kingRow, kingCol;
         int wins, loses, ties;
         int ELO_rating;
@@ -22,8 +22,8 @@ class Player {
         void calculateNewRating(int, double);
         double expectedScoreAgainst(int) const;
     public:
-        Player(const int, const std::string);
-        Player(std::string, int, int, int, int, int, int);
+        Player(std::string, const std::string);
+        Player(std::string, std::string, int, int, int, int, int);
         ~Player();
 
         // Robot related functions

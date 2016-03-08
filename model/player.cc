@@ -6,8 +6,9 @@
 
 using namespace std;
 
-Player::Player(const int level, const string name) : level(level) {
+Player::Player(string level, const string name) {
     // Sets the level of the new player
+    this->level = level;
     this->robot = NULL;
     this->wins = 0;
     this->loses = 0;
@@ -17,9 +18,10 @@ Player::Player(const int level, const string name) : level(level) {
     this->name = name;
 }
 
-Player::Player(string name, int level, int ELO_rating, int highestELO,
-               int wins, int loses, int ties) : level(level) {
+Player::Player(string name, string level, int ELO_rating, int highestELO,
+               int wins, int loses, int ties) {
     // Constructor for loading players from memory
+    this->level = level;
     this->robot = NULL;
     this->wins = wins;
     this->loses = loses;
@@ -36,10 +38,10 @@ Player::~Player() {
 void Player::startGame(Game * game) {
     // Starts a new game for the player. This sets up a new robot for the game
     delete this->robot;
-    switch(this->level) {
-        case 1:
-            this->robot = new Robot_1(this->level, game);
-        break;
+    if(this->level == "human") {
+        this->robot = NULL;
+    } else if(this->level == "computer_1") {
+        this->robot = new Robot_1(1, game);
     }
 }
 
