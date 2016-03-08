@@ -33,6 +33,7 @@ Player::~Player() {
 void Player::startGame(Game * game) {
     // Starts a new game for the player. This sets up a new robot for the game
     delete this->robot;
+    // TODO Generate a robot from the right class based on the level
     this->robot = new Robot(this->level, game);
 }
 
