@@ -105,6 +105,7 @@ bool Piece::isKing(char type) {
 
 void Piece::erase_invalid(vector<pair<int, int>> * moves) const {
     // Erases the moves that are invalid from the given vector
+    // TODO add promotion compatibility
     vector<pair<int, int>>::iterator it = moves->begin();
     for(; it != moves->end();) {
         if(!this->game->validMove(this->row, this->col, it->first, it->second, true, "")) {
