@@ -23,11 +23,11 @@ export <type> <file>  # Writes the <type>-ified current game to the given file. 
 
 There are various types of "robots" - these are the players that can play the game. The availible robots are:
 
-### human
+#### human
 
 The most basic of the robots - you can control where the robot moves.
 
-### random
+#### random
 
 This robot moves a random legal move each game. If you can't beat him, please delete Grandmaster from your computer.
 
