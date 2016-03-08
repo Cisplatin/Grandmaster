@@ -42,7 +42,7 @@ class Player {
         int getTies() const;
 
         std::string getName() const;
-        int getLevel() const;
+        std::string getLevel() const;
         bool isHuman() const;
 
         // End-game functions for the player

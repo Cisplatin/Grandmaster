@@ -59,7 +59,7 @@ void Player::robotMove() {
 
 bool Player::isHuman() const {
     // Returns true if this player is a human
-    return (this->robot->level == 0);
+    return (this->level == "human");
 }
 
 int Player::totalGames() const {
@@ -111,9 +111,9 @@ string Player::getName() const {
     return this->name;
 }
 
-int Player::getLevel() const {
+string Player::getLevel() const {
     // Returns the player's level
-    return this->robot->level;
+    return this->level;
 }
 
 void Player::setKingCoordinates(int row, int col) {
