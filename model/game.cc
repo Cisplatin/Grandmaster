@@ -220,13 +220,9 @@ bool Game::validMove(int row_1, int col_1, int row_2, int col_2, bool mute, stri
 
     // Check for promotions
     char type = this->board[row_1][col_1]->getType();
-    if(Piece::isPawn(type) && (row_2 == Constants::BOARD_LEN || row_2 == 0)) {
-        // Make sure a valid promotion was given (valid piece, length)
-        if(promotion.length() == 0) {
-            if(!mute) this->control->error("Must give a piece to promote to.");
-            return 0;
+    if(Piece::isPawn(type) && (row_2 == Constants::BOARD_LEN || row_2 == 0) && promotion.length() != 0) {
         // Check if the promotion given is a valid one
-        } else if(promotion.length() != 1 || !Piece::isValidType(promotion[0])) {
+        if(promotion.length() != 1 || !Piece::isValidType(promotion[0])) {
             if(!mute) this->control->error("Invalid promotion given.");
             return 0;
         // Check if the promoted piece belongs to the correct played by FIDE rules
@@ -308,6 +304,10 @@ void Game::movePiece(int row_1, int col_1, int row_2, int col_2, char promotion,
     if(promotion) {
         // Replace the given piece with the proper promotion
         delete this->board[row_2][col_2];
+        // If no promotion was specified, use a queen
+        if(promotion == 0) {
+            promotion = (this->getNext() == this->player_1) ? Constants::WHITE_QUEEN : Constants::BLACK_QUEEN;
+        }
         this->board[row_2][col_2] = Piece::generatePiece(promotion, player, row_2, col_2, this);
         this->updateAdd(promotion, row_2, col_2);
     }
