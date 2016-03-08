@@ -105,7 +105,7 @@ void Controller::addPlayer(string name, string level) {
     if(this->players->count(name) != 0) {
         this->error("Player '" + name + "' already exists.");
     } else if(!this->validLevel(level)) {
-        this->error("'" + level + "' is not a valid level.");
+        this->error("'" + level + "' is not a valid robot.");
     } else {
         Player * new_player = new Player(level, name);
         this->players->insert(pair<string, Player *>(name, new_player));
