@@ -1,6 +1,9 @@
 #include "player.h"
 #include "robot.h"
 #include "game.h"
+
+#include "robots/robot_1.h"
+
 using namespace std;
 
 Player::Player(const int level, const string name) : level(level) {
@@ -33,8 +36,11 @@ Player::~Player() {
 void Player::startGame(Game * game) {
     // Starts a new game for the player. This sets up a new robot for the game
     delete this->robot;
-    // TODO Generate a robot from the right class based on the level
-    this->robot = new Robot(this->level, game);
+    switch(this->level) {
+        case 1:
+            this->robot = new Robot_1(this->level, game);
+        break;
+    }
 }
 
 void Player::robotMove() {
