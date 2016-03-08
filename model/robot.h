@@ -16,7 +16,7 @@ class Robot {
         Robot(const int, Game *);
         virtual ~Robot();
 
-        virtual void robotMove(int *, int *, int *, int *) = 0;
+        virtual void robotMove() = 0;
 };
 
 #endif

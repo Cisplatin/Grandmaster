@@ -51,7 +51,8 @@ void Player::robotMove() {
         // is a human.
         return;
     }
-    // TODO Write the function
+    // Currently assumes the robot will run a valid move.
+    this->robot->robotMove();
 }
 
 bool Player::isHuman() const {

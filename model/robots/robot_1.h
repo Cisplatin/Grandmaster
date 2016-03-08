@@ -13,7 +13,7 @@ class Game;
 class Robot_1 : public Robot {
     public:
         Robot_1(const int, Game *);
-        virtual void robotMove(int *, int *, int *, int *);
+        virtual void robotMove();
 };
 
 #endif
